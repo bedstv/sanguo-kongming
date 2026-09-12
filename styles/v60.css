@@ -1,0 +1,9 @@
+/* V6: asset atlas presentation + mobile audio diagnostics */
+#worldCanvas{image-rendering:auto!important;filter:saturate(1.12) contrast(1.045) brightness(1.02);background:#315c38}
+.map-wrap{background:linear-gradient(#1f3c2b,#172f23);box-shadow:inset 0 0 0 1px #ffffff14,0 8px 24px #0005}
+.quest{backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border-color:#e8cf7955;background:linear-gradient(90deg,#07121eea,#1a2d1bea,#07121eea);box-shadow:0 6px 18px #0008}
+.world-screen:after{content:"V6 ASSET ATLAS";position:absolute;right:11px;bottom:174px;font-size:9px;letter-spacing:.08em;color:#ffffff38;pointer-events:none}
+#soundState{border-color:#7bd6ff55;background:#0f2637;color:#bfeaff}
+#soundBtn{border-color:#7bd6ff;background:linear-gradient(#26536c,#102a3a)}
+.hint-pulse{animation:v6HintPulse .9s ease-out 1}@keyframes v6HintPulse{0%{box-shadow:0 0 0 0 #ffd76a99}45%{box-shadow:0 0 0 7px #ffd76a22}100%{box-shadow:0 0 0 0 #ffd76a00}}
+@media(max-width:430px){.world-screen:after{bottom:181px}.quest{font-size:11px}.map-wrap{box-shadow:inset 0 0 0 1px #ffffff10,0 5px 16px #0005}}
