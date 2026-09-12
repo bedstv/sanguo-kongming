@@ -1,4 +1,4 @@
-name: V8 QA
+name: V9 QA
 
 on:
   push:
@@ -19,8 +19,10 @@ jobs:
           node-version: '22'
       - name: JavaScript syntax
         run: |
-          for f in src/*.js src/v8/*.js scripts/*.mjs; do
+          for f in src/*.js src/v8/*.js src/v9/*.js scripts/*.mjs; do
             node --check "$f"
           done
-      - name: Game structure validation
+      - name: Existing game validation
         run: node scripts/validate.mjs
+      - name: V9 Golden Battle validation
+        run: node scripts/validate-v9.mjs
