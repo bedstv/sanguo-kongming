@@ -1,13 +1,12 @@
 {
-  "name": "三國戰策：孔明篇 V3",
-  "short_name": "三國戰策",
-  "start_url": "./",
-  "scope": "./",
+  "name": "三國戰策：孔明篇 V4",
+  "short_name": "三國戰策V4",
+  "start_url": "./?v=4.1",
   "display": "standalone",
-  "background_color": "#090d18",
-  "theme_color": "#090d18",
-  "orientation": "any",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
   "icons": [
-    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+    {"src":"./icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"./icon-512.png","sizes":"512x512","type":"image/png"}
   ]
 }
