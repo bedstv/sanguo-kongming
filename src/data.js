@@ -73,8 +73,8 @@ export const MAPS = {
     npcs:[]
   },
   overworld:{
-    name:'荊州北境',kind:'world',width:26,height:14,start:{x:7,y:8},
-    rows:['WWWWWWWWWWWWWWWWWWWWWWWWWW','W....FF....RR......FF......W','W..TTTT....RR..TTTT........W','W..........RR..............W','W.......RRRRR..L...........W','W..FF...R......RR....FF....W','W.......R.......R..........W','W..TT...R.......RRRR.......W','W......XR..........R..B....W','W..FF...R..........R.......W','W......RRRRRRRRRRRRR.......W','W..........................W','W....TT........FF..........W','WWWWWWWWWWWWWWWWWWWWWWWWWW'],
+    name:'荊州北境',kind:'world',width:28,height:14,start:{x:7,y:8},
+    rows:['WWWWWWWWWWWWWWWWWWWWWWWWWWWW','W....FF....RR......FF......W','W..TTTT....RR..TTTT........W','W..........RR..............W','W.......RRRRR..L...........W','W..FF...R......RR....FF....W','W.......R.......R..........W','W..TT...R.......RRRR.......W','W......XR..........R..B....W','W..FF...R..........R.......W','W......RRRRRRRRRRRRR.......W','W..........................W','W....TT........FF..........W','WWWWWWWWWWWWWWWWWWWWWWWWWWWW'],
     points:{X:{name:'新野城',to:'xinye'},L:{name:'隆中',to:'longzhong'},B:{name:'博望坡',to:'bowang'}}
   }
 };
