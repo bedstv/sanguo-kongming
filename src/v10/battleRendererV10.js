@@ -24,8 +24,8 @@ export class BattleRendererV10{
     const p=this.state.party[b.actor]||this.state.party.find(x=>x.hp>0)||this.state.party[0];
     const pi=PORTRAIT_MAP[p.id]??0;
     this.ui.portrait.style.backgroundImage=`url('${V10_PORTRAITS}')`;
-    this.ui.portrait.style.backgroundSize=`${96*5}px 96px`;
-    this.ui.portrait.style.backgroundPosition=`${-pi*96}px 0px`;
+    this.ui.portrait.style.backgroundSize='500% 100%';
+    this.ui.portrait.style.backgroundPosition=`${pi*25}% 0`;
     this.ui.portrait.setAttribute('aria-label',p.name);
     this.ui.stats.innerHTML=actorStats(p);
   }
