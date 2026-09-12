@@ -1,4 +1,4 @@
-export const VERSION = '5.1.0';
+export const VERSION = '5.5.0';
 
 export const PARTY_TEMPLATE = [
   {id:'liubei',name:'劉備',role:'主將',level:1,exp:0,maxHp:4200,hp:4200,maxSp:24,sp:24,atk:64,def:62,int:74,agi:62,weapon:'bronzeSword',armor:'clothArmor'},
