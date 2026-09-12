@@ -1,0 +1,26 @@
+name: V5 QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  syntax-and-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          for f in src/*.js scripts/*.mjs; do
+            node --check "$f"
+          done
+      - name: Game structure validation
+        run: node scripts/validate.mjs
