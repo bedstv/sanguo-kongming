@@ -1,0 +1,11 @@
+/* V5.3 Real-device polish: higher-resolution world map + anti-stuck UX */
+#worldCanvas{image-rendering:auto!important;filter:saturate(1.08) contrast(1.04);background:#325f3b}
+.map-wrap{background:#213d2c;box-shadow:inset 0 0 0 1px #ffffff12}.quest{left:12px;right:12px;top:10px;border-color:#e6ca7255;background:linear-gradient(90deg,#07121ee8,#172314e8,#07121ee8);color:#fff2bd;font-weight:800;box-shadow:0 5px 16px #0008;text-shadow:1px 1px #000}
+.topbar{background:linear-gradient(180deg,#0b1423,#0a101a);box-shadow:0 4px 14px #0005}.dialog{background:linear-gradient(180deg,#152744,#0f1d33);box-shadow:inset 0 1px 0 #ffffff10}.bottom{background:linear-gradient(180deg,#0d1727,#09111e)}
+.world-screen:after{content:"V5.3 HD MAP";position:absolute;right:10px;bottom:166px;font-size:9px;color:#ffffff3b;pointer-events:none;letter-spacing:.08em}
+#battleBack{display:block;width:100%;margin-top:5px;padding:7px 8px;font-size:11px;border-color:#8fa5c3;color:#dce9fb;background:linear-gradient(#1c2940,#101827)}
+.skills.open+#battleBack{border-color:#ffd78b;color:#fff0bd}.skills button:disabled{opacity:.35;filter:grayscale(.5)}
+.battle-label{top:7px!important;bottom:auto!important;transform:translateX(-50%)!important;padding:4px 7px!important;opacity:.8;pointer-events:none}.battle-stage{padding-top:20px}.battle-unit.active{background:linear-gradient(90deg,#5ebfff13,transparent);border-radius:9px}
+.card-actions .danger-safe{border-color:#ffcc7d;background:linear-gradient(#593f1e,#291d10)}.card-actions .hint-action{border-color:#95ddff;background:linear-gradient(#24516b,#102837)}
+.party-card img,.codex-card img{image-rendering:auto!important}
+@media(max-width:430px){.map-wrap{height:calc(100% - 238px)}.bottom{height:170px}.world-screen:after{bottom:174px}.quest{font-size:11px;line-height:1.35}.battle-stage{height:57%}.battle-panel{height:43%}.battle-label{font-size:9px!important}.battle-unit img{width:72px!important;height:72px!important}.unit-copy strong{font-size:13px}.actor-panel{grid-template-columns:70px 1fr}.actor-panel img{width:70px;height:84px}.stats{font-size:10.5px}}
