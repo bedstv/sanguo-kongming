@@ -1,0 +1,1 @@
+V11 raster sprite assets are committed via Git data API. Hero atlas: 672x560 (5 rows x 7 frames, 96x112 each). Portrait strip: 560x112 (5 portraits, 112x112 each).
