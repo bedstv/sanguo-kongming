@@ -33,7 +33,7 @@ if(!audio.includes("from './v8/musicV8.js'"))bad('V8 music score not wired');els
 const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const refs=[...index.matchAll(/(?:src|href)="([^"?#]+)(?:[?#][^"]*)?"/g)].map(m=>m[1]).filter(x=>x.startsWith('./')||!x.includes(':'));
 for(const ref of refs){const clean=ref.replace(/^\.\//,'');if(clean&&clean!=='manifest.webmanifest'&&!fs.existsSync(path.join(root,clean)))bad(`index reference missing: ${clean}`)}
-if(!index.includes('styles/v80.css')||!index.includes('src/v8/pixelUi.js')||!index.includes('V8.0'))bad('V8 entry assets not loaded');else ok('V8 entry assets loaded');
+if(!index.includes('styles/v80.css')||!index.includes('src/v8/pixelUi.js')||!/V8\.[0-9]+/.test(index))bad('V8 entry assets not loaded');else ok('V8 entry assets loaded');
 if(fs.existsSync(path.join(root,'manifest.webmanifest')))ok('manifest exists');
 
 const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
