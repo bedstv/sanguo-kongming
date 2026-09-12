@@ -1,0 +1,9 @@
+export class AudioSystem{
+  constructor(){this.ctx=null;this.enabled=true;this.timer=null;this.step=0;this.mode='world'}
+  ensure(){if(!this.enabled)return null;const A=window.AudioContext||window.webkitAudioContext;if(!A)return null;if(!this.ctx)this.ctx=new A();if(this.ctx.state==='suspended')this.ctx.resume();return this.ctx}
+  tone(freq=440,dur=.08,type='square',vol=.022,delay=0){const c=this.ensure();if(!c)return;const o=c.createOscillator(),g=c.createGain(),t=c.currentTime+delay;o.type=type;o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+dur)}
+  sfx(name){if(!this.enabled)return;const p={ui:[[660,.06],[880,.07]],move:[[510,.035]],hit:[[190,.07],[120,.12]],cast:[[600,.08],[760,.1],[980,.13]],heal:[[480,.12],[640,.14],[880,.18]],buy:[[700,.07],[940,.09]],win:[[660,.1],[880,.1],[1040,.12],[1320,.16]],level:[[660,.08],[880,.08],[1100,.08],[1320,.16]],lose:[[420,.14],[300,.17],[210,.2]]}[name]||[];p.forEach((x,i)=>this.tone(x[0],x[1],name==='lose'?'triangle':'square',.022,i*.07))}
+  start(mode='world'){this.stop();this.mode=mode;if(!this.enabled)return;this.ensure();const tunes={world:[523,659,784,659,587,659,698,659,523,659,880,784,698,659,587,523],battle:[392,440,523,587,523,440,392,330,392,494,587,659,587,494,440,392],boss:[330,392,466,523,466,392,349,330,294,349,440,523,466,392,349,294]};const bass={world:[196,196,220,220,175,175,196,196],battle:[147,147,165,165,175,175,165,165],boss:[110,110,123,123,131,131,123,123]};const m=tunes[mode],b=bass[mode];this.step=0;this.timer=setInterval(()=>{this.tone(m[this.step%m.length],.11,'square',.012);this.tone(b[this.step%b.length],.18,'triangle',.009);this.step++},220)}
+  stop(){if(this.timer){clearInterval(this.timer);this.timer=null}}
+  toggle(){this.enabled=!this.enabled;if(this.enabled)this.start(this.mode);else this.stop();return this.enabled}
+}
