@@ -1,7 +1,14 @@
+import h0 from './heroData0.js';
+import h1 from './heroData1.js';
+import h2 from './heroData2.js';
+import h3 from './heroData3.js';
+import h4 from './heroData4.js';
+import p0 from './portraitData0.js';
+import p1 from './portraitData1.js';
 import {V10_ATLAS,FRAME_W as E_W,FRAME_H as E_H,COLS as E_COLS,ROWS as E_ROWS,frameFor as enemyFrameFor} from '../v10/assetsV10.js';
 
-export const V11_HERO_ATLAS='./assets/v11/heroes-v11.png?v=11.0';
-export const V11_PORTRAITS='./assets/v11/portraits-v11.png?v=11.0';
+export const V11_HERO_ATLAS='data:image/png;base64,'+[h0,h1,h2,h3,h4].join('');
+export const V11_PORTRAITS='data:image/png;base64,'+[p0,p1].join('');
 export const HERO_W=96,HERO_H=112,HERO_COLS=7,HERO_ROWS=5;
 export const ENEMY_ATLAS=V10_ATLAS,ENEMY_W=E_W,ENEMY_H=E_H,ENEMY_COLS=E_COLS,ENEMY_ROWS=E_ROWS;
 export const HERO_ROWS_MAP={liubei:0,guanyu:1,zhangfei:2,zhaoyun:3,kongming:4};
