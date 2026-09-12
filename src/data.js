@@ -1,4 +1,4 @@
-export const VERSION = '5.0.0';
+export const VERSION = '5.1.0';
 
 export const PARTY_TEMPLATE = [
   {id:'liubei',name:'劉備',role:'主將',level:1,exp:0,maxHp:4200,hp:4200,maxSp:24,sp:24,atk:64,def:62,int:74,agi:62,weapon:'bronzeSword',armor:'clothArmor'},
@@ -50,40 +50,9 @@ export const FORMATIONS = {
 };
 
 export const MAPS = {
-  xinye:{
-    name:'新野城',kind:'town',width:16,height:12,start:{x:8,y:9},exit:{x:8,y:11,to:'overworld',toX:7,toY:8},
-    rows:['################','##............##','##..SS....II..##','##............##','##..NN....NN..##','##............##','##......PP....##','##............##','##..NN....NN..##','##............##','##............##','#######..#######'],
-    npcs:[
-      {x:6,y:6,id:'officer',name:'守城校尉',dialog:['主公，北方道路近日有曹軍斥候出沒。','若要出城，請從南門離開。']},
-      {x:4,y:4,id:'citizen',name:'百姓',dialog:['聽說隆中有位先生，連州牧都敬他三分。']},
-      {x:11,y:4,id:'merchant',name:'商人',dialog:['軍情吃緊，城裡的兵器賣得特別快。']}
-    ]
-  },
-  longzhong:{
-    name:'隆中',kind:'village',width:14,height:10,start:{x:7,y:8},exit:{x:7,y:9,to:'overworld',toX:11,toY:4},
-    rows:['##############','#............#','#..TT....TT..#','#............#','#....HH......#','#............#','#..NN........#','#............#','#............#','######..######'],
-    npcs:[
-      {x:4,y:6,id:'villager',name:'村民',dialog:['先生平日喜愛觀天象，也常談天下大勢。']},
-      {x:6,y:4,id:'kongmingNpc',name:'孔明',dialog:['天下三分，荊益可為基業。','主公若真有大志，請先回新野整軍。','曹軍不久將至，我已有一計。']}
-    ]
-  },
-  bowang:{
-    name:'博望坡',kind:'battlefield',width:16,height:12,start:{x:8,y:10},exit:{x:8,y:11,to:'overworld',toX:18,toY:8},
-    rows:['################','#..TT......TT..#','#......RR......#','#..TT..RR..TT..#','#......RR......#','#..TT..RR..TT..#','#......RR......#','#..TT..RR..TT..#','#......RR......#','#......RR......#','#......RR......#','#######..#######'],
-    npcs:[]
-  },
-  overworld:{
-    name:'荊州北境',kind:'world',width:28,height:14,start:{x:7,y:8},
-    rows:['WWWWWWWWWWWWWWWWWWWWWWWWWWWW','W....FF....RR......FF......W','W..TTTT....RR..TTTT........W','W..........RR..............W','W.......RRRRR..L...........W','W..FF...R......RR....FF....W','W.......R.......R..........W','W..TT...R.......RRRR.......W','W......XR..........R..B....W','W..FF...R..........R.......W','W......RRRRRRRRRRRRR.......W','W..........................W','W....TT........FF..........W','WWWWWWWWWWWWWWWWWWWWWWWWWWWW'],
-    points:{X:{name:'新野城',to:'xinye'},L:{name:'隆中',to:'longzhong'},B:{name:'博望坡',to:'bowang'}}
-  }
+  xinye:{name:'新野城',kind:'town',width:16,height:12,start:{x:8,y:9},exit:{x:8,y:11,to:'overworld',toX:7,toY:8},rows:['################','##............##','##..SS....II..##','##............##','##..NN....NN..##','##............##','##......PP....##','##............##','##..NN....NN..##','##............##','##............##','#######..#######'],npcs:[{x:6,y:6,id:'officer',name:'守城校尉',dialog:['主公，北方道路近日有曹軍斥候出沒。','若要出城，請從南門離開。']},{x:4,y:4,id:'citizen',name:'百姓',dialog:['聽說隆中有位先生，連州牧都敬他三分。']},{x:11,y:4,id:'merchant',name:'商人',dialog:['軍情吃緊，城裡的兵器賣得特別快。']}]},
+  longzhong:{name:'隆中',kind:'village',width:14,height:10,start:{x:7,y:8},exit:{x:7,y:9,to:'overworld',toX:11,toY:4},rows:['##############','#............#','#..TT....TT..#','#............#','#....HH......#','#............#','#..NN........#','#............#','#............#','######..######'],npcs:[{x:4,y:6,id:'villager',name:'村民',dialog:['先生平日喜愛觀天象，也常談天下大勢。']},{x:6,y:4,id:'kongmingNpc',name:'孔明',dialog:['天下三分，荊益可為基業。','主公若真有大志，請先回新野整軍。','曹軍不久將至，我已有一計。']}]},
+  bowang:{name:'博望坡',kind:'battlefield',width:16,height:12,start:{x:8,y:10},exit:{x:8,y:11,to:'overworld',toX:18,toY:8},rows:['################','#..TT......TT..#','#......RR......#','#..TT..RR..TT..#','#......RR......#','#..TT..RR..TT..#','#......RR......#','#..TT..RR..TT..#','#......RR......#','#......RR......#','#......RR......#','#######..#######'],npcs:[]},
+  overworld:{name:'荊州北境',kind:'world',width:28,height:14,start:{x:7,y:8},rows:['WWWWWWWWWWWWWWWWWWWWWWWWWWWW','W....FF....RR......FF......W','W..TTTT....RR..TTTT........W','W..........RR..............W','W.......RRRRR..L...........W','W..FF...R......RR....FF....W','W.......R.......R..........W','W..TT...R.......RRRR.......W','W......XR..........R..B....W','W..FF...R..........R.......W','W......RRRRRRRRRRRRR.......W','W..........................W','W....TT........FF..........W','WWWWWWWWWWWWWWWWWWWWWWWWWWWW'],points:{X:{name:'新野城',to:'xinye'},L:{name:'隆中',to:'longzhong'},B:{name:'博望坡',to:'bowang'}}}
 };
-
-export const STORY_TEXT = {
-  intro:'劉備：「曹操勢大，我軍必須先穩住新野。聽聞隆中有大才，先去拜訪。」',
-  longzhong:'孔明：「曹軍不久將南下。請主公先回新野整備，我自會同行。」',
-  returned:'孔明：「主公，博望坡地形狹窄，正可用火攻。先整備裝備，再往東北迎敵。」',
-  bowangIntro:'趙雲：「前方發現曹軍先鋒！」',
-  bossIntro:'夏侯惇：「劉備小兒，今日看你往哪裡逃！」',
-  chapterClear:'孔明：「博望坡首戰已勝。這只是開始。」\n第一章完成！'
-};
+export const STORY_TEXT={intro:'劉備：「曹操勢大，我軍必須先穩住新野。聽聞隆中有大才，先去拜訪。」',longzhong:'孔明：「曹軍不久將南下。請主公先回新野整備，我自會同行。」',returned:'孔明：「主公，博望坡地形狹窄，正可用火攻。先整備裝備，再往東北迎敵。」',bowangIntro:'趙雲：「前方發現曹軍先鋒！」',bossIntro:'夏侯惇：「劉備小兒，今日看你往哪裡逃！」',chapterClear:'孔明：「博望坡首戰已勝。這只是開始。」\n第一章完成！'};
