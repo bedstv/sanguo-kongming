@@ -6,7 +6,7 @@
 
 ## Phase 0 — Freeze the target
 
-建立固定測試入口：
+固定測試入口：
 
 `/golden-v11.html?v=11.0`
 
@@ -17,27 +17,23 @@
 
 固定 iPhone 基準：390×844。
 
+**Status: completed.**
+
 ## Phase 1 — Rebuild five heroes first
 
-先不做敵軍、不做地圖。
+五名我軍已建立獨立 raster sprite rows，每名 7 frames：idle A/B、attack anticipation/strike、hurt、cast、KO；另有 5 張獨立 portrait。
 
-每一名我軍都獨立重畫：
-
-1. 劉備 — 冠冕、綠金、劍
-2. 關羽 — 長髯、深綠、紅點綴、長柄刀
-3. 張飛 — 粗壯、黑鬚、赤褐甲、蛇矛輪廓
-4. 趙雲 — 白盔白羽、藍銀甲、長槍
-5. 孔明 — 綸巾、紫白袍、羽扇
-
-每名至少完成 7 frames：idle A/B、attack anticipation/strike、hurt、cast、KO。
+V11 Golden Battle 已加入「隱名」按鈕，直接用於辨識 Gate。
 
 ### Gate
 
 把姓名隱藏後，至少 4/5 能讓使用者直接辨識；否則不進下一階段。
 
+**Status: implementation complete; awaiting iPhone visual/identity acceptance.**
+
 ## Phase 2 — Enemy art + atlas safety
 
-逐一完成：曹仁、張郃、夏侯惇、槍兵、弓手。
+下一階段逐一完成：曹仁、張郃、夏侯惇、槍兵、弓手。
 
 Atlas 必須採固定 cell 規格，並由 QA 驗證：
 
@@ -50,6 +46,8 @@ Atlas 必須採固定 cell 規格，並由 QA 驗證：
 
 曹仁／張郃／夏侯惇至少 2/3 不看名字可辨識。
 
+**Status: not started; V11 Phase 1 暫時沿用 V10 敵軍素材。**
+
 ## Phase 3 — Battle composition rebuild
 
 重做 5v5 fixed slots：
@@ -59,98 +57,44 @@ Atlas 必須採固定 cell 規格，並由 QA 驗證：
 - 上下五列間距依 iPhone 真實 viewport 固定。
 - 戰場與下方 UI 比例約 70/30，依實機微調。
 
-### Gate
+**Status: first-pass integrated in `styles/v110.css`; pending iPhone screenshot polish.**
 
-390×844 Safari：無裁切、無重疊、無文字溢出。
+## Phase 4 — Battle background
 
-## Phase 4 — Background art
+製作正式 Golden Battle 背景：低彩度、低對比、像素化遠景與地面層次，不搶角色。
 
-Golden Battle 先只做一張正式背景：
+## Phase 5 — Portrait + command UI
 
-- 遠山／林線
-- 暗色天空或煙塵
-- 中景軍旗／軍影
-- 地面紋理
-
-背景使用低彩度，人物與 UI 永遠保持最高辨識度。
-
-## Phase 5 — Portrait and command UI
-
-Portrait：
-
-- 5 張獨立像素頭像
-- 112×112 logical target
-- 頭飾、臉型、鬍鬚、肩甲清晰
-
-Command UI：
-
-- 固定白框／淺米框
-- 黑底
-- 文字游標
-- 不使用圓角 card、漸層 button、現代 shadow
-- 選取／取消／技能列表都採同一套視覺語言
+- 5 張獨立 portrait 已先接入。
+- Command UI 需繼續壓低 Web App 感。
 
 ## Phase 6 — Animation polish
 
-至少實作：
+attack / hurt / cast / KO 已接入既有 state machine；後續調整 timing 與 impact。
 
-- idle subtle motion
-- attack anticipation → strike → return
-- hurt flash / recoil
-- cast pose + effect
-- KO settle
+## Phase 7 — Music rewrite
 
-所有動畫由 sprite state machine 控制，不用 CSS 隨機抖動代替。
+Normal Battle / Boss / Victory 改為原創 FC-style 完整曲式，並維持 iPhone 音訊可靠性。
 
-## Phase 7 — Original FC-style soundtrack
+## Phase 8 — QA
 
-Normal Battle：至少 30～45 秒後才自然 loop，具 A/B section。  
-Boss Battle：節奏與 bass 更有壓迫感。  
-Victory：2～4 秒短曲。  
-SFX：hit / cast / heal / UI / defeat。
+`validate-v11.mjs` 已建立，可驗證：
 
-iPhone 音訊測試：
+- V11 模組存在
+- hero atlas / portrait strip 可由 base64 還原為有效 PNG
+- hero atlas 為 672×560
+- portrait strip 為 560×112
+- 5 名我軍 row mapping
+- Golden Battle 入口與 identity test control
 
-- 首次觸控 unlock
-- Safari 靜音／音量狀態提示
-- background → foreground 恢復
-- 螢幕鎖定再回來後可再次 resume
+**Current automated status: V11 Phase 1 validation success.**
 
-## Phase 8 — Automated QA
+## Phase 9 — User acceptance
 
-新增 `scripts/validate-v11.mjs`：
+在 390×844 iPhone 截圖上確認：
 
-- 必要檔案存在
-- JS syntax
-- sprite metadata 完整
-- 角色數量＝10
-- frames per actor >= 7
-- portrait count >= 5
-- atlas bounds 不越界
-- golden-v11.html 引用完整
-- V11 audio hooks 存在
+- 4/5 我軍隱名可辨識
+- 無裁切／重疊
+- 視覺品質明顯高於 V10
 
-## Phase 9 — iPhone acceptance
-
-只看三件事：
-
-1. 不看名字，角色是否能辨識？
-2. 第一眼是否像「完整遊戲」而非工程 prototype？
-3. 與參考畫面的完成度差距是否已縮到可接受？
-
-只要其中一項不通過，就留在 V11 Golden Battle 迭代，不移植完整遊戲。
-
-## Commit Strategy
-
-避免零碎 patch。每個 commit 必須至少完成一個完整 phase 或一個明確 Gate：
-
-- `V11 M1 hero sprite identity`
-- `V11 M2 enemy art and atlas safety`
-- `V11 M3 battle composition`
-- `V11 M4 background and UI`
-- `V11 M5 animation and audio`
-- `V11 QA and iPhone acceptance`
-
-## Definition of “一步到位”
-
-不是一次 commit 就宣告完成，而是停止用小修 UI 冒充大進步；每一輪提交必須跨過一個清楚的品質門檻，且 Golden Battle 未通過前不做其他功能。
+未通過則回到 Phase 1/3，不擴世界地圖。
