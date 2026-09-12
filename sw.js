@@ -1,4 +1,4 @@
-const CACHE='sanguo-kongming-v8-0-battle-milestone';
+const CACHE='sanguo-kongming-v8-1-sprite-first';
 const ASSETS=['./','./index.html','./styles/v5.css','./styles/v51.css','./styles/v52.css','./styles/v53.css','./styles/v54.css','./styles/v60.css','./styles/v70.css','./styles/v80.css','./src/game.js','./src/v60.js','./src/v70.js','./src/data.js','./src/art.js','./src/sceneArt.js','./src/characterArtV7.js','./src/audio.js','./src/world.js','./src/battle.js','./src/cinematics.js','./src/save.js','./src/v8/battleArt.js','./src/v8/battleRenderer.js','./src/v8/musicV8.js','./src/v8/pixelUi.js','./assets/battle-scenes.svg','./manifest.webmanifest','./icon.svg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
