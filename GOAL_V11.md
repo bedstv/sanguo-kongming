@@ -10,6 +10,19 @@ V11 不追求 1:1 複製任何既有商業遊戲的受版權保護素材、原�
 
 畫面品質是 V11 的最高優先級。V11 完成前，不以增加地圖、章節、商店或額外系統作為進度替代品。
 
+## Current Phase
+
+Phase 1 已完成「可執行版本」：
+
+- `golden-v11.html?v=11.0` 已建立。
+- 五名我軍已有各自獨立 7-frame raster sprite row。
+- 五名我軍已有獨立 portrait strip。
+- 新增「隱名」按鈕，可直接進行 4/5 武將辨識 Gate。
+- attack / hurt / cast / KO 已接入既有戰鬥 state machine。
+- V11 QA 已能驗證嵌入式 raster PNG 尺寸與結構。
+
+Phase 1 尚未通過的關鍵 Gate：使用者實機隱名辨識測試與 iPhone 排版驗收。
+
 ## Why V10 is not enough
 
 目前 V10 已解決基本 5v5 排版、分格兵力條、固定 atlas 與 iPhone 可玩性，但仍存在：
@@ -42,146 +55,34 @@ V11 不追求 1:1 複製任何既有商業遊戲的受版權保護素材、原�
 - 魏軍槍兵
 - 魏軍弓手
 
-### 3. Sprite Standard
+### 3. Animation
 
-- 每角色使用獨立 sprite sheet row 或獨立檔案。
-- 建議 logical frame：96×112 或 96×120。
-- 至少包含：idle A、idle B、attack anticipation、attack strike、hurt、cast、KO。
-- `image-rendering: pixelated`，禁止瀏覽器平滑縮放。
-- 角色邊緣不得被 frame 裁切。
-- 敵我方向必須相向。
+每個正式武將至少：idle A、idle B、attack anticipation、attack strike、hurt、cast、KO。
 
-### 4. Battle Scene
+### 4. Battle Composition
 
-不再只有純黑背景。加入低彩度、低干擾的復古戰場層：
+390×844 iPhone 為第一基準；固定 5v5，戰場約 70%，UI 約 30%。姓名、兵力、分格條、角色不得互相壓住。
 
-- 遠景天空／煙霧
-- 山脈或林線 silhouette
-- 中景旗幟／軍陣暗影
-- 地面紋理
-- 保留角色與文字高對比
+### 5. UI
 
-背景不得搶過角色與 UI。
+黑底、細框、文字指令、游標，不採大型圓角卡片。Portrait 是獨立美術，不是戰鬥 sprite 放大。
 
-### 5. Battle UI
+### 6. Background
 
-核心仍維持：
+Golden Battle 必須有低彩度、低對比、像素化的正式戰場背景，能提供遠景／地面層次但不可搶走角色。
 
-- 左右 5v5
-- 我軍藍色 segmented troop bar
-- 敵軍黃色 segmented troop bar
-- 下方左側主將 portrait
-- 下方右側文字式 commands
+### 7. Audio
 
-但需改善：
-
-- 兵力、姓名、sprite 對位更緊密。
-- Portrait 面板視覺重心更完整。
-- 指令框使用老主機 RPG 的固定框體與游標節奏。
-- 降低「HTML/CSS form」感。
-
-## Portrait Standard
-
-- 五名主角使用獨立 portrait art。
-- Portrait 不得只是戰鬥 sprite 放大。
-- 每張至少有頭部、髮飾／冠帽、肩甲／衣領、膚色陰影與角色專屬特徵。
-- 尺寸建議 112×112 logical pixels，再依 iPhone UI 顯示縮放。
-
-## Audio Goal
-
-V11 戰鬥音樂採原創 FC-style chiptune，不複製既有遊戲受版權保護旋律。
-
-### Required channels
-
-- Pulse 1：主旋律
-- Pulse 2：副旋律／和聲
-- Triangle：Bass
-- Noise：打擊
-- Optional arpeggio：和弦感
-
-### Required tracks
-
-- Normal Battle
-- Boss Battle
-- Victory Jingle
-- Tactic Cast SFX
-- Physical Hit SFX
-- Heal SFX
-
-Normal Battle 至少需有 A/B section，而非 8～16 小節短 loop。
-
-## Technical Architecture
-
-```text
-/assets/v11/
-  battle/
-    heroes/
-    enemies/
-    portraits/
-    backgrounds/
-    ui/
-/src/v11/
-  assetsV11.js
-  battleRendererV11.js
-  battleAnimatorV11.js
-  audioV11.js
-  goldenV11.js
-/styles/
-  v110.css
-/golden-v11.html
-```
-
-規則與呈現分離：既有 `BattleSystem` 保留傷害、AI、技能與回合邏輯；V11 renderer 只處理畫面與動畫。
-
-## Milestones
-
-### M1 — Character Art Gate
-
-- 先完成 5 名我軍 idle／attack／hurt／cast／KO。
-- 隱藏名字後至少 4/5 我軍能由外觀辨識。
-- iPhone 不得發生裁切、重疊、模糊。
-
-### M2 — Enemy + Layout Gate
-
-- 曹仁、張郃、夏侯惇至少 2/3 不看名字可辨識。
-- 5v5 排版在 390×844 iPhone 上無重疊。
-- troop bars、姓名與 sprite 視覺節奏穩定。
-
-### M3 — Background + UI Gate
-
-- 完成至少一張 Golden Battle 背景。
-- Portrait 面板與 command panel 完成 V11 美術語言。
-- 畫面不再有明顯 Web App 感。
-
-### M4 — Audio + Animation Gate
-
-- attack / hit / cast / KO 動畫完整。
-- Normal Battle BGM 有 A/B section。
-- iPhone Safari 音訊恢復、切背景與回前景正常。
-
-### M5 — User Acceptance Gate
-
-只有在使用者確認 Golden Battle 視覺品質通過後，才能將 V11 戰鬥系統移植回完整遊戲。
+Normal Battle、Boss、Victory 使用原創 FC-style 曲目；Pulse lead/harmony、Triangle bass、Noise percussion，並維持 iPhone Safari/PWA 音訊解鎖與前景恢復。
 
 ## Definition of Done
 
-- [ ] 5 名我軍隱藏名字後至少 4 名可直接辨識。
-- [ ] 曹仁／張郃／夏侯惇至少 2 名可直接辨識。
-- [ ] 所有角色 frame 無裁切、錯位、模糊。
-- [ ] 390×844 iPhone Safari 戰鬥畫面無文字或 sprite 重疊。
-- [ ] 戰場背景具有場景層次但不搶角色。
-- [ ] Portrait 為獨立角色美術，而非 sprite 放大。
-- [ ] 指令 UI 不再呈現現代 Web App 視覺。
-- [ ] attack / hurt / cast / KO 可見且時序合理。
-- [ ] Normal Battle / Boss Battle / Victory 音訊完整。
-- [ ] iPhone 音訊可啟用、切背景後可恢復。
-- [ ] V11 QA 全部通過。
-- [ ] 使用者確認 Golden Battle 視覺品質達標。
-
-## Out of Scope Until Acceptance
-
-- 大型世界地圖重製
-- 第二章與後續章節
-- 新商店／裝備系統
-- 新角色大量擴充
-- 其他非戰鬥玩法功能
+- 隱藏名字後，至少 4/5 我軍可由 sprite 辨識。
+- 曹仁／張郃／夏侯惇至少 2/3 可不看名字區分。
+- 10 名角色 animation atlas 無越界、裁切錯誤、朝向錯誤。
+- 390×844 iPhone 無人物／文字／兵力條重疊或裁切。
+- Golden Battle 有正式背景、五張獨立 portrait、完成版 command UI。
+- attack / hurt / cast / KO 動畫可見且節奏一致。
+- Normal Battle / Boss / Victory 音樂可在 iPhone 穩定播放。
+- V11 automated QA 成功。
+- 使用者 iPhone 實機 Golden Battle 驗收通過後，才可移植到完整遊戲。
