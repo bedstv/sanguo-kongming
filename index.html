@@ -5,76 +5,120 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#090d18">
+<meta name="theme-color" content="#05070d">
 <link rel="manifest" href="manifest.webmanifest">
-<title>三國戰策：孔明篇 V3</title>
-<style>
-:root{--ink:#f7f2de;--muted:#aab6c8;--gold:#f7d36b;--red:#e76060;--cyan:#6ac7e8;--green:#72d294;--line:#d7deef;--panel:#10182a;--panel2:#16213a;--dark:#080c14}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:var(--ink);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"PingFang TC","Noto Sans TC",monospace}
-body{display:flex;justify-content:center;align-items:center;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
-#app{position:relative;width:min(100vw,760px);height:100dvh;overflow:hidden;background:#090d18}
-.screen{position:absolute;inset:0;display:none}.screen.on{display:flex}
-button{font:inherit;color:var(--ink);font-weight:800;background:linear-gradient(#263554,#111a2c);border:2px solid var(--line);border-radius:10px;padding:11px 12px;box-shadow:0 3px 0 #0008,inset 0 1px 0 #ffffff18}
-button:active{transform:translateY(2px);box-shadow:0 1px 0 #0008} button:disabled{opacity:.42}.goldBtn{border-color:var(--gold);color:#fff3bd;background:linear-gradient(#543b16,#251807)}
-#title{flex-direction:column;justify-content:center;align-items:center;gap:15px;padding:28px;background:radial-gradient(circle at 50% 24%,#253f6a66,transparent 28%),linear-gradient(#060910,#12182a 60%,#090d15)}
-.titleSeal{width:min(90vw,520px);padding:25px 18px 22px;border:2px solid #ffffff2b;border-radius:18px;text-align:center;position:relative;background:linear-gradient(#ffffff0c,#ffffff03);box-shadow:0 18px 50px #0007}
-.titleSeal:before,.titleSeal:after{content:"";position:absolute;width:34px;height:34px;border-color:var(--gold);border-style:solid}.titleSeal:before{left:-2px;top:-2px;border-width:3px 0 0 3px;border-radius:10px 0 0 0}.titleSeal:after{right:-2px;bottom:-2px;border-width:0 3px 3px 0;border-radius:0 0 10px 0}
-.logo{font-size:clamp(38px,10vw,70px);letter-spacing:.08em;color:#fff1b6;text-shadow:4px 4px 0 #000,0 0 20px #ffd46633}.sub{margin-top:6px;color:var(--gold);letter-spacing:.25em;font-size:clamp(15px,4vw,22px)}.v3{display:inline-block;margin-top:10px;padding:4px 9px;border:1px solid #ffffff33;border-radius:99px;font-size:11px;color:#dce8ff;background:#ffffff0b}
-.titleNote{max-width:560px;text-align:center;font-size:12px;line-height:1.6;color:var(--muted)}.titleBtns{display:grid;gap:10px;width:min(300px,86%)}.micro{font-size:11px;color:#77879f}
-#world{flex-direction:column;background:#09101a}.topbar{height:64px;padding:8px 11px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(#101a2d,#0a111e);border-bottom:2px solid #435879;z-index:3}.topTitle{font-weight:900;color:#fff1b4}.location{font-size:11px;color:#9fb3ce;margin-top:3px}.pills{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}.pill{font-size:11px;padding:5px 7px;border-radius:99px;background:#ffffff0a;border:1px solid #ffffff19}
-#viewport{position:relative;height:calc(100% - 218px);overflow:hidden;background:#407338}.mapShade{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 40px #0007;z-index:2}#map{width:100%;height:100%;display:block;image-rendering:pixelated}.questTag{position:absolute;z-index:4;top:9px;left:9px;right:9px;display:flex;justify-content:space-between;gap:8px}.tag{background:#08101dcc;border:1px solid #ffffff27;border-radius:8px;padding:6px 8px;font-size:11px;color:#dce8fb;backdrop-filter:blur(4px)}
-.bottom{height:154px;display:grid;grid-template-columns:1fr 214px;gap:8px;padding:8px;background:linear-gradient(#0b1422,#10182a);border-top:2px solid #435879}.dialog{border:2px solid var(--line);border-radius:9px;background:linear-gradient(#152441,#0c1525);padding:9px;font-size:13px;line-height:1.5;overflow:auto}.hint{margin-top:7px;color:#93a7c2;font-size:11px}.controls{display:grid;grid-template-columns:132px 1fr;gap:7px;align-items:center}.dpad{display:grid;grid-template-columns:42px 42px 42px;grid-template-rows:42px 42px 42px;gap:2px;justify-content:center}.dpad button{padding:0;min-width:0;font-size:16px;background:linear-gradient(#313d5a,#171f31)}.du{grid-column:2}.dl{grid-column:1;grid-row:2}.dd{grid-column:2;grid-row:2}.dr{grid-column:3;grid-row:2}.actionCol{display:grid;grid-template-columns:1fr 1fr;gap:6px}.ab{aspect-ratio:1;border-radius:50%;font-size:17px;padding:0}.a{border-color:#ff9090;background:linear-gradient(#67313a,#2b171c)}.b{border-color:#86d7ff;background:linear-gradient(#244c65,#112633)}.miniBtn{grid-column:1/3;padding:7px 4px;font-size:11px}
-#battle{flex-direction:column;background:#05070c}.battleField{position:relative;height:58%;overflow:hidden;background:linear-gradient(#0a1423,#151827 62%,#241821)}.battleField:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 20%,#7c9eff24,transparent 30%),linear-gradient(180deg,transparent 68%,#31202b 68%,#1a1118)}.horizon{position:absolute;left:0;right:0;top:51%;height:1px;background:linear-gradient(90deg,transparent,#fff5,transparent)}.round{position:absolute;right:9px;top:8px;z-index:4;font-size:11px;background:#07101dcc;border:1px solid #ffffff24;padding:5px 7px;border-radius:8px}.units{position:absolute;left:0;right:0;z-index:3;display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:7px}.enemies{top:8px}.allies{bottom:8px}.unit{text-align:center;font-size:11px;min-width:0;position:relative}.sprbox{margin:auto;width:52px;height:52px;border:1px solid #ffffff1d;border-radius:9px;background:linear-gradient(#ffffff0d,#ffffff02);display:flex;align-items:center;justify-content:center}.sprite{width:48px;height:48px;image-rendering:pixelated;filter:drop-shadow(0 4px 2px #0007)}.nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}.num{color:#d8e6fa}.hpbar{height:7px;border-radius:99px;overflow:hidden;background:#222b39;border:1px solid #ffffff42;margin:2px 3px}.hpfill{height:100%;background:linear-gradient(90deg,#7ae4a0,#48c779)}.enemy .hpfill{background:linear-gradient(90deg,#ffe07c,#e9a13f)}.dead{opacity:.28;filter:grayscale(1)}.target{outline:3px solid #ff6969;outline-offset:2px;border-radius:9px}.flash{animation:flash .32s linear}.shake{animation:shake .26s linear}@keyframes flash{0%{filter:brightness(2)}100%{filter:brightness(1)}}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}.floatDmg{position:absolute;left:50%;top:24%;transform:translateX(-50%);font-weight:900;color:#fff0a6;text-shadow:2px 2px #000;font-size:15px;animation:float .7s ease-out forwards;z-index:10}@keyframes float{to{transform:translate(-50%,-28px);opacity:0}}
-.battlePanel{height:42%;display:grid;grid-template-columns:42% 58%;border-top:3px solid var(--line);background:linear-gradient(#09111e,#121a2b)}.actor{padding:8px;border-right:2px solid var(--line);display:grid;grid-template-columns:68px 1fr;gap:8px}.portrait{width:68px;height:68px;border:2px solid var(--line);border-radius:7px;background:#111;image-rendering:pixelated}.stats{font-size:11px;line-height:1.55}.stats b{color:#fff0b0}.good{color:#89efae}.blue{color:#8edcff}.commands{padding:7px;display:flex;flex-direction:column;gap:5px}.bmsg{min-height:50px;border:1px solid #647da6;border-radius:7px;padding:6px;background:#10203a;font-size:11px;line-height:1.4}.cmdGrid,.skills{display:grid;grid-template-columns:1fr 1fr;gap:5px}.cmdGrid button,.skills button{padding:9px 4px;min-width:0;font-size:12px}.skills{display:none}.skills.on{display:grid}
-.overlay{position:absolute;inset:0;z-index:50;background:#000c;display:none;align-items:center;justify-content:center;padding:16px}.overlay.on{display:flex}.card{width:min(600px,97%);max-height:88%;overflow:auto;border:2px solid var(--line);border-radius:13px;padding:13px;background:linear-gradient(#121e34,#0c1424);box-shadow:0 18px 50px #0008}.card h2{margin:0 0 9px;color:var(--gold)}.party{display:grid;gap:6px}.row{padding:8px;border:1px solid #435879;border-radius:8px;background:#ffffff05;display:grid;grid-template-columns:1fr auto;gap:8px}.row strong{color:#fff0b8}.tiny{font-size:11px;color:#a6b5c9}.cardBtns{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.toast{position:absolute;z-index:80;left:50%;top:78px;transform:translateX(-50%);display:none;background:#0b1422ef;border:2px solid var(--gold);border-radius:8px;padding:7px 10px;color:#fff1b3;font-size:12px}.toast.on{display:block}
-@media (orientation:landscape) and (max-height:520px){.topbar{height:48px}.bottom{height:112px;grid-template-columns:1fr 250px}#viewport{height:calc(100% - 160px)}.dialog{font-size:11px}.controls{grid-template-columns:124px 1fr}.dpad{grid-template-columns:36px 36px 36px;grid-template-rows:34px 34px 34px}.battleField{height:52%}.battlePanel{height:48%}.sprbox{width:40px;height:40px}.sprite{width:38px;height:38px}.actor{grid-template-columns:58px 1fr}.portrait{width:58px;height:58px}}
-</style>
+<title>三國戰策：孔明篇 V4</title>
+<link rel="stylesheet" href="v4.css?v=4.1">
 </head>
 <body>
 <div id="app">
-<div id="toast" class="toast"></div>
-<section id="title" class="screen on"><div class="titleSeal"><div class="logo">三國戰策</div><div class="sub">孔 明 篇</div><div class="v3">V3 · iPhone Edition</div></div><div class="titleNote">重新製作的三國像素 RPG 原型：以「五將、兵力、計策、陣型、野外探索」為核心，採原創程式與美術，不使用原作 ROM、圖像或音樂。</div><div class="titleBtns"><button id="newBtn" class="goldBtn">開始新遊戲</button><button id="continueBtn">讀取進度</button></div><div class="micro">建議：Safari → 分享 → 加入主畫面</div></section>
-<section id="world" class="screen"><div class="topbar"><div><div class="topTitle">三國戰策：孔明篇</div><div id="location" class="location">荊州北境</div></div><div class="pills"><span id="gold" class="pill">金 300</span><span id="food" class="pill">軍糧 3</span><span id="formation" class="pill">鶴翼</span></div></div><div id="viewport"><canvas id="map" width="384" height="288"></canvas><div class="mapShade"></div><div class="questTag"><div id="quest" class="tag">目標：前往隆中村</div><div id="team" class="tag">隊伍 5/5</div></div></div><div class="bottom"><div><div id="worldMsg" class="dialog">孔明：「兵貴神速。先往隆中村探查，再回新野整軍。」</div><div class="hint">A：互動 / 探查　B：隊伍 / 存檔</div></div><div class="controls"><div class="dpad"><button class="du" data-dir="u">▲</button><button class="dl" data-dir="l">◀</button><button class="dd" data-dir="d">▼</button><button class="dr" data-dir="r">▶</button></div><div class="actionCol"><button id="aBtn" class="ab a">A</button><button id="bBtn" class="ab b">B</button><button id="soundBtn" class="miniBtn">音效：開</button></div></div></div></section>
-<section id="battle" class="screen"><div class="battleField"><div class="horizon"></div><div id="round" class="round">第 1 回合</div><div id="enemyField" class="units enemies"></div><div id="allyField" class="units allies"></div></div><div class="battlePanel"><div class="actor"><canvas id="portrait" class="portrait" width="64" height="64"></canvas><div id="actorStats" class="stats"></div></div><div class="commands"><div id="battleMsg" class="bmsg">敵軍逼近！</div><div id="skills" class="skills"></div><div id="cmds" class="cmdGrid"><button data-cmd="attack">攻擊</button><button data-cmd="tactic">計策</button><button data-cmd="rush">總攻</button><button data-cmd="formation">陣型</button><button data-cmd="item">軍糧</button><button data-cmd="defend">防禦</button><button data-cmd="flee">撤退</button><button data-cmd="status">軍情</button></div></div></div></section>
-<div id="overlay" class="overlay"><div class="card"><h2>軍勢資訊</h2><div id="party" class="party"></div><div class="cardBtns"><button id="useFood">使用軍糧</button><button id="saveBtn">存檔</button><button id="closeBtn">返回</button></div><p class="tiny">陣型效果：鶴翼＝均衡、魚鱗＝防禦、鋒矢＝攻擊、雁行＝速度。</p></div></div>
+  <div class="toast" id="toast"></div>
+
+  <section id="title" class="screen on">
+    <div class="logoBox">
+      <div class="logo">三國戰策</div>
+      <div class="sub">孔 明 篇　V4</div>
+    </div>
+    <div class="badges">
+      <div class="badge">高解析像素人形</div>
+      <div class="badge">吞食天地風戰鬥版面</div>
+      <div class="badge">8-bit 音效 / BGM</div>
+      <div class="badge">iPhone 觸控操作</div>
+    </div>
+    <div class="note">本版本重做戰鬥人形與版面，讓我軍與敵軍辨識度更高，並加入可切換的復古 BGM 與音效。開始遊戲後會自動啟用音訊；若 iPhone 靜音模式開啟，請先關閉靜音鍵以獲得完整效果。</div>
+    <div class="titleBtns">
+      <button id="new" class="primary">開始遊戲</button>
+      <button id="continue">讀取進度</button>
+      <button id="soundToggle">音效：開啟</button>
+    </div>
+  </section>
+
+  <section id="world" class="screen">
+    <div class="hud">
+      <div>
+        <div class="title">三國戰策：孔明篇</div>
+        <div id="loc" class="small">荊州北境</div>
+      </div>
+      <div class="hudPills">
+        <div class="pill" id="money">金 300</div>
+        <div class="pill" id="foodPill">軍糧 3</div>
+        <div class="pill" id="team">隊伍 5/5</div>
+        <div class="pill" id="audioState">聲音 開</div>
+      </div>
+    </div>
+    <div id="mapWrap">
+      <div class="mapLabel">野外行軍地圖</div>
+      <div class="questBox" id="questText">目標：前往隆中村尋訪孔明</div>
+      <canvas id="map" width="320" height="240"></canvas>
+    </div>
+    <div class="worldUI">
+      <div>
+        <div class="msg" id="wmsg">劉備：「聽聞臥龍先生足智多謀，我等當親往相請。」</div>
+        <div class="chips">
+          <div class="chip">A：互動 / 調查</div>
+          <div class="chip">B：隊伍 / 存檔</div>
+          <div class="chip">戰鬥：點選目標</div>
+        </div>
+      </div>
+      <div>
+        <div class="padArea">
+          <button class="up" data-d="u">▲</button>
+          <button class="left" data-d="l">◀</button>
+          <button class="down" data-d="d">▼</button>
+          <button class="right" data-d="r">▶</button>
+        </div>
+        <div class="actions">
+          <button id="actionBtn" class="goldBtn">A / 調查</button>
+          <button id="menuBtn" class="pinkBtn">B / 隊伍</button>
+          <button id="soundBtn">聲音切換</button>
+          <button id="hintBtn">提示</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="battle" class="screen">
+    <div class="battleStage">
+      <div class="battleScan"></div>
+      <div class="sideWrap leftSide" id="allyList"></div>
+      <div class="sideWrap rightSide" id="enemyList"></div>
+      <div class="battleInfo" id="battleInfo">第 1 回合<br>鶴翼陣</div>
+    </div>
+    <div class="battleUI">
+      <div class="infoPane">
+        <canvas id="portrait" width="80" height="80"></canvas>
+        <div class="stats" id="stats"></div>
+      </div>
+      <div class="cmdPane">
+        <div class="bmsg" id="bmsg">敵軍逼近！</div>
+        <div class="skills" id="skills"></div>
+        <div class="grid" id="cmds">
+          <button data-c="atk">攻擊</button>
+          <button data-c="all">總攻</button>
+          <button data-c="tac">計策</button>
+          <button data-c="form">陣型</button>
+          <button data-c="item">軍糧</button>
+          <button data-c="def">防禦</button>
+          <button data-c="flee">撤退</button>
+          <button data-c="sound">靜音切換</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="overlay" id="overlay">
+    <div class="card">
+      <h2>軍勢資訊</h2>
+      <div class="party" id="plist"></div>
+      <div class="buttons">
+        <button id="food">使用軍糧</button>
+        <button id="save">存檔</button>
+        <button id="close">返回</button>
+      </div>
+      <div class="help">V4 新增：更高解析像素人物、吞食天地風格戰鬥面板、簡易 BGM 與音效、具名敵將、總攻、任務提示與更好的觸控體驗。</div>
+    </div>
+  </div>
 </div>
-<script>
-(()=>{
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a, clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const SAVE='sanguo-kongming-v3';
-const COLORS={劉備:['#e3d59c','#5da66d','#53713e'],關羽:['#e2b37e','#347b62','#b8343c'],張飛:['#aa8062','#494466','#bd3541'],趙雲:['#d4deed','#4c76b5','#eef4ff'],諸葛亮:['#ddcfaa','#6e59a1','#eee7dc'],夏侯惇:['#cda879','#6b4d49','#8c3035'],曹仁:['#c9a878','#5d5666','#8b3e40'],張郃:['#d1b088','#47586d','#954a48'],弓兵:['#baa67b','#5d704b','#73523b'],軍師:['#d7c5a7','#635a8a','#70513d']};
-const PARTY=[{name:'劉備',max:5200,hp:5200,atk:72,def:68,agi:60,int:72,sp:26,maxSp:26},{name:'關羽',max:6800,hp:6800,atk:92,def:78,agi:72,int:55,sp:16,maxSp:16},{name:'張飛',max:7200,hp:7200,atk:96,def:70,agi:58,int:32,sp:10,maxSp:10},{name:'趙雲',max:6100,hp:6100,atk:88,def:76,agi:86,int:58,sp:15,maxSp:15},{name:'諸葛亮',max:4400,hp:4400,atk:48,def:60,agi:66,int:98,sp:44,maxSp:44}];
-const MAP=['WWWWWWWWWWWWWWWWWWWWWWWWWWWW','W....FFF......RR.....TTT.....W','W..TTTTT......RR.....T.T.....W','W..T...T..RRRRRRRRR..........W','W..T......R....R..R......F...W','W.....F...R.V..R..RRRR.......W','W.........R....R.....R....F..W','W..TT.....RRRRRR.....R.......W','W...T........R.......RRRR....W','W...T....F...R..C.......R....W','W...........RRRRR.......R....W','W..FFF.........R........R....W','W..............R...B....R....W','W....TT........RRRRRRRRRR....W','W........F...................W','W............................W','W..TTTT.............FFF......W','WWWWWWWWWWWWWWWWWWWWWWWWWWWW'];
-const PLACE={C:'新野城',V:'隆中村',B:'博望坡'};const FORM={鶴翼:{atk:1,def:1,agi:1},魚鱗:{atk:.92,def:1.18,agi:.92},鋒矢:{atk:1.18,def:.9,agi:1},雁行:{atk:1,def:.94,agi:1.16}};const SKILLS=[{name:'火攻',cost:4,type:'dmg',mult:1.24},{name:'落雷',cost:7,type:'dmg',mult:1.62},{name:'鼓舞',cost:5,type:'heal',mult:1},{name:'惑敵',cost:6,type:'weak',mult:1}];
-let S=null,B=null,soundOn=true,audioCtx=null;
-function newState(){return{x:5,y:14,gold:300,food:3,form:'鶴翼',party:JSON.parse(JSON.stringify(PARTY)),steps:0,battles:0,quest:0,boss:false}}
-function show(id){$$('.screen').forEach(e=>e.classList.remove('on'));$(id).classList.add('on')}function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1000)}function beep(freq=440,dur=.055,type='square',vol=.035){if(!soundOn)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.value=vol;o.connect(g);g.connect(audioCtx.destination);o.start();g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.stop(audioCtx.currentTime+dur)}catch{}}function haptic(){try{navigator.vibrate&&navigator.vibrate(18)}catch{}}
-function save(){localStorage.setItem(SAVE,JSON.stringify(S));toast('進度已保存');beep(660,.07)}function load(){const raw=localStorage.getItem(SAVE)||localStorage.getItem('sanguo-kongming-save-v2')||localStorage.getItem('sanguo-kongming-save');if(!raw){alert('目前沒有存檔。');return}S=JSON.parse(raw);if(S.quest==null)S.quest=0;if(S.boss==null)S.boss=false;show('#world');drawMap();syncHud();worldSay('已讀取先前進度。')}
-$('#newBtn').onclick=()=>{S=newState();show('#world');drawMap();syncHud();worldSay('孔明：「先前往隆中村探查軍情，再回新野準備迎敵。」');beep(523,.08)};$('#continueBtn').onclick=load;function worldSay(t){$('#worldMsg').textContent=t}function battleSay(t){$('#battleMsg').textContent=t}
-function drawGuy(ctx,x,y,name,sc=1,flip=false){const c=COLORS[name]||COLORS.夏侯惇;ctx.save();ctx.translate(x,y);if(flip){ctx.translate(16*sc,0);ctx.scale(-1,1)}ctx.fillStyle='#0007';ctx.fillRect(1*sc,14*sc,13*sc,2*sc);ctx.fillStyle=c[1];ctx.fillRect(5*sc,7*sc,7*sc,7*sc);ctx.fillStyle=c[0];ctx.fillRect(6*sc,3*sc,6*sc,5*sc);ctx.fillStyle=c[2];ctx.fillRect(5*sc,2*sc,8*sc,2*sc);ctx.fillStyle='#20242b';ctx.fillRect(7*sc,5*sc,1*sc,1*sc);ctx.fillStyle=c[0];ctx.fillRect(2*sc,8*sc,4*sc,2*sc);ctx.fillStyle='#dbe8f7';ctx.fillRect(1*sc,7*sc,2*sc,6*sc);ctx.fillStyle='#342b29';ctx.fillRect(5*sc,13*sc,2*sc,2*sc);ctx.fillRect(10*sc,13*sc,2*sc,2*sc);ctx.restore()}
-function tileDraw(ctx,t,X,Y,z){const s=z;if(t==='W'){ctx.fillStyle='#205b89';ctx.fillRect(X,Y,s,s);ctx.fillStyle='#65b3df';ctx.fillRect(X,Y+2,s,2);ctx.fillStyle='#2e84b9';ctx.fillRect(X,Y+8,s,3);return}ctx.fillStyle='#5f9649';ctx.fillRect(X,Y,s,s);ctx.fillStyle='#72a958';ctx.fillRect(X,Y,s,4);if((X/s+Y/s)%2===0){ctx.fillStyle='#4f823e';ctx.fillRect(X+2,Y+10,3,2);ctx.fillRect(X+11,Y+6,2,2)}if(t==='R'){ctx.fillStyle='#b08f64';ctx.fillRect(X,Y,s,s);ctx.fillStyle='#c6a373';ctx.fillRect(X,Y+5,s,4);ctx.fillStyle='#92734c';ctx.fillRect(X,Y+13,s,2)}if(t==='T'||t==='F'){ctx.fillStyle=t==='F'?'#2d6333':'#39733d';ctx.fillRect(X+2,Y+3,s-4,s-4);ctx.fillStyle='#1d4826';ctx.fillRect(X+6,Y+5,6,8);ctx.fillStyle='#76512f';ctx.fillRect(X+7,Y+12,2,4)}if(t==='C'||t==='V'||t==='B'){ctx.fillStyle=t==='C'?'#b65d4f':t==='V'?'#d5b36f':'#8c554b';ctx.fillRect(X+2,Y+4,s-4,s-5);ctx.fillStyle='#713932';ctx.fillRect(X+3,Y+2,s-6,3);ctx.fillStyle='#222';ctx.fillRect(X+6,Y+9,5,6);if(t==='B'){ctx.fillStyle='#e7d27d';ctx.fillRect(X+2,Y+1,2,8);ctx.fillRect(X+2,Y+1,8,2)}}}
-function drawMap(){const c=$('#map'),ctx=c.getContext('2d');ctx.imageSmoothingEnabled=false;const tile=16,viewW=24,viewH=18;const maxX=MAP[0].length-viewW,maxY=MAP.length-viewH;const cx=clamp(S.x-Math.floor(viewW/2),0,Math.max(0,maxX)),cy=clamp(S.y-Math.floor(viewH/2),0,Math.max(0,maxY));ctx.clearRect(0,0,c.width,c.height);for(let vy=0;vy<viewH;vy++)for(let vx=0;vx<viewW;vx++){const mx=cx+vx,my=cy+vy,t=(MAP[my]||'')[mx]||'W';tileDraw(ctx,t,vx*tile,vy*tile,tile)}const px=(S.x-cx)*tile,py=(S.y-cy)*tile;drawGuy(ctx,px,py-2,'趙雲',1,false);ctx.strokeStyle='#fff8';ctx.strokeRect(px+1,py+1,14,14)}
-function syncHud(){const t=MAP[S.y][S.x];$('#location').textContent=PLACE[t]||'荊州北境';$('#gold').textContent=`金 ${S.gold}`;$('#food').textContent=`軍糧 ${S.food}`;$('#formation').textContent=S.form;$('#team').textContent=`隊伍 ${S.party.filter(p=>p.hp>0).length}/5`;$('#quest').textContent=['目標：前往隆中村','目標：返回新野城','目標：前往博望坡','目標：擊退夏侯惇'][S.quest]||'目標：自由行軍'}
-function move(dx,dy){const nx=S.x+dx,ny=S.y+dy;if(!MAP[ny]||!MAP[ny][nx]||MAP[ny][nx]==='W'){worldSay('前方無法通行。');beep(140,.04);return}S.x=nx;S.y=ny;S.steps++;drawMap();syncHud();beep(220,.025,'square',.015);const t=MAP[ny][nx];if(t==='V'&&S.quest===0){S.quest=1;syncHud();worldSay('隆中村：斥候回報魏軍正在集結。孔明建議先回新野整軍。');toast('任務更新');return}if(t==='C'){S.party.forEach(p=>{p.hp=p.max;p.sp=p.maxSp});if(S.quest===1){S.quest=2;toast('任務更新');worldSay('新野補給完成。孔明：「敵軍將由博望坡來，宜先往設伏。」')}else worldSay('新野城完成補給，全軍兵力與策略恢復。');syncHud();return}if(t==='B'&&S.quest>=2&&!S.boss){S.quest=3;syncHud();worldSay('博望坡煙塵大起——夏侯惇率軍殺到！');setTimeout(()=>startBattle(true),450);return}if(S.steps>4&&Math.random()<.18)startBattle(false);else worldSay(['道路平靜，軍勢穩步前進。','斥候回報：附近暫無敵蹤。','孔明觀察地勢，示意全軍保持警戒。'][rnd(0,2)])}
-$$('[data-dir]').forEach(b=>b.onclick=()=>{const d=b.dataset.dir;move(d==='l'?-1:d==='r'?1:0,d==='u'?-1:d==='d'?1:0)});window.addEventListener('keydown',e=>{if(!$('#world').classList.contains('on'))return;if(e.key==='ArrowUp')move(0,-1);if(e.key==='ArrowDown')move(0,1);if(e.key==='ArrowLeft')move(-1,0);if(e.key==='ArrowRight')move(1,0)});
-function interact(){const t=MAP[S.y][S.x];if(t==='V')worldSay('村民：「西北道路近日常有魏軍斥候經過。」');else if(t==='C')worldSay('新野守軍：「軍糧與傷兵都已妥善整備。」');else if(t==='B')worldSay(S.boss?'博望坡戰場已恢復平靜。':'山谷狹窄，兩側林木茂密，是設伏的好地方。');else{const around=[[0,-1,'北'],[1,0,'東'],[0,1,'南'],[-1,0,'西']].map(([dx,dy,n])=>{const q=(MAP[S.y+dy]||'')[S.x+dx];return n+':' +(q==='W'?'水域':q==='R'?'道路':q==='T'||q==='F'?'林地':PLACE[q]||'平地')}).join('　');worldSay(`孔明探查地勢：${around}`)}beep(560,.05)}
-$('#aBtn').onclick=()=>{haptic();interact()};$('#bBtn').onclick=()=>{haptic();openOverlay()};$('#soundBtn').onclick=()=>{soundOn=!soundOn;$('#soundBtn').textContent=`音效：${soundOn?'開':'關'}`;if(soundOn)beep(650,.05)};
-function openOverlay(){if(!S)return;$('#party').innerHTML=S.party.map(p=>`<div class="row"><div><strong>${p.name}</strong><div class="tiny">武 ${p.atk}　防 ${p.def}　智 ${p.int}　速 ${p.agi}</div></div><div style="text-align:right">${Math.max(0,p.hp)}/${p.max}<div class="tiny">策 ${p.sp}/${p.maxSp}</div></div></div>`).join('');$('#overlay').classList.add('on')}$('#closeBtn').onclick=()=>$('#overlay').classList.remove('on');$('#saveBtn').onclick=save;$('#useFood').onclick=()=>{if(S.food<=0){toast('軍糧不足');return}S.food--;S.party.forEach(p=>{p.hp=Math.min(p.max,p.hp+Math.floor(p.max*.42));p.sp=Math.min(p.maxSp,p.sp+6)});syncHud();openOverlay();toast('完成補給')};
-function spriteData(name,enemy=false){const c=document.createElement('canvas');c.width=48;c.height=48;const x=c.getContext('2d');x.imageSmoothingEnabled=false;x.save();x.scale(3,3);drawGuy(x,0,0,name,1,enemy);x.restore();return c.toDataURL()}function makeEnemy(name,lvl){const boss=name==='夏侯惇';const max=(boss?4200:1550)+lvl*(boss?650:420)+rnd(0,boss?900:500);return{name,max,hp:max,atk:(boss?85:52)+lvl*7+rnd(0,10),def:(boss?75:44)+lvl*6,agi:(boss?73:45)+rnd(0,28),int:name==='軍師'?82:boss?58:35+rnd(0,20),sp:name==='軍師'?25:boss?12:6,maxSp:name==='軍師'?25:boss?12:6}}
-function startBattle(boss=false){const lvl=1+Math.floor(S.battles/2),names=boss?['夏侯惇','曹仁','張郃','弓兵','軍師']:[['曹仁','弓兵','張郃','弓兵','軍師'],['張郃','曹仁','弓兵','軍師','弓兵'],['曹仁','曹仁','張郃','弓兵','軍師']][rnd(0,2)];B={allies:S.party,enemies:names.map(n=>makeEnemy(n,lvl)),actor:0,round:1,selecting:null,guarding:new Set(),boss};show('#battle');renderBattle();battleSay(boss?'夏侯惇：「劉備小兒，今日休想走脫！」':'敵軍逼近！請下令。');beep(boss?110:160,.12,'sawtooth',.025)}
-function unitHtml(u,i,enemy){return`<div class="unit ${enemy?'enemy':''} ${u.hp<=0?'dead':''}" data-side="${enemy?'enemy':'ally'}" data-i="${i}"><div class="sprbox"><img class="sprite" src="${spriteData(u.name,enemy)}"></div><div class="nm">${u.name}</div><div class="num">${Math.max(0,u.hp)}</div><div class="hpbar"><div class="hpfill" style="width:${clamp(u.hp/u.max*100,0,100)}%"></div></div></div>`}
-function renderBattle(){$('#enemyField').innerHTML=B.enemies.map((u,i)=>unitHtml(u,i,true)).join('');$('#allyField').innerHTML=B.allies.map((u,i)=>unitHtml(u,i,false)).join('');$('#round').textContent=`第 ${B.round} 回合　${S.form}陣`;const a=B.allies[B.actor]||B.allies.find(x=>x.hp>0),p=$('#portrait'),ctx=p.getContext('2d');ctx.clearRect(0,0,64,64);ctx.imageSmoothingEnabled=false;if(a){ctx.save();ctx.scale(4,4);drawGuy(ctx,0,0,a.name,1,false);ctx.restore();$('#actorStats').innerHTML=`<b>${a.name}</b><br>兵力 <span class="good">${Math.max(0,a.hp)}/${a.max}</span><br>策略 <span class="blue">${a.sp}/${a.maxSp}</span><br>武 ${a.atk}　防 ${a.def}<br>智 ${a.int}　速 ${a.agi}<br>陣型 ${S.form}`;}if(B.selecting)activateTargets()}
-function floatDamage(side,i,text){const el=$(`.unit[data-side="${side}"][data-i="${i}"]`);if(!el)return;el.classList.add('flash','shake');const f=document.createElement('div');f.className='floatDmg';f.textContent=text;el.appendChild(f);setTimeout(()=>{el.classList.remove('flash','shake');f.remove()},720)}function choose(side,cb){B.selecting={side,cb};renderBattle();battleSay(side==='enemy'?'選擇敵軍目標。':'選擇我軍目標。')}function activateTargets(){$$('.unit').forEach(el=>{el.classList.remove('target');el.onclick=null;if(el.dataset.side===B.selecting.side){const i=+el.dataset.i,u=B.selecting.side==='enemy'?B.enemies[i]:B.allies[i];if(u.hp>0){el.classList.add('target');el.onclick=()=>{const cb=B.selecting.cb;B.selecting=null;cb(i)}}}})}
-function dmg(att,tgt,mult=1,magic=false,side='ally'){const fm=FORM[S.form]||FORM.鶴翼;let atk=magic?att.int*10:att.atk*9*(side==='ally'?fm.atk:1),def=magic?tgt.int*3:tgt.def*4*(side==='enemy'?fm.def:1),base=atk-def,tf=.55+.45*(att.hp/att.max),d=Math.max(80,Math.floor(base*tf*mult*rnd(86,114)/100));if(B.guarding.has(tgt))d=Math.floor(d*.55);tgt.hp=Math.max(0,tgt.hp-d);return d}
-function nextAlly(){let n=B.actor+1;while(n<B.allies.length&&B.allies[n].hp<=0)n++;if(n<B.allies.length){B.actor=n;setTimeout(()=>{renderBattle();battleSay(`${B.allies[n].name} 行動。`)},350)}else setTimeout(enemyTurn,520)}function afterAction(){renderBattle();if(B.enemies.every(e=>e.hp<=0))return finishBattle(true);nextAlly()}
-function showSkills(){const a=B.allies[B.actor],box=$('#skills');box.innerHTML='';SKILLS.forEach(s=>{const b=document.createElement('button');b.textContent=`${s.name} ${s.cost}`;b.disabled=a.sp<s.cost;b.onclick=()=>castSkill(s);box.appendChild(b)});$('#cmds').style.display='none';box.classList.add('on');battleSay(`策略值 ${a.sp}，選擇計策。`)}function castSkill(s){const a=B.allies[B.actor];if(a.sp<s.cost)return;a.sp-=s.cost;if(s.type==='dmg')choose('enemy',i=>{const e=B.enemies[i],d=dmg(a,e,s.mult,true,'ally');floatDamage('enemy',i,`-${d}`);battleSay(`${a.name} 施展${s.name}，${e.name} 損失 ${d} 兵力！`);beep(s.name==='落雷'?820:620,.12,'square',.035);afterAction()});if(s.type==='heal')choose('ally',i=>{const t=B.allies[i],h=Math.min(t.max-t.hp,Math.floor(a.int*12+rnd(200,500)));t.hp+=h;floatDamage('ally',i,`+${h}`);battleSay(`${a.name} 施展鼓舞，${t.name} 恢復 ${h} 兵力。`);beep(690,.1,'sine',.03);afterAction()});if(s.type==='weak')choose('enemy',i=>{const e=B.enemies[i];e.atk=Math.max(25,e.atk-12);battleSay(`${a.name} 施展惑敵，${e.name} 攻擊下降。`);afterAction()})}
-$$('[data-cmd]').forEach(b=>b.onclick=()=>command(b.dataset.cmd));function command(c){const a=B.allies[B.actor];if(!a||a.hp<=0)return;if(c==='attack')choose('enemy',i=>{const e=B.enemies[i],d=dmg(a,e,1,false,'ally');floatDamage('enemy',i,`-${d}`);battleSay(`${a.name} 攻擊 ${e.name}，造成 ${d} 損失。`);beep(210,.05);afterAction()});if(c==='tactic')showSkills();if(c==='defend'){B.guarding.add(a);battleSay(`${a.name} 採取防禦。`);afterAction()}if(c==='item'){if(S.food<=0){battleSay('軍糧不足。');return}choose('ally',i=>{S.food--;const t=B.allies[i],h=Math.min(t.max-t.hp,1300+rnd(0,450));t.hp+=h;syncHud();floatDamage('ally',i,`+${h}`);battleSay(`${t.name} 恢復 ${h} 兵力。`);afterAction()})}if(c==='formation'){const arr=['鶴翼','魚鱗','鋒矢','雁行'],ix=(arr.indexOf(S.form)+1)%arr.length;S.form=arr[ix];syncHud();battleSay(`變更為${S.form}陣。`);afterAction()}if(c==='flee'){if(B.boss){battleSay('此戰無法撤退！');return}if(Math.random()<.62){battleSay('成功撤退。');setTimeout(()=>{show('#world');drawMap();syncHud();worldSay('部隊成功脫離戰場。')},600)}else{battleSay('撤退失敗！');setTimeout(enemyTurn,420)}}if(c==='status'){battleSay(`我軍存活 ${B.allies.filter(x=>x.hp>0).length} 人；敵軍存活 ${B.enemies.filter(x=>x.hp>0).length} 人。`)}if(c==='rush'){battleSay('全軍發動總攻！');rushTurn()}}
-function rushTurn(){let i=B.actor;function step(){while(i<B.allies.length&&B.allies[i].hp<=0)i++;if(i>=B.allies.length){setTimeout(enemyTurn,450);return}const alive=B.enemies.map((e,j)=>[e,j]).filter(x=>x[0].hp>0);if(!alive.length)return finishBattle(true);const [e,ei]=alive[rnd(0,alive.length-1)],a=B.allies[i++],d=dmg(a,e,.82,false,'ally');floatDamage('enemy',ei,`-${d}`);battleSay(`${a.name} 總攻 ${e.name}，造成 ${d} 損失。`);renderBattle();setTimeout(step,260)}step()}
-function enemyTurn(){B.guarding.clear();const enemy=B.enemies.map((e,i)=>[e,i]).filter(x=>x[0].hp>0).sort((a,b)=>b[0].agi-a[0].agi);let k=0;function step(){if(k>=enemy.length){if(B.allies.every(a=>a.hp<=0))return finishBattle(false);B.actor=B.allies.findIndex(a=>a.hp>0);B.round++;renderBattle();battleSay(`第 ${B.round} 回合，${B.allies[B.actor].name} 行動。`);$('#skills').classList.remove('on');$('#cmds').style.display='grid';return}const [e]=enemy[k++],alive=B.allies.map((a,i)=>[a,i]).filter(x=>x[0].hp>0);if(!alive.length)return finishBattle(false);const [t,ti]=alive[rnd(0,alive.length-1)];let d;if((e.name==='軍師'||e.name==='夏侯惇')&&e.sp>=5&&Math.random()<.38){e.sp-=5;d=dmg(e,t,1.12,true,'enemy');battleSay(`${e.name} 施展計策，${t.name} 損失 ${d}！`);beep(150,.08,'sawtooth',.025)}else{d=dmg(e,t,.78,false,'enemy');battleSay(`${e.name} 攻擊 ${t.name}，造成 ${d} 損失。`);beep(120,.04)}floatDamage('ally',ti,`-${d}`);renderBattle();setTimeout(step,360)}step()}
-function finishBattle(win){if(win){S.battles++;const g=(B.boss?680:140)+rnd(0,B.boss?320:150);S.gold+=g;if(Math.random()<.35||B.boss)S.food++;if(B.boss){S.boss=true;S.quest=4}syncHud();battleSay(B.boss?`夏侯惇軍潰退！獲得 ${g} 金。`:`勝利！獲得 ${g} 金。`);beep(784,.08);setTimeout(()=>beep(988,.12),90);localStorage.setItem(SAVE,JSON.stringify(S));setTimeout(()=>{show('#world');drawMap();syncHud();worldSay(B.boss?'博望坡大捷！孔明：「此役足以振奮三軍。」':'敵軍已被擊退，繼續前進。');toast(B.boss?'博望坡大捷':'戰鬥勝利')},900)}else{battleSay('我軍潰敗……撤回新野。');setTimeout(()=>{S.x=16;S.y=9;S.party.forEach(p=>{p.hp=p.max;p.sp=p.maxSp});S.gold=Math.max(0,S.gold-100);show('#world');drawMap();syncHud();worldSay('你在新野重新整軍。')},900)}}
-if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
-})();
-</script>
+<script src="v4.js?v=4.1"></script>
 </body>
 </html>
