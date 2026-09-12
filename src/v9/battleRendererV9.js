@@ -1,0 +1,25 @@
+import {assetFor,portraitFor,frameIndex} from './assetsV9.js';
+const seg=(hp,max,enemy=false)=>{const cells=8,r=Math.max(0,Math.min(1,hp/Math.max(1,max))),on=Math.ceil(r*cells);return `<div class="v9-troopbar ${enemy?'v9-enemybar':'v9-allybar'}" aria-label="${Math.max(0,hp)} / ${max}">${Array.from({length:cells},(_,i)=>`<i class="${i<on?'on':''}"></i>`).join('')}</div>`};
+const actorStats=p=>`<b>${p.name}</b><em>${p.role}</em><span>Lv.${p.level}</span><span>兵 ${Math.max(0,p.hp)}/${p.maxHp}</span><span>SP ${p.sp}/${p.maxSp}</span>`;
+export class BattleRenderer{
+ constructor(ui,state,effective){this.ui=ui;this.state=state;this.effective=effective}
+ render(b){
+   const u=this.ui;
+   u.ally.innerHTML=this.state.party.slice(0,5).map((p,i)=>this.unitHtml(p,i,false,b)).join('');
+   u.enemy.innerHTML=b.enemies.slice(0,5).map((e,i)=>this.unitHtml(e,i,true,b)).join('');
+   u.round.textContent=`${b.label}　·　第 ${b.round} 回合　·　${this.state.formation}陣`;
+   const p=this.state.party[b.actor]||this.state.party.find(x=>x.hp>0);
+   if(p){u.portrait.src=portraitFor(p.id);u.portrait.alt=`${p.name} 肖像`;u.stats.innerHTML=actorStats(p)}
+   u.root.dataset.v9='1';u.root.dataset.boss=b.boss?'1':'0';
+ }
+ unitHtml(x,i,enemy,b){
+   const key=enemy?x.archetype:x.id,mapKey=`${enemy?'e':'a'}${i}`;
+   const pose=x.hp<=0?'ko':(b.pose[mapKey]||'idle'),raw=b.animFrame[mapKey]??(pose==='idle'?b.round%2:0),asset=assetFor(key,enemy),fi=frameIndex(asset,pose,raw);
+   const classes=['battle-unit','v9-unit',enemy?'enemy':'ally',x.hp<=0?'dead':'',i===b.actor&&!enemy?'active':'',b.select?.side===(enemy?'enemy':'ally')&&x.hp>0?'selectable':''].filter(Boolean).join(' ');
+   const bgx=-(fi*asset.frameWidth);
+   return `<div class="${classes}" data-side="${enemy?'enemy':'ally'}" data-idx="${i}" style="--row:${i};--v9scale:${asset.scale||1}">
+     <div class="v9-sprite-window"><span class="v9-sprite-sheet" style="background-image:url('${asset.path}');background-position:${bgx}px 0"></span></div>
+     <div class="v9-unit-info"><strong>${x.name}</strong><small>${Math.max(0,x.hp)}</small>${seg(x.hp,x.maxHp,enemy)}</div>
+   </div>`;
+ }
+}
