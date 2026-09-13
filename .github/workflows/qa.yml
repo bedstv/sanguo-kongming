@@ -28,5 +28,5 @@ jobs:
         run: node scripts/validate-v9.mjs
       - name: V10 Golden Battle validation
         run: node scripts/validate-v10.mjs
-      - name: V11 Phase 1 validation
+      - name: V11 Phase 2 validation
         run: node scripts/validate-v11.mjs
