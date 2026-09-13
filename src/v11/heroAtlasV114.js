@@ -1,0 +1,1 @@
+export default '"+hero_b64+"';
