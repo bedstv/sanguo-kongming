@@ -16,4 +16,4 @@ V5.2 美術與演出重點：
 
 V11 Golden Battle 美術驗收入口：`https://bedstv.github.io/sanguo-kongming/golden-v11.html?v=11.4`
 
-V11.4 重點：iPhone 音訊已完成 gesture hardening；敵軍改為固定 raster sprite sheets，不再 runtime 程序繪製，並持續以 iPhone 5v5 畫面作為品質閘門。
+V11.4 重點：iPhone 音訊已完成 gesture hardening；敵軍已改為固定 raster sprite sheets，不再 runtime 程序繪製；目前仍以 iPhone 5v5 Golden Battle 作為畫面品質閘門。
