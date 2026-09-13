@@ -1,4 +1,5 @@
-import {V11_HERO_ATLAS,V11_PORTRAITS,HERO_W,HERO_H,HERO_COLS,HERO_ROWS,ENEMY_W,ENEMY_H,ENEMY_COLS,heroFrameFor,enemyFrameFor,PORTRAIT_MAP} from './assetsV11.js';
+import {heroSpriteMeta,portraitUrl,HERO_W,HERO_H,HERO_COLS} from './heroArtV115.js';
+import {ENEMY_W,ENEMY_H,ENEMY_COLS,enemyFrameFor} from './assetsV11.js';
 
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const seg=(hp,max,enemy=false)=>{
@@ -11,8 +12,8 @@ const safeId=id=>String(id||'soldier').replace(/[^a-z0-9_-]/gi,'');
 export class BattleRendererV11{
   constructor(ui,state,effective){this.ui=ui;this.state=state;this.effective=effective}
   heroSprite(id,pose,frame){
-    const {row,col}=heroFrameFor(id,pose,frame);
-    return `<div class="v11-sprite-window hero-window"><div class="v11-sprite hero-sprite" style="background-image:url('${V11_HERO_ATLAS}');background-size:${HERO_W*HERO_COLS}px ${HERO_H*HERO_ROWS}px;background-position:${-col*HERO_W}px ${-row*HERO_H}px"></div></div>`;
+    const {url,col}=heroSpriteMeta(id,pose,frame);
+    return `<div class="v11-sprite-window hero-window"><div class="v11-sprite hero-sprite" style="background-image:url('${url}');background-size:${HERO_W*HERO_COLS}px ${HERO_H}px;background-position:${-col*HERO_W}px 0"></div></div>`;
   }
   enemySprite(id,pose,frame){
     const {url,col}=enemyFrameFor(id,pose,frame);
@@ -27,10 +28,10 @@ export class BattleRendererV11{
     this.ui.ally.innerHTML=allies.map((u,i)=>this.unit(u,i,'ally',b)).join('');
     this.ui.enemy.innerHTML=enemies.map((u,i)=>this.unit(u,i,'enemy',b)).join('');
     this.ui.round.textContent=`${b.label}　·　第 ${b.round} 回合　·　${this.state.formation}陣`;
-    const p=this.state.party[b.actor]||this.state.party.find(x=>x.hp>0)||this.state.party[0],pi=PORTRAIT_MAP[p.id]??0;
-    this.ui.portrait.style.backgroundImage=`url('${V11_PORTRAITS}')`;
-    this.ui.portrait.style.backgroundSize=`${112*5}px 112px`;
-    this.ui.portrait.style.backgroundPosition=`${-pi*112}px 0`;
+    const p=this.state.party[b.actor]||this.state.party.find(x=>x.hp>0)||this.state.party[0];
+    this.ui.portrait.style.backgroundImage=`url('${portraitUrl(p.id)}')`;
+    this.ui.portrait.style.backgroundSize='contain';
+    this.ui.portrait.style.backgroundPosition='center';
     this.ui.portrait.setAttribute('aria-label',p.name);
     this.ui.stats.innerHTML=actorStats(p);
   }
