@@ -1,5 +1,4 @@
-import {V11_HERO_ATLAS,V11_PORTRAITS,HERO_W,HERO_H,HERO_COLS,HERO_ROWS,heroFrameFor,PORTRAIT_MAP} from './assetsV11.js';
-import {enemySpriteUrl} from './enemyArtV11.js';
+import {V11_HERO_ATLAS,V11_PORTRAITS,HERO_W,HERO_H,HERO_COLS,HERO_ROWS,ENEMY_W,ENEMY_H,ENEMY_COLS,heroFrameFor,enemyFrameFor,PORTRAIT_MAP} from './assetsV11.js';
 
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const seg=(hp,max,enemy=false)=>{
@@ -16,8 +15,8 @@ export class BattleRendererV11{
     return `<div class="v11-sprite-window hero-window"><div class="v11-sprite hero-sprite" style="background-image:url('${V11_HERO_ATLAS}');background-size:${HERO_W*HERO_COLS}px ${HERO_H*HERO_ROWS}px;background-position:${-col*HERO_W}px ${-row*HERO_H}px"></div></div>`;
   }
   enemySprite(id,pose,frame){
-    const url=enemySpriteUrl(id,pose,frame);
-    return `<div class="v11-sprite-window enemy-window"><div class="v11-sprite enemy-sprite mirror" style="background-image:url('${url}')"></div></div>`;
+    const {url,col}=enemyFrameFor(id,pose,frame);
+    return `<div class="v11-sprite-window enemy-window"><div class="v11-sprite enemy-sprite mirror" style="background-image:url('${url}');background-size:${ENEMY_W*ENEMY_COLS}px ${ENEMY_H}px;background-position:${-col*ENEMY_W}px 0"></div></div>`;
   }
   unit(u,i,side,b){
     const enemy=side==='enemy',key=`${enemy?'e':'a'}${i}`,pose=b.pose?.[key]||'idle',frame=b.animFrame?.[key]??(b.round+i)%2,active=!enemy&&i===b.actor,dead=u.hp<=0,id=safeId(u.id||u.archetype||'pikeman');
