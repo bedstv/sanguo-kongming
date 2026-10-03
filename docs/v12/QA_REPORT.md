@@ -23,7 +23,7 @@ Status: complete first integrated review candidate. Not yet accepted as V12 M1.
 - Captured and visually inspected baseline, production contact sheet, final mobile layouts and combat states.
 - Fixed a real background PNG truncation found by visual QA; asset packing now serializes PNGs in memory before writing and validation fully decodes them.
 
-Screenshots are browser simulations. Dynamic effect screenshots can miss the brief peak frame; automated tests separately assert live effect and animation states. An additional deterministic keyframe capture was blocked before execution by the environment's automatic approval service usage limit. This was a review-service failure, not a safety rejection or a game error.
+Screenshots are browser simulations. Dynamic effect screenshots can miss the brief peak frame; automated tests separately assert live effect and animation states. The initial deterministic keyframe capture was blocked by the environment's approval-service usage limit. Subsequent live Chrome inspection on 2026-10-03 directly observed fire and lightning impact frames, cast poses, damage overlays and corresponding HP/SP changes. See `live-lightning-20261003.jpg` for the inspected lightning frame. This desktop live capture supplements the existing mobile WebKit checks; it is not physical iPhone evidence.
 
 ## Baseline regression gate
 
@@ -37,3 +37,11 @@ The existing V11 validator failed before any V12 change: its expected Guan Yu di
 - User visual acceptance and the public-showcase commercial-quality gate in GOAL_V12.md. Issue #4 must stay open until these pass.
 
 No world map, chapter, shop or equipment expansion. No V11 patch series. All implementation is one integrated commit.
+
+## Post-deployment verification — 2026-10-03
+
+- Integrated implementation: PR #5, main `4d8d2a5e5d2f351a1fc9e807858fea10dc5b7230`.
+- Merged-main QA run `37131395180`: success; Pages deployment `37131394832`: success.
+- Live Chrome UI: entry gesture, attack, fire, guard and lightning selection/execution verified; no game-origin errors observed in the captured console log (browser-extension metadata errors were present).
+- Lightning sample: Kongming SP 42 → 33; Xiahou Dun HP 14500 → 12703; damage overlay 1797 matches the HP delta.
+- Issue #4 implementation checklist reconciled; physical-device, blind-recognition and user-acceptance gates remain open.
