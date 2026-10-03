@@ -1,4 +1,4 @@
-name: V11 QA
+name: Golden Battle QA
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
           node-version: '22'
       - name: JavaScript syntax
         run: |
-          for f in src/*.js src/v8/*.js src/v9/*.js src/v10/*.js src/v11/*.js scripts/*.mjs; do
+          for f in src/*.js src/v8/*.js src/v9/*.js src/v10/*.js src/v11/*.js src/v12/*.js scripts/*.mjs; do
             node --check "$f"
           done
       - name: Existing game validation
@@ -30,3 +30,24 @@ jobs:
         run: node scripts/validate-v10.mjs
       - name: V11 Phase 3 validation
         run: node scripts/validate-v11.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: V12 asset and combat validation
+        run: |
+          python -m pip install Pillow
+          python scripts/validate-v12.py
+          node tests/v12/rules.test.mjs
+      - name: V12 WebKit mobile QA
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps webkit
+          python -m http.server 8123 --bind 127.0.0.1 > /tmp/v12-http.log 2>&1 &
+          node tests/v12/browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v12-browser-qa
+          path: |
+            docs/v12/browser-qa.json
+            docs/v12/*.png

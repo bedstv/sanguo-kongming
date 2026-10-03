@@ -1,0 +1,25 @@
+{
+  "engine": "Playwright WebKit 26.5 on Linux",
+  "physicalIPhone": false,
+  "checks": [
+    "gesture unlock + decoded boss playback",
+    "mute/unmute",
+    "suspended AudioContext resumes in gesture",
+    "simulated visibility/pageshow resume (not physical iPhone)",
+    "layout 390x844",
+    "layout 393x852",
+    "layout 390x844 with simulated safe areas",
+    "layout 390x664",
+    "anticipation / strike / recover / damage",
+    "cancel spell without SP payment",
+    "cast fire",
+    "cast thunder",
+    "cast heal",
+    "KO art + dead target disabled",
+    "identity mode",
+    "victory + original victory track",
+    "defeat + replay"
+  ],
+  "errors": [],
+  "failed": []
+}

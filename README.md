@@ -1,7 +1,7 @@
 # 三國戰策：孔明篇
 
-目前 Golden Battle 測試入口：
+V12 Golden Battle 完整重建候選版：`golden-v12.html?v=12.0`。
 
-- V11.6：https://bedstv.github.io/sanguo-kongming/golden-v11.html?v=11.6
+角色、肖像、場景、動畫、特效、音樂與固定手機 UI 一次整合；V11.6.1 保留不變。開發與驗證方式見 [V12 README](docs/v12/README.md)，驗收狀態見 [QA 報告](docs/v12/QA_REPORT.md)。V12 尚待使用者 iPhone 實機與隱名辨識驗收，Issue #4 維持開放。
 
-V11.6 針對 iPhone 實機畫面重新收斂戰鬥構圖：提高戰場占比、降低人物視覺擁擠、縮減底部面板、移除過強掃描線與綠色背景感，保留 V11.5 的逐角色 hero raster pipeline、固定 enemy sheets 與已驗證的 iPhone WebAudio 音訊流程。
+穩定版入口：[V11.6.1 Golden Battle](https://bedstv.github.io/sanguo-kongming/golden-v11.html?v=11.6.1)。
