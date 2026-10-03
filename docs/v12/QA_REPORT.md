@@ -23,7 +23,7 @@ Status: complete first integrated review candidate. Not yet accepted as V12 M1.
 - Captured and visually inspected baseline, production contact sheet, final mobile layouts and combat states.
 - Fixed a real background PNG truncation found by visual QA; asset packing now serializes PNGs in memory before writing and validation fully decodes them.
 
-Screenshots are browser simulations. Dynamic effect screenshots can miss the brief peak frame; automated tests separately assert live effect and animation states. The initial deterministic keyframe capture was blocked by the environment's approval-service usage limit. Subsequent live Chrome inspection on 2026-10-03 directly observed fire and lightning impact frames, cast poses, damage overlays and corresponding HP/SP changes. See `live-lightning-20261003.jpg` for the inspected lightning frame. This desktop live capture supplements the existing mobile WebKit checks; it is not physical iPhone evidence.
+Earlier automated screenshots are browser simulations; the user-supplied physical-device screenshot is documented below. Dynamic effect screenshots can miss the brief peak frame; automated tests separately assert live effect and animation states. The initial deterministic keyframe capture was blocked by the environment's approval-service usage limit. Subsequent live Chrome inspection on 2026-10-03 directly observed fire and lightning impact frames, cast poses, damage overlays and corresponding HP/SP changes. See `live-lightning-20261003.jpg` for the inspected lightning frame. This desktop live capture supplements the existing mobile WebKit checks; it is not physical iPhone evidence.
 
 ## Baseline regression gate
 
@@ -45,3 +45,18 @@ No world map, chapter, shop or equipment expansion. No V11 patch series. All imp
 - Live Chrome UI: entry gesture, attack, fire, guard and lightning selection/execution verified; no game-origin errors observed in the captured console log (browser-extension metadata errors were present).
 - Lightning sample: Kongming SP 42 → 33; Xiahou Dun HP 14500 → 12703; damage overlay 1797 matches the HP delta.
 - Issue #4 implementation checklist reconciled; physical-device, blind-recognition and user-acceptance gates remain open.
+
+## User-supplied iPhone screenshot — 2026-10-04 (Asia/Taipei)
+
+Evidence: `iphone-user-20261004.jpeg`, original upload `IMG_4149.jpeg`, preserved without image edits. This is a V12 physical-device screenshot, not the missing V11.6.1 baseline.
+
+Observed in this single frame:
+
+- iPhone status area and Safari bottom toolbar are visible; game content fits between them.
+- All five allies and five enemies, ten name/HP bars, the active portrait/stats, and six command buttons are fully visible with no obvious clipping or overlap.
+- Round 5 is shown with changed HP and Liu Bei SP 13/24, documenting a progressed battle state.
+- The sound control is checked. This only establishes the UI setting; a still image cannot verify audible playback, unlock/resume, lock-screen recovery, animation smoothness or touch behavior.
+- Device model, iOS version and CSS viewport dimensions were not supplied. Do not certify the exact 390×844 physical-device gate from the image dimensions.
+- Names are visible, so this is not a blind-recognition test. The upload alone is not explicit user approval of commercial visual quality.
+
+The pictured idle/command layout passes visual inspection for this captured device state. Full physical-device and public-showcase acceptance remain open.
