@@ -1,0 +1,47 @@
+{
+  "battle": {
+    "title": "風起博望",
+    "tempo": 144,
+    "seconds": 26.667,
+    "peak": 0.3817,
+    "rms": 0.0809,
+    "loop": true,
+    "voices": [
+      "pulse lead",
+      "pulse counterline",
+      "triangle bass",
+      "arpeggio",
+      "noise drums"
+    ]
+  },
+  "boss": {
+    "title": "鐵騎壓境",
+    "tempo": 158,
+    "seconds": 24.304,
+    "peak": 0.3856,
+    "rms": 0.082,
+    "loop": true,
+    "voices": [
+      "pulse lead",
+      "pulse counterline",
+      "triangle bass",
+      "arpeggio",
+      "noise drums"
+    ]
+  },
+  "victory": {
+    "title": "旌旗凱旋",
+    "tempo": 116,
+    "seconds": 9.676,
+    "peak": 0.6788,
+    "rms": 0.0832,
+    "loop": false,
+    "voices": [
+      "pulse lead",
+      "pulse counterline",
+      "triangle bass",
+      "arpeggio",
+      "noise drums"
+    ]
+  }
+}

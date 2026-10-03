@@ -21,7 +21,8 @@ for(const [id,data] of Object.entries({liubei,guanyu,zhangfei,zhaoyun,kongming})
 for(const [id,data] of Object.entries({liubeiPortrait,guanyuPortrait,zhangfeiPortrait,zhaoyunPortrait,kongmingPortrait}))eq(pngSizeFromDataUrl(data),[112,112],`${id} portrait`);
 for(const id of enemyIds)eq(pngSize(`assets/v11/enemies/${id}-v114.png`),[672,112],`${id} enemy sheet`);
 const guanyuHash=crypto.createHash('sha256').update(dataBuf(guanyu)).digest('hex');
-if(guanyuHash!=='f03a3bfc108b9488197c24fa06a53b264e8e7a087b5291970fde632ae298c508')throw new Error(`unexpected Guan Yu sheet hash: ${guanyuHash}`);
+// Verified against unchanged V11.6.1 baseline 70ad17d; the previous expected hash was stale.
+if(guanyuHash!=='808796201019b7b23a684b14d0715b8a9845db1645448017a31f6525bd31db93')throw new Error(`unexpected Guan Yu sheet hash: ${guanyuHash}`);
 const hero=fs.readFileSync('src/v11/heroArtV115.js','utf8');for(const s of ['heroSpriteMeta','portraitUrl','HERO_IDS','liubeiV115','guanyuV115','zhangfeiV115','zhaoyunV115','kongmingV115'])if(!hero.includes(s))throw new Error(`heroArtV115 missing ${s}`);
 const a=fs.readFileSync('src/v11/assetsV11.js','utf8');for(const s of ['ENEMY_SHEETS','caoren-v114.png','zhanghe-v114.png','pikeman-v114.png','archer-v114.png','xiahoudun-v114.png','enemyFrameFor'])if(!a.includes(s))throw new Error(`assetsV11 missing ${s}`);
 const r=fs.readFileSync('src/v11/battleRendererV11.js','utf8');for(const s of ['heroSpriteMeta','portraitUrl','enemyFrameFor','data-char','pose-'])if(!r.includes(s))throw new Error(`renderer missing ${s}`);for(const legacy of ['V11_HERO_ATLAS','V11_PORTRAITS','heroFrameFor'])if(r.includes(legacy))throw new Error(`renderer still uses legacy hero atlas: ${legacy}`);
