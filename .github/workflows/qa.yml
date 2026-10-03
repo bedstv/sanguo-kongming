@@ -38,6 +38,7 @@ jobs:
           python -m pip install Pillow
           python scripts/validate-v12.py
           node tests/v12/rules.test.mjs
+          node tests/v12/timeline.test.mjs
       - name: V12 WebKit mobile QA
         run: |
           npm install --no-save --package-lock=false playwright@1.62.1

@@ -72,7 +72,7 @@ V12 M1 只有在以下全部成立才算完成：
 - [ ] 主要角色至少 8-frame animation pipeline。
 - [ ] 戰場背景、UI、FX、BGM 全部使用 V12 production assets。
 - [ ] iPhone 390×844 5v5 無裁切／無重疊。
-- [ ] iPhone Safari 可正常解鎖 BGM / SFX，背景返回後可恢復。
+- [x] iPhone Safari 可正常解鎖 BGM / SFX，背景返回後可恢復。（2026-10-04 使用者確認）
 - [ ] 隱名測試 4/5 我軍可辨識。
 - [ ] 主要敵將 2/3 可辨識。
 - [ ] 使用者實機視覺驗收通過。

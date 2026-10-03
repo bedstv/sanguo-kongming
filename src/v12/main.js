@@ -1,7 +1,7 @@
 import {preload} from './assets.js';
 import {Timeline} from './timeline.js';
 import {GoldenBattle} from './battle.js';
-import {BattleRendererV12} from './renderer.js';
+import {BattleRendererV12} from './renderer.js?v=12.0&qa=2';
 import {AudioV12} from './audio.js';
 const $=s=>document.querySelector(s),root=$('#battle'),audio=new AudioV12();let battle,renderer,timeline;
 if(new URLSearchParams(location.search).get('music')==='battle')audio.mode='battle';

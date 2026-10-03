@@ -32,7 +32,7 @@ The existing V11 validator failed before any V12 change: its expected Guan Yu di
 ## Remaining human acceptance gates
 
 - The user's earlier V11.6.1 physical iPhone screenshots were not recoverable in this session. `baseline-390x844.png` is a new WebKit reproduction, not a substitute claimed as user evidence.
-- Physical iPhone Safari audio audition, background/foreground and lock-screen behavior.
+- Physical iPhone Safari playback and app-switch recovery: user-confirmed on 2026-10-04. Lock-screen behavior was not separately reported.
 - Blind recognition: at least 4/5 allies and 2/3 named enemies. The author cannot certify their own blind recognition test.
 - User visual acceptance and the public-showcase commercial-quality gate in GOAL_V12.md. Issue #4 must stay open until these pass.
 
@@ -60,3 +60,13 @@ Observed in this single frame:
 - Names are visible, so this is not a blind-recognition test. The upload alone is not explicit user approval of commercial visual quality.
 
 The pictured idle/command layout passes visual inspection for this captured device state. Full physical-device and public-showcase acceptance remain open.
+
+## Audio confirmation and recognition QA — 2026-10-04 (Asia/Taipei)
+
+The user replied “能，請繼續” to the question about normal music/SFX and recovery after switching to another app and returning to Safari. Record normal playback/app-switch recovery as user-confirmed; do not extend this confirmation to lock-screen recovery or visual acceptance. The proven V11-derived audio path is unchanged.
+
+A follow-up review found that identity mode hid printed names but still displayed the active portrait and named units in accessible labels. Identity mode now hides the portrait, clears its alternative text and exposes anonymous side/position labels. Normal names and portraits return when the mode is disabled, including after a command rerender. WebKit coverage now checks both entry and restoration.
+
+Reviewed the production contact sheet across all ten characters and eight poses: distinct costume/weapon silhouettes and anticipation/strike/recover/cast/hurt/KO frames are present; no obvious missing frames or cropped weapon tips were observed. This author review does not substitute for the required independent 4/5 ally and 2/3 enemy recognition test.
+
+Local validation: 11 combat-rule tests and 4 tests of the actual Timeline implementation pass. Timeline checks cover one strike after anticipation, cast-before-impact ordering, hidden-tab pause/resume without skipped actions, and hurt-to-KO effect expiry. Full PNG decoding, pose uniqueness/bounds and unchanged audio hooks also pass. The CI workflow runs these gates plus the strengthened mobile WebKit checks.

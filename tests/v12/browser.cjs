@@ -36,7 +36,17 @@ for(const [skill,fx,target] of [['fire','fire','caoren'],['thunder','lightning',
 }
 await page.evaluate(()=>{const b=__V12.battle;b.state.actor=0;b.state.phase='command';b.state.enemies[4].hp=1;b.emit();});await page.click('[data-cmd=attack]');await page.click('[data-id=archer]');await page.waitForFunction(()=>__V12.battle.state.enemies[4].hp===0&&__V12.battle.state.phase==='command');await page.screenshot({path:'docs/v12/ko.png'});checks.push('KO art + dead target disabled');
 assert.equal(await page.locator('[data-id=archer]').isDisabled(),true);
-await page.click('#identity');await page.screenshot({path:'docs/v12/identity.png'});assert.equal(await page.locator('.unit-name').first().evaluate(e=>getComputedStyle(e).visibility),'hidden');await page.click('#identity');checks.push('identity mode');
+await page.click('#identity');await page.screenshot({path:'docs/v12/identity.png'});assert.equal(await page.locator('.unit-name').first().evaluate(e=>getComputedStyle(e).visibility),'hidden');assert.equal(await page.locator('#portrait').evaluate(e=>getComputedStyle(e).visibility),'hidden');
+assert.equal(await page.locator('#portrait').getAttribute('alt'),'');
+const anonymousLabels=await page.locator('.unit').evaluateAll(es=>es.map(e=>e.getAttribute('aria-label')));
+assert.ok(anonymousLabels.every(x=>/^(我軍|敵軍) [1-5]，兵力/.test(x)));
+await page.click('[data-cmd=attack]');
+assert.ok((await page.locator('.unit').evaluateAll(es=>es.map(e=>e.getAttribute('aria-label')))).every(x=>/^(我軍|敵軍) [1-5]，兵力/.test(x)),'rerender must preserve anonymity');
+await page.click('#cancel');await page.click('#identity');
+assert.equal(await page.locator('#portrait').evaluate(e=>getComputedStyle(e).visibility),'visible');
+assert.match(await page.locator('#portrait').getAttribute('alt'),/獨立肖像$/);
+assert.match(await page.locator('[data-id=liubei]').getAttribute('aria-label'),/^劉備，/);
+checks.push('identity hides portrait and accessible names; restored after exit');
 await page.evaluate(()=>{const b=__V12.battle;b.state.enemies.forEach((e,i)=>e.hp=i?0:1);b.state.actor=0;b.state.phase='command';b.emit();});await page.click('[data-cmd=attack]');await page.click('[data-id=caoren]');await page.waitForFunction(()=>__V12.battle.state.result?.win===true);await page.waitForFunction(()=>__V12.audio.mode==='victory'&&__V12.audio.source?.buffer);await page.screenshot({path:'docs/v12/victory.png'});checks.push('victory + original victory track');
 await page.click('#replay');await page.waitForFunction(()=>window.__V12);await page.click('#silent');await page.evaluate(()=>{const b=__V12.battle;b.state.party.forEach(p=>p.hp=0);b.enemyTurn();});await page.waitForFunction(()=>__V12.battle.state.result?.win===false);await page.screenshot({path:'docs/v12/defeat.png'});checks.push('defeat + replay');
 assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
