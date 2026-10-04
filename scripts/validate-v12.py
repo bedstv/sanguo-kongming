@@ -38,7 +38,7 @@ for name in ['world','town']:
  with wave.open(str(root/f'assets/v12/source/{name}-score.wav')) as f:assert f.getnframes()>22050*8 and f.getnchannels()==2
  assert (root/f'assets/v12/audio/{name}.mp3').stat().st_size>10000
 index=(root/'index.html').read_text()
-assert 'src/v12/campaign.js?v=12.4' in index and 'styles/campaign-v12.css?v=12.4' in index
+assert 'src/v12/campaign.js?v=12.4.1' in index and 'styles/campaign-v12.css?v=12.4.1' in index
 assert 'src/game.js' not in index
 assert (root/'legacy-v8.html').exists()
 print('V12 campaign: generated map/NPC art hashes, source music, compressed audio and main entry pass.')

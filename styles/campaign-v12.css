@@ -6,3 +6,4 @@
 @media(max-width:350px){.exploration-controls{gap:12px}.world-actions button{font-size:11px;letter-spacing:1px}.world-hint{font-size:7px}}
 @media(max-height:740px){#battle{grid-template-rows:52px minmax(0,1fr) 212px}.command-body{height:173px}.cmd-grid button{min-height:44px}}
 @media(max-height:740px){#stage[data-battlefield=changsha]{background-image:url('../assets/v12/backgrounds/changsha-wide.png?v=12.4')!important;background-size:cover!important;background-position:center bottom!important}}
+.world-viewport{padding-bottom:23px}.world-viewport canvas{height:100%;image-rendering:auto}.map-caption{height:23px}

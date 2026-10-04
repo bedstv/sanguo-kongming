@@ -54,6 +54,7 @@ jobs:
           node tests/v12/chapter2-browser.cjs
           node tests/v12/chapter3-browser.cjs
           node tests/v12/chapter4-browser.cjs
+          node tests/v12/exploration-clarity-browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -68,4 +69,5 @@ jobs:
             docs/v12/chapter3-combat-qa.json
             docs/v12/chapter4-browser-qa.json
             docs/v12/chapter4-combat-qa.json
+            docs/v12/exploration-clarity-qa.json
             docs/v12/*.png

@@ -1,0 +1,21 @@
+{
+  "engine": "Playwright WebKit 26.5 on Linux",
+  "deviceScaleFactor": 3,
+  "physicalIPhone": false,
+  "checks": [
+    "DPR 3 native-resolution canvas, controls and safe caption 390x844",
+    "DPR 3 native-resolution canvas, controls and safe caption 393x852",
+    "DPR 3 native-resolution canvas, controls and safe caption 390x664",
+    "DPR 3 native-resolution canvas, controls and safe caption 390x844 safe",
+    "high-resolution click-to-walk and exact save/reload coordinates",
+    "enlarged elder sprite retains proximity interaction and convoy progression",
+    "xinye assets and labels render without page errors",
+    "longzhong assets and labels render without page errors",
+    "changban assets and labels render without page errors",
+    "alliedcamp assets and labels render without page errors",
+    "jingcamp assets and labels render without page errors",
+    "changshatown assets and labels render without page errors"
+  ],
+  "errors": [],
+  "failed": []
+}
