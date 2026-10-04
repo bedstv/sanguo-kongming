@@ -1,0 +1,13 @@
+{
+  "bridge": {
+    "title": "當陽斷後",
+    "seconds": 19.459,
+    "peak": 0.278,
+    "loop": true,
+    "voices": [
+      "pulse melody",
+      "triangle bass",
+      "square arpeggio"
+    ]
+  }
+}

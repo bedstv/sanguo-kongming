@@ -38,7 +38,23 @@ for name in ['world','town']:
  with wave.open(str(root/f'assets/v12/source/{name}-score.wav')) as f:assert f.getnframes()>22050*8 and f.getnchannels()==2
  assert (root/f'assets/v12/audio/{name}.mp3').stat().st_size>10000
 index=(root/'index.html').read_text()
-assert 'src/v12/campaign.js?v=12.1' in index and 'styles/campaign-v12.css?v=12.1' in index
+assert 'src/v12/campaign.js?v=12.2' in index and 'styles/campaign-v12.css?v=12.2' in index
 assert 'src/game.js' not in index
 assert (root/'legacy-v8.html').exists()
 print('V12 campaign: generated map/NPC art hashes, source music, compressed audio and main entry pass.')
+
+chapter=json.loads((root/'assets/v12/chapter-two-manifest.json').read_text())
+for name,digest in chapter['sha256'].items():
+ p=root/'assets/v12'/name;assert hashlib.sha256(p.read_bytes()).hexdigest()==digest;Image.open(p).load()
+im=Image.open(root/'assets/v12/sprites/caochun.png');assert im.size==(1024,144) and im.mode=='RGBA'
+poses=[]
+for i in range(8):
+ f=im.crop((i*128,0,i*128+128,144));box=f.getchannel('A').getbbox();assert box and box[0]>=3 and box[2]<=125 and box[1]>=3 and box[3]<=140
+ poses.append(hashlib.sha256(f.tobytes()).hexdigest())
+assert len(set(poses))==8
+assert Image.open(root/'assets/v12/portraits/caochun.png').size==(128,128)
+assert Image.open(root/'assets/v12/backgrounds/changban.png').size==(520,780)
+assert Image.open(root/'assets/v12/world/river.png').size==(256,256)
+with wave.open(str(root/'assets/v12/source/bridge-score.wav')) as f:assert f.getnchannels()==2 and f.getnframes()>22050*8
+assert (root/'assets/v12/audio/bridge.mp3').stat().st_size>10000
+print('V12.2: new boss poses/alpha/bounds, portrait, river assets/hashes, original bridge music and versioned entry pass.')

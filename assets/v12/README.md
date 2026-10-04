@@ -19,3 +19,9 @@ Validate: `python scripts/validate-v12.py`.
 `world/terrain.png`: sixteen 128px production terrain/building cells; three NPC strips: two 64×80 poses each. Original generated terrain and transparent NPC source images are retained in `source/`, with prompts in `docs/v12/world-generation-manifest.json`. `scripts/pack-v12-world.py` packages them and records runtime hashes. The exploration renderer uses these images and V12 hero sheets, without a geometric character fallback.
 
 Original authored compositions `world` / `town` are synthesized by `scripts/compose-v12-world.py`, with score and measurements in `audio/campaign-score.json` and `campaign-mix-report.json`. PCM mother tracks are in `source/`; runtime MP3s are encoded with ffmpeg/libmp3lame for Safari-compatible decoding. The existing gesture/session/resume path is preserved. Rebuild requires numpy and ffmpeg, then `python scripts/compose-v12-world.py`.
+
+## V12.2 chapter two
+
+New production files: `sprites/caochun.png` (eight 128×144 poses), `portraits/caochun.png` (independent 128×128 composition), `backgrounds/changban.png` (520×780), `world/river.png` (four 128px cells), and `audio/bridge.mp3`. Generated sources are `source/caochun-sheet.png`, `caochun-portrait.png`, `changban-background.png`, `river-tiles.png`. Built-in imagegen prompts and source paths are recorded in `docs/v12/chapter2-generation-manifest.json`; packing and hashes in `scripts/pack-v122.py` and `chapter-two-manifest.json`. The bridge renderer reframes the authored background with a bottom-aligned camera so all five rows stand on the deck.
+
+Original score 《當陽斷後》: `scripts/compose-v122.py`, `audio/chapter-two-score.json`, `audio/chapter-two-mix-report.json`, `source/bridge-score.wav`. Uses the same offline synthesis and Safari-compatible MP3 pipeline. Existing music files are untouched.

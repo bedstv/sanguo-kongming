@@ -1,0 +1,81 @@
+{
+  "sprite": {
+    "cell": [
+      128,
+      144
+    ],
+    "frames": 8,
+    "anchor": [
+      64,
+      140
+    ],
+    "bounds": [
+      [
+        17,
+        26,
+        93,
+        114
+      ],
+      [
+        16,
+        26,
+        96,
+        114
+      ],
+      [
+        17,
+        24,
+        93,
+        116
+      ],
+      [
+        6,
+        25,
+        115,
+        115
+      ],
+      [
+        16,
+        33,
+        95,
+        107
+      ],
+      [
+        9,
+        42,
+        110,
+        98
+      ],
+      [
+        17,
+        8,
+        93,
+        132
+      ],
+      [
+        9,
+        76,
+        109,
+        64
+      ]
+    ]
+  },
+  "river": {
+    "cell": [
+      128,
+      128
+    ],
+    "columns": 2,
+    "rows": 2
+  },
+  "sha256": {
+    "sprites/caochun.png": "45b444825cbb63f4e969ffd72ab978de8d2cc81bd8d3b50e0514c4af93aaf2ce",
+    "portraits/caochun.png": "d2b1982b9de7ac6a938ecbd9df7dcfedc0564469c70dc7e79d5b402fd37814cd",
+    "backgrounds/changban.png": "f7e73de98213b38b92ce2e9e1d503556829015329d802fe1d1a815193d204396",
+    "world/river.png": "b286b0751ded74ab29f289b5dd516565c6c3a6764f20b5e35ee8804312998700",
+    "source/caochun-sheet.png": "9ca2a898e10c52e8453ea923607fac8c8e86fc71852ef895e72bf8ceb26ae530",
+    "source/caochun-portrait.png": "93b8f2e1e33761c7f655cdf154fceddb076b1132f2cf0b8e5309d0c897b7ed12",
+    "source/changban-background.png": "1e5e484c4615f021114ad2931a714d111a05c7b85d3104a1ea81f6c91ef0ac7d",
+    "source/river-tiles.png": "f75c42a257cfe6203cf152cdd497df29d59a105b4cdb4c41054d9c40225e09d8"
+  }
+}

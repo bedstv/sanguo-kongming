@@ -1,0 +1,21 @@
+{
+  "engine": "Playwright WebKit 26.5 on Linux",
+  "physicalIPhone": false,
+  "rescueFlowStatsModified": true,
+  "bridgeCombatStatsModified": false,
+  "checks": [
+    "V12.1 clear save migrates and enters chapter two with equipment/resources",
+    "provision gate + buying supplies + exactly-once consumption",
+    "west rescue + battle return + persistent completion",
+    "east rescue checkpoint + reload + both families unlock ferry",
+    "Cao Chun production art + river battlefield + original bridge music + four-round objective",
+    "guard and hold objective survive battle checkpoint reload",
+    "real four-round defense victory with live enemies + ending + rewards once + reload",
+    "chapter-two exploration layout 390x844",
+    "chapter-two exploration layout 393x852",
+    "chapter-two exploration layout 390x664",
+    "chapter-two exploration layout 390x844 safe areas"
+  ],
+  "errors": [],
+  "failed": []
+}

@@ -29,3 +29,9 @@ node tests/v12/campaign-browser.cjs
 ```
 
 `V12_BASE_URL` changes the test server URL. Test-only mutable state is exposed only with the `qa` query parameter. Browser QA writes fresh screenshots and `browser-qa.json`. Physical iPhone and blind-recognition acceptance remain separate from automation.
+
+## V12.2 second chapter
+
+Open `/?v=12.2`. A V12.1 chapter-one clear save continues directly: select **續章** or use the army journal. Provision two rations at the refugee camp, rescue both families on Changban Road, then speak to the ferry keeper. The bridge encounter wins after four enemy turns if at least one ally survives. Victory continues to Jiangxia; defeat returns to the refugee camp with rescue progress preserved.
+
+See `../V12_SECOND_CHAPTER.md`, `CHAPTER2_QA.md`, and `chapter2-generation-manifest.json` for gameplay scope, QA, original production sources and exact prompts. Add `node tests/v12/chapter-two.test.mjs` and `node tests/v12/chapter2-browser.cjs` to the existing checks. Audio unlock/resume continues to use unchanged AudioV11 hooks.
