@@ -38,7 +38,7 @@ for name in ['world','town']:
  with wave.open(str(root/f'assets/v12/source/{name}-score.wav')) as f:assert f.getnframes()>22050*8 and f.getnchannels()==2
  assert (root/f'assets/v12/audio/{name}.mp3').stat().st_size>10000
 index=(root/'index.html').read_text()
-assert 'src/v12/campaign.js?v=12.2' in index and 'styles/campaign-v12.css?v=12.2' in index
+assert 'src/v12/campaign.js?v=12.3' in index and 'styles/campaign-v12.css?v=12.3' in index
 assert 'src/game.js' not in index
 assert (root/'legacy-v8.html').exists()
 print('V12 campaign: generated map/NPC art hashes, source music, compressed audio and main entry pass.')
@@ -58,3 +58,22 @@ assert Image.open(root/'assets/v12/world/river.png').size==(256,256)
 with wave.open(str(root/'assets/v12/source/bridge-score.wav')) as f:assert f.getnchannels()==2 and f.getnframes()>22050*8
 assert (root/'assets/v12/audio/bridge.mp3').stat().st_size>10000
 print('V12.2: new boss poses/alpha/bounds, portrait, river assets/hashes, original bridge music and versioned entry pass.')
+
+third=json.loads((root/'assets/v12/chapter-three-manifest.json').read_text())
+for name,digest in third['sha256'].items():
+ p=root/'assets/v12'/name;assert hashlib.sha256(p.read_bytes()).hexdigest()==digest;Image.open(p).load()
+im=Image.open(root/'assets/v12/sprites/xuhuang.png');assert im.size==(1024,144) and im.mode=='RGBA'
+poses=[]
+for i in range(8):
+ f=im.crop((i*128,0,i*128+128,144));box=f.getchannel('A').getbbox();assert box and box[0]>=3 and box[2]<=125 and box[1]>=3 and box[3]<=140
+ assert sum(a>128 for a in f.getchannel('A').get_flattened_data())>800
+ poses.append(hashlib.sha256(f.tobytes()).hexdigest())
+assert len(set(poses))==8
+for name in ['xuhuang','zhouyu']:assert Image.open(root/f'assets/v12/portraits/{name}.png').size==(128,128)
+im=Image.open(root/'assets/v12/world/zhouyu.png');assert im.size==(128,80) and im.mode=='RGBA'
+assert im.crop((0,0,64,80)).tobytes()!=im.crop((64,0,128,80)).tobytes()
+assert Image.open(root/'assets/v12/backgrounds/redcliff.png').size==(520,780)
+assert Image.open(root/'assets/v12/world/naval.png').size==(256,256)
+with wave.open(str(root/'assets/v12/source/naval-score.wav')) as f:assert f.getnchannels()==2 and f.getnframes()>22050*8
+assert (root/'assets/v12/audio/naval.mp3').stat().st_size>10000
+print('V12.3: Xu Huang eight unique poses/alpha/bounds, Zhou Yu two idles/portraits, naval art hashes and original score pass.')

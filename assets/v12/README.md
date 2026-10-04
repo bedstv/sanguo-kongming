@@ -25,3 +25,10 @@ Original authored compositions `world` / `town` are synthesized by `scripts/comp
 New production files: `sprites/caochun.png` (eight 128×144 poses), `portraits/caochun.png` (independent 128×128 composition), `backgrounds/changban.png` (520×780), `world/river.png` (four 128px cells), and `audio/bridge.mp3`. Generated sources are `source/caochun-sheet.png`, `caochun-portrait.png`, `changban-background.png`, `river-tiles.png`. Built-in imagegen prompts and source paths are recorded in `docs/v12/chapter2-generation-manifest.json`; packing and hashes in `scripts/pack-v122.py` and `chapter-two-manifest.json`. The bridge renderer reframes the authored background with a bottom-aligned camera so all five rows stand on the deck.
 
 Original score 《當陽斷後》: `scripts/compose-v122.py`, `audio/chapter-two-score.json`, `audio/chapter-two-mix-report.json`, `source/bridge-score.wav`. Uses the same offline synthesis and Safari-compatible MP3 pipeline. Existing music files are untouched.
+
+## V12.3 原創第三章資產
+
+- Runtime：`sprites/xuhuang.png`、`portraits/xuhuang.png`、`portraits/zhouyu.png`、`world/zhouyu.png`、`backgrounds/redcliff.png`、`world/naval.png`、`world/deck.png`。來源為同名 source sheets／portraits／naval-tiles／redcliff-background；deck 從背景木板區域 (448,1024,576,1152) 取樣。
+- 母帶 `source/naval-score.wav`，runtime `audio/naval.mp3`，編曲／混音紀錄 `audio/chapter-three-score.json` 與 `chapter-three-mix-report.json`。
+- built-in imagegen 的完整提示與來源路徑：`docs/v12/chapter3-generation-manifest.json`；每張 source/runtime hash：`chapter-three-manifest.json`。`scripts/pack-v123.py` 使用 Pillow、NumPy、SciPy 包裝 alpha-connected authored 人物，不改寫原始美術。
+- 夜艦戰場取景 auto 110%／center bottom，維持比例與腳下甲板；iOS 音訊解鎖實作未修改。

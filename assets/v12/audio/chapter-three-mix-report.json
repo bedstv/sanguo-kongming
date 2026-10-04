@@ -1,0 +1,13 @@
+{
+  "naval": {
+    "title": "赤壁夜航",
+    "seconds": 27.0,
+    "peak": 0.2774,
+    "loop": true,
+    "voices": [
+      "pulse melody",
+      "triangle bass",
+      "square arpeggio"
+    ]
+  }
+}

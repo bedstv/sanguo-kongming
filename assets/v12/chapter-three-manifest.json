@@ -1,0 +1,116 @@
+{
+  "sprite": {
+    "cell": [
+      128,
+      144
+    ],
+    "frames": 8,
+    "anchor": [
+      64,
+      140
+    ],
+    "bounds": [
+      [
+        29,
+        41,
+        70,
+        99
+      ],
+      [
+        28,
+        51,
+        72,
+        89
+      ],
+      [
+        28,
+        29,
+        71,
+        111
+      ],
+      [
+        4,
+        60,
+        120,
+        80
+      ],
+      [
+        18,
+        62,
+        91,
+        78
+      ],
+      [
+        28,
+        66,
+        72,
+        74
+      ],
+      [
+        30,
+        31,
+        68,
+        109
+      ],
+      [
+        14,
+        105,
+        99,
+        35
+      ]
+    ]
+  },
+  "npc": {
+    "cell": [
+      64,
+      80
+    ],
+    "frames": 2,
+    "bounds": [
+      [
+        10,
+        6,
+        43,
+        70
+      ],
+      [
+        10,
+        6,
+        43,
+        70
+      ]
+    ]
+  },
+  "deck": {
+    "source": "source/redcliff-background.png",
+    "crop": [
+      448,
+      1024,
+      576,
+      1152
+    ]
+  },
+  "terrain": {
+    "cell": [
+      128,
+      128
+    ],
+    "columns": 2,
+    "rows": 2
+  },
+  "sha256": {
+    "world/deck.png": "673fafcde26fe1a9c7b44d4acb37f139a5bb066ab74122149489ecda00cda0aa",
+    "sprites/xuhuang.png": "4d460804884067a31ab3014f18a2ab09cb111b6b4483477d210c9d0846c224f4",
+    "world/zhouyu.png": "3685026050c71cb558396b9ddce9a5446591f5ca1cf76352260fe18098d7655f",
+    "portraits/xuhuang.png": "34ae8836beb1de199f833b7497f6d628acf4757de9228d16d66679b207001254",
+    "portraits/zhouyu.png": "e233108e58d781f1c6f574cfb3efb35eeba25108da78b6ab1fdbadc707167abb",
+    "backgrounds/redcliff.png": "09a9cea20ec2e1c22430f8c5ba41209a4280abd81b821753f37b7e1749aa57e0",
+    "world/naval.png": "1e86209e6e56175e1e814a1b7824748a6644cdf27546915c1958537b43b69e1b",
+    "source/xuhuang-sheet.png": "25d2d720eb3ca0bc95c708790d8ff5368ec46e1cee556927692761d09ad3f427",
+    "source/xuhuang-portrait.png": "e04f2185f1e49e52fe87890c15a9e9e247905222497a74ba4a009f547f7c4ebf",
+    "source/zhouyu-portrait.png": "e8a308f9c21650fa41be47fc10e9d19a49bcffc0b06dc1a780d04aade78cbb24",
+    "source/zhouyu-world.png": "7e896a703b5602a5076bba0b2b67fb5093515ae2ef1cd4f119bafe442233c0f1",
+    "source/redcliff-background.png": "8a687abb0453888720ca318371a3c13c69a1f4b5a6681c88ea39418e92daff8c",
+    "source/naval-tiles.png": "c7b499f909b7bb58013d73fa74fc734e70afa545ee10d7cb160f5eb330bd50d4"
+  }
+}

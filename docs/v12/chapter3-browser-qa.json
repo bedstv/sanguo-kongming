@@ -1,0 +1,23 @@
+{
+  "engine": "Playwright WebKit 26.5 on Linux",
+  "physicalIPhone": false,
+  "preparationFlowStatsModified": true,
+  "finalBossStatsModified": false,
+  "bossActions": 39,
+  "checks": [
+    "actual-stat V12.2 completion fixture continues with saved party, gold and equipment",
+    "alliance gate + Zhou Yu independent portrait and NPC + chapter-three journal",
+    "decision gate + wind preparation combat + one preparation flag survives reload",
+    "fire-ship battle checkpoint preserves damaged enemy + both plans unlock decision",
+    "camp recovery + Xu Huang production art + ten units + naval score + twenty-percent preparation benefit",
+    "red-cliff checkpoint reload does not apply the preparation damage twice",
+    "unmodified-stat full boss victory + Zhou Yu ending + Jiangling completion + reward once after reload",
+    "chapter-three journal retreat hub preserves completed stages",
+    "third-chapter layout 390x844",
+    "third-chapter layout 393x852",
+    "third-chapter layout 390x664",
+    "third-chapter layout 390x844 safe areas"
+  ],
+  "errors": [],
+  "failed": []
+}

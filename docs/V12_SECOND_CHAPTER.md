@@ -30,4 +30,4 @@ V12.1 的 stage 4 通關存檔會補上第二章旗標，不重設角色或資�
 
 獨立 Golden Battle 的擊破目標与原數值保留；只有 bridge encounter 使用四回合目標。AudioV11 的同步 primer、unlock、audioSession 與背景恢復路徑未變。新橋戰 MP3 接到同一個 master output。
 
-驗證結果見 `docs/v12/CHAPTER2_QA.md`。這批完成兩章旅程；第三章與全三國篇尚未實作。
+驗證結果見 `docs/v12/CHAPTER2_QA.md`。V12.2 批次完成兩章旅程；後續 V12.3 接續第三章，見 `V12_THIRD_CHAPTER.md`。

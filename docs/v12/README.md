@@ -35,3 +35,9 @@ node tests/v12/campaign-browser.cjs
 Open `/?v=12.2`. A V12.1 chapter-one clear save continues directly: select **續章** or use the army journal. Provision two rations at the refugee camp, rescue both families on Changban Road, then speak to the ferry keeper. The bridge encounter wins after four enemy turns if at least one ally survives. Victory continues to Jiangxia; defeat returns to the refugee camp with rescue progress preserved.
 
 See `../V12_SECOND_CHAPTER.md`, `CHAPTER2_QA.md`, and `chapter2-generation-manifest.json` for gameplay scope, QA, original production sources and exact prompts. Add `node tests/v12/chapter-two.test.mjs` and `node tests/v12/chapter2-browser.cjs` to the existing checks. Audio unlock/resume continues to use unchanged AudioV11 hooks.
+
+## V12.3 三章旅程
+
+正式首頁 `/?v=12.3`。第二章通關後點續章，或軍議中的前往第三章，接續赤壁風起。規格 `../V12_THIRD_CHAPTER.md`，QA `CHAPTER3_QA.md`，production 提示 `chapter3-generation-manifest.json`。
+
+新增檢查：`node tests/v12/chapter-three.test.mjs`、`node tests/v12/chapter3-browser.cjs`；測試由三章真實戰鬥數值連戰產生 `chapter3-start-save.json`，供瀏覽器接續第二章完成進度，並非任意放大角色數值的 demo。
