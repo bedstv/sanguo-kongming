@@ -30,7 +30,7 @@ const audio=fs.readFileSync(path.join(root,'src/audio.js'),'utf8');
 if(!audio.includes('visibilitychange')||!audio.includes('pageshow')||!audio.includes('touchstart'))bad('iPhone audio recovery hooks missing');else ok('iPhone audio recovery hooks');
 if(!audio.includes("from './v8/musicV8.js'"))bad('V8 music score not wired');else ok('V8 original music score wired');
 
-const index=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const index=fs.readFileSync(path.join(root,'legacy-v8.html'),'utf8');
 const refs=[...index.matchAll(/(?:src|href)="([^"?#]+)(?:[?#][^"]*)?"/g)].map(m=>m[1]).filter(x=>x.startsWith('./')||!x.includes(':'));
 for(const ref of refs){const clean=ref.replace(/^\.\//,'');if(clean&&clean!=='manifest.webmanifest'&&!fs.existsSync(path.join(root,clean)))bad(`index reference missing: ${clean}`)}
 if(!index.includes('styles/v80.css')||!index.includes('src/v8/pixelUi.js')||!/V8\.[0-9]+/.test(index))bad('V8 entry assets not loaded');else ok('V8 entry assets loaded');

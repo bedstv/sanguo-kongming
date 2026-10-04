@@ -4,7 +4,7 @@ import {Timeline} from '../../src/v12/timeline.js';
 
 function clock(){
  const handlers=new Map();
- globalThis.document={hidden:false,addEventListener:(name,fn)=>handlers.set(name,fn)};
+ globalThis.document={hidden:false,addEventListener:(name,fn)=>handlers.set(name,fn),removeEventListener:(name,fn)=>{if(handlers.get(name)===fn)handlers.delete(name);}};
  globalThis.requestAnimationFrame=()=>1;
  globalThis.cancelAnimationFrame=()=>{};
  const timeline=new Timeline();let now=0;timeline.frame(now);

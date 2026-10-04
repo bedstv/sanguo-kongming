@@ -1,0 +1,92 @@
+import {MAPS,ITEMS,SHOP_STOCK,FORMATIONS} from '../data.js';
+import {preload,portrait} from './assets.js';
+import {Timeline} from './timeline.js?v=12.1';
+import {GoldenBattle} from './battle.js?v=12.1';
+import {BattleRendererV12} from './renderer.js?v=12.1';
+import {AudioV12} from './audio.js?v=12.1';
+import {WorldRendererV12,loadWorldArt} from './world-renderer.js';
+import {newCampaign,normalizeCampaign,readSave,writeSave,LEGACY_KEY,CHAPTERS,OBJECTIVES,tile,walkable,route,battleState,storeCheckpoint,resolveEncounter,buyItem,equipItem,useItem} from './campaign-state.js';
+import {effective} from './rules.js?v=12.1';
+
+const $=s=>document.querySelector(s),audio=new AudioV12();
+let state=null,images,world,battle,renderer,timeline,battleKind=null,dialogue=null,dialogueDone=null,dialogueIndex=0,itemSelection=null,campTab='party',path=[],pathTimer=null,holdTimer=null,worldRAF,lastDraw=0,saveFailed=false;
+const delta={u:[0,-1],d:[0,1],l:[-1,0],r:[1,0]};
+function say(text){$('#worldMessage').textContent=text;}
+function hasOverlay(){return [...document.querySelectorAll('.campaign-overlay')].some(e=>!e.hidden);}
+function free(){return state&&!$('#worldScene').hidden&&$('#battle').hidden&&!hasOverlay();}
+function stopPath(){path=[];clearTimeout(pathTimer);clearInterval(holdTimer);}
+function save({backup=false}={}){if(!state)return false;const ok=writeSave(localStorage,state,{backup});$('#saveLabel').textContent=ok?'進度已保存':'無法寫入存檔';if(!ok&&!saveFailed){say('此瀏覽器無法保存進度。請確認未限制網站儲存空間。');saveFailed=true;}return ok;}
+function audioUI(){const ok=audio.isReady()&&!audio.muted;for(const id of ['sound','worldSound']){$('#'+id).textContent=ok?'聲音 ✓':'聲音';$('#'+id).setAttribute('aria-pressed',String(ok));$('#'+id).setAttribute('aria-label',ok?'關閉聲音':'開啟聲音');}}
+function enableAudio(mode){audio.start(mode);void audio.enable().then(audioUI);}
+function toggleSound(){if(audio.isReady()&&!audio.muted)audio.mute();else void audio.enable().then(audioUI);audioUI();}
+for(const id of ['sound','worldSound'])$('#'+id).onclick=toggleSound;
+function refresh(){if(!state)return;$('#placeName').textContent=MAPS[state.map].name;$('#worldGold').textContent=`金 ${state.gold.toLocaleString()}`;$('#chapterLabel').textContent=`第一章 · ${CHAPTERS[state.story.stage]}`;$('#objective').textContent=OBJECTIVES[state.story.stage];$('#dangerLabel').textContent=state.map==='overworld'?(state.encounter.safeSteps>0?'敵情暫緩':state.encounter.since>=6?'敵影逼近':'留意魏軍巡邏'):'此地安全';audioUI();world?.draw(performance.now());}
+function showWorld(message=''){stopPath();$('#campaign').hidden=false;$('#titleScene').hidden=true;$('#worldScene').hidden=false;$('#battle').hidden=true;$('#result').hidden=true;renderer?.dispose();timeline?.dispose();renderer=null;timeline=null;battle=null;battleKind=null;world=new WorldRendererV12($('#worldMap'),images,state);audio.start(state.map==='overworld'||state.map==='bowang'?'world':'town');refresh();if(message)say(message);save();}
+function openDialogue(lines,onDone=()=>{}){stopPath();dialogue=lines;dialogueIndex=0;dialogueDone=onDone;$('#storyDialog').hidden=false;renderDialogue();$('#advanceDialog').focus();audio.sfx('ui');}
+function renderDialogue(){const line=dialogue[dialogueIndex];$('#storyPortrait').src=portrait(line.hero||'liubei');$('#storyPortrait').alt=`${line.name}肖像`;$('#speakerName').textContent=line.name;$('#storyKicker').textContent=line.kicker||'第一章 · 軍議';$('#storyText').textContent=line.text;$('#advanceDialog').textContent=dialogueIndex===dialogue.length-1?'啟程':'繼續';}
+$('#advanceDialog').onclick=()=>{audio.sfx('ui');if(++dialogueIndex<dialogue.length)renderDialogue();else{const done=dialogueDone;dialogue=null;dialogueDone=null;$('#storyDialog').hidden=true;done?.();refresh();}};
+function beginNew(){state=newCampaign();save({backup:true});enableAudio('town');showWorld();openDialogue([
+ {name:'劉備',hero:'liubei',kicker:'建安十二年 · 新野',text:'曹操兵鋒日盛，新野孤城難以久守。聽聞隆中有位臥龍先生，胸懷天下。'},
+ {name:'趙雲',hero:'zhaoyun',text:'主公，我等護送您前往隆中。從南門出城，沿山道向東北行。'}
+ ],()=>say('前往南門。可用方向鈕移動，或按「路標」沿任務路線前進。'));}
+$('#startNew').onclick=()=>{if(readSave(localStorage)){$('#newDialog').hidden=false;$('#confirmNew').focus();}else beginNew();};
+$('#confirmNew').onclick=()=>{$('#newDialog').hidden=true;beginNew();};$('#cancelNew').onclick=()=>{$('#newDialog').hidden=true;$('#loadJourney').focus();};
+$('#loadJourney').onclick=()=>{state=readSave(localStorage);if(!state){$('#titleStatus').textContent='沒有可讀取的進度。';return;}const pending=state.pending?.kind;enableAudio(pending==='boss'?'boss':pending?'battle':state.map==='overworld'?'world':'town');showWorld(`已回到${MAPS[state.map].name}。${OBJECTIVES[state.story.stage]}`);if(pending)startBattle(pending,true);};
+$('#importLegacy').onclick=()=>{try{state=normalizeCampaign(JSON.parse(localStorage.getItem(LEGACY_KEY)));if(!state)throw Error();save({backup:true});enableAudio('town');showWorld('已接續舊版第一章進度。舊版存檔仍保留。');}catch{$('#titleStatus').textContent='舊版進度無法讀取。';}};
+function enterMap(id,x,y){state.map=id;const m=MAPS[id];state.x=x??m.start.x;state.y=y??m.start.y;state.encounter.safeSteps=Math.max(3,state.encounter.safeSteps);world=new WorldRendererV12($('#worldMap'),images,state);audio.start(id==='overworld'||id==='bowang'?'world':'town');refresh();save();
+ if(id==='xinye'&&state.story.stage===1){Object.assign(state.story,{stage:2,returned:true});save();openDialogue([{name:'孔明',hero:'kongming',kicker:'新野 · 誘敵之策',text:'博望坡兩側林木茂密，坡道狹長。待魏軍追入，便以火攻斷其前後。'}, {name:'關羽',hero:'guanyu',text:'軍需所已備好兵器與軍糧。整備完畢，便往東方迎敵。'}],()=>say('軍需所與客棧在城北。整備後前往博望坡。'));}
+ else say(`來到${m.name}。${id==='overworld'?'點路標可沿主線前進，途中可能遭遇巡邏。':id==='longzhong'?'靠近孔明，按「交談／調查」。':id==='bowang'?'沿坡道向北，留意敵軍先鋒。':'客棧可恢復兵力與策略。'}`);
+}
+function move(dir){if(!free())return false;const [dx,dy]=delta[dir]||[0,0],nx=state.x+dx,ny=state.y+dy,m=MAPS[state.map];if(!walkable(tile(state,nx,ny))||m.npcs?.some(n=>n.x===nx&&n.y===ny)){if(!path.length)say('前方有障礙。靠近人物或建築後，可按交談／調查。');return false;}state.x=nx;state.y=ny;state.steps++;if(dx)world.facing=dx;refresh();save();
+ if(m.exit&&nx===m.exit.x&&ny===m.exit.y){stopPath();enterMap(m.exit.to,m.exit.toX,m.exit.toY);return true;}
+ if(state.map==='overworld'){
+  const p=m.points?.[tile(state)];if(p){stopPath();if(p.to==='bowang'&&state.story.stage<2){say('請先拜訪孔明並返回新野商議。');return true;}enterMap(p.to);return true;}
+  if(state.encounter.safeSteps>0)state.encounter.safeSteps--;else{state.encounter.since++;if(state.encounter.since>=10||(state.encounter.since>=4&&Math.random()<.10)){state.encounter.total++;state.encounter.since=0;stopPath();startBattle('patrol');return true;}}
+ }
+ if(state.map==='bowang'&&state.story.stage===2&&ny<=6){stopPath();openDialogue([{name:'趙雲',hero:'zhaoyun',kicker:'博望坡 · 魏軍先鋒',text:'前方先鋒已至！請主公下令，我等先挫其銳氣。'}],()=>startBattle('vanguard'));}
+ else if(state.map==='bowang'&&state.story.stage===3&&ny<=2){stopPath();openDialogue([{name:'孔明',hero:'kongming',kicker:'博望坡 · 決戰',text:'曹仁、張郃與夏侯惇主力已入坡道。此時不破，更待何時！'}],()=>startBattle('boss'));}
+ refresh();save();return true;
+}
+function nearbyNpc(){return MAPS[state.map].npcs?.find(n=>Math.abs(n.x-state.x)+Math.abs(n.y-state.y)<=1);}
+function nearBuilding(chars){for(const [dx,dy] of [[0,0],[0,-1],[0,1],[-1,0],[1,0]])if(chars.includes(tile(state,state.x+dx,state.y+dy)))return true;return false;}
+function interact(){if(!free())return;stopPath();
+ if(state.map==='xinye'&&nearBuilding('S')){if(state.story.stage<2){say('軍需尚在籌措。請先拜訪孔明，再返回新野。');return;}openShop();return;}
+ if(state.map==='xinye'&&nearBuilding('I')){state.party.forEach(p=>{p.hp=p.maxHp;p.sp=p.maxSp;});audio.sfx('heal');save();refresh();say('客棧整軍完畢。全隊兵力與策略已恢復。');return;}
+ const n=nearbyNpc();if(n){if(n.id==='kongmingNpc'&&state.story.stage===0){openDialogue([
+ {name:'孔明',hero:'kongming',kicker:'隆中 · 臥龍',text:'曹操雖強，荊益仍可為基業。主公若以仁義聚眾，自有可為之時。'},
+ {name:'劉備',hero:'liubei',text:'備願聽先生教誨。眼下曹軍南下，新野百姓危在旦夕。'},
+ {name:'孔明',hero:'kongming',text:'先回新野整軍，我自會同行。博望坡，可作第一戰。'}
+ ],()=>{Object.assign(state.story,{stage:1,longzhong:true});state.party.forEach(p=>{p.hp=p.maxHp;p.sp=p.maxSp;});save();refresh();say('孔明已定迎敵之策。離開隆中，返回新野。');});}else{audio.sfx('ui');say(`${n.name}：${n.dialog.join(' ')}`);}return;}
+ say('四處看看。靠近帶有「！」的人物交談，或在建築入口調查。');audio.sfx('ui');}
+$('#interact').onclick=interact;
+function objectivePoint(){const m=MAPS[state.map];if(state.map==='overworld'){const ch=state.story.stage===0?'L':state.story.stage===1||state.story.stage===4?'X':'B';for(let y=0;y<m.height;y++){const x=m.rows[y].indexOf(ch);if(x>=0)return {x,y};}}
+ if(state.map==='longzhong'&&state.story.stage===0)return {x:6,y:5};if(state.map==='bowang'&&state.story.stage<4)return {x:8,y:state.story.stage===2?6:2};return m.exit?{x:m.exit.x,y:m.exit.y}:null;}
+function follow(goal){if(!free()||!goal)return;stopPath();const next=route(state,goal);if(!next){say('此處無法抵達，請選擇道路或空地。');return;}if(!next.length){if(nearbyNpc())interact();else say('已抵達路標。');return;}path=next;say('沿路前進中。按任一方向可停止。');const tick=()=>{if(!free()||!path.length)return;const dir=path.shift();if(!move(dir)){stopPath();return;}if(path.length)pathTimer=setTimeout(tick,150);else if(free()&&nearbyNpc())say('已抵達。按「交談／調查」與孔明交談。');};tick();}
+$('#waypoint').onclick=()=>follow(objectivePoint());$('#worldMap').onclick=e=>follow(world?.cellAt(e.clientX,e.clientY));
+document.querySelectorAll('[data-dir]').forEach(button=>{button.onpointerdown=e=>{e.preventDefault();button.setPointerCapture?.(e.pointerId);stopPath();move(button.dataset.dir);holdTimer=setInterval(()=>move(button.dataset.dir),160);};button.onpointerup=button.onpointercancel=()=>{clearInterval(holdTimer);};button.onclick=e=>{if(e.detail===0){stopPath();move(button.dataset.dir);}};});
+function startBattle(kind,resume=false){stopPath();battleKind=kind;const initial=battleState(state,kind);if(!resume){state.pending={kind,snapshot:null};storeCheckpoint(state,kind,initial);}save();$('#campaign').hidden=true;$('#battle').hidden=false;$('#result').hidden=true;$('#battle').classList.remove('identity-test');$('#identity').textContent='隱名';$('#identity').setAttribute('aria-pressed','false');$('#units').replaceChildren();timeline=new Timeline();audio.start(kind==='boss'?'boss':'battle');
+ battle=new GoldenBattle({timeline,audio,initialState:initial,onChange:s=>{renderer?.render(s);if(s.phase==='command'){storeCheckpoint(state,kind,s);save();}},onMessage:text=>{if(!$('#battle').classList.contains('identity-test'))$('#message').textContent=text;},onFinish:(result,s)=>{resolveEncounter(state,kind,s,result.win);save();$('#resultTitle').textContent=result.win?(kind==='boss'?'博望大捷':'擊退魏軍'):'退守新野';$('#resultDetails').textContent=result.win?`獲得 ${result.gold} 金 · ${result.exp} 經驗${result.levelUps.length?'\n'+[...new Set(result.levelUps)].join('、')+' 升級！':''}\n${kind==='boss'?'第一章 · 博望首戰告捷。':'整軍再行，保留目前兵力與策略。'}`:'全軍退守新野，損失 120 金。兵力恢復至六成五，可到客棧整軍。';}});
+ renderer=new BattleRendererV12($('#battle'),images,timeline,battle);battle.say(`${battle.actor().name}，請下令。`);$('#battle h1').firstChild.textContent=kind==='boss'?'博望之戰':kind==='vanguard'?'破陣迎敵':'山道遭遇';$('#battle h1 small').textContent=kind==='boss'?'三國戰策 · 孔明篇':MAPS[state.map].name;$('#commands button').focus();}
+document.querySelectorAll('[data-cmd]').forEach(button=>button.onclick=()=>battle?.command(button.dataset.cmd));$('#cancel').onclick=()=>battle?.cancel();$('#identity').onclick=()=>{if(!battle)return;const active=$('#battle').classList.toggle('identity-test');$('#identity').textContent=active?'顯名':'隱名';$('#identity').setAttribute('aria-pressed',String(active));renderer.render(battle.state);};
+$('#replay').onclick=()=>{if(!battle?.state.result)return;const won=battle.state.result.win,kind=battleKind;showWorld(won?'此戰告捷。軍勢與獎勵已保存。':'已退回新野。請先在客棧休整，再行出征。');if(won&&kind==='boss')openDialogue([{name:'孔明',hero:'kongming',kicker:'第一章 · 博望首戰告捷',text:'曹軍鋒芒已挫，新野百姓得以安歇。\n\n首戰之勝，靠的是五將同心。天下未定，我們的旅程才剛開始。'}],()=>say('第一章完成，通關進度已保存。可返回新野整備，繼續探索。'));};
+function openCamp(tab='party'){if(!free())return;stopPath();campTab=tab;$('#campDialog').hidden=false;renderCamp();$('#closeCamp').focus();audio.sfx('ui');}
+$('#openCamp').onclick=()=>openCamp();$('#closeCamp').onclick=()=>{$('#campDialog').hidden=true;$('#openCamp').focus();};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{campTab=b.dataset.tab;renderCamp();});
+function node(tag,text,className=''){const e=document.createElement(tag);if(text!=null)e.textContent=text;if(className)e.className=className;return e;}
+function renderCamp(){const body=$('#campBody');body.replaceChildren();$('#campNotice').textContent=`金 ${state.gold} · ${state.formation}陣 · 進度自動保存`;document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===campTab)));
+ if(campTab==='party'){for(const p of state.party){const row=node('div',null,'party-row'),im=node('img');im.src=portrait(p.id);im.alt=p.name;row.append(im);const copy=node('div');copy.append(node('h3',`${p.name} · ${p.role}`),node('p',`Lv.${p.level}　兵 ${p.hp}/${p.maxHp}　策 ${p.sp}/${p.maxSp}`),node('p',`${ITEMS[p.weapon].name} ／ ${ITEMS[p.armor].name}`),node('p',`武 ${effective(p).atk}　防 ${effective(p).def}　智 ${effective(p).int}　速 ${effective(p).agi}`));row.append(copy);body.append(row);}}
+ else if(campTab==='inventory'){const items=Object.entries(state.inventory).filter(([,count])=>count>0);if(!items.length)body.append(node('p','尚無可用物品。','journal-copy'));for(const [id,count] of items){const it=ITEMS[id],row=node('div',null,'item-row'),copy=node('div');copy.append(node('strong',`${it.name} × ${count}`),node('p',it.desc));const button=node('button',it.type==='consumable'?'使用':'配給');button.onclick=()=>chooseHero(id);row.append(copy,button);body.append(row);}}
+ else if(campTab==='formation'){for(const [name,formation] of Object.entries(FORMATIONS)){const button=node('button',null,'formation-choice');button.append(node('span',name+'陣'),node('small',formation.desc));button.setAttribute('aria-pressed',String(name===state.formation));button.onclick=()=>{state.formation=name;audio.sfx('ui');save();refresh();renderCamp();};body.append(button);}}
+ else {const copy=node('div',null,'journal-copy');copy.append(node('h3',CHAPTERS[state.story.stage]),node('p',OBJECTIVES[state.story.stage]),node('p','新野南門通往荊州北境。隆中在東北，博望坡在東方。城北軍需所可購買裝備，客棧可恢復兵力與策略。'));body.append(copy);const back=node('button','返回新野休整','journal-action');back.onclick=()=>{$('#campDialog').hidden=true;enterMap('xinye');say('已返回新野，劇情與裝備進度保留。');};const title=node('button','保存並返回標題','journal-action');title.onclick=()=>{save();stopPath();$('#campDialog').hidden=true;$('#worldScene').hidden=true;$('#titleScene').hidden=false;refreshTitle();audio.stop();};body.append(back,title);}}
+function chooseHero(id){itemSelection=id;$('#itemTitle').textContent=`${ITEMS[id].name} · 選擇武將`;$('#itemTargets').replaceChildren();for(const p of state.party){const it=ITEMS[id],button=node('button',null,'target-hero');button.append(node('span',p.name),node('small',it.type==='consumable'?`兵 ${p.hp}/${p.maxHp} · 策 ${p.sp}/${p.maxSp}`:`目前：${ITEMS[p[it.type]].name}`));if(it.type==='consumable')button.disabled=it.heal?p.hp>=p.maxHp:p.sp>=p.maxSp;button.onclick=()=>{const ok=it.type==='consumable'?useItem(state,id,p.id):equipItem(state,p.id,id);if(ok){audio.sfx(it.type==='consumable'?'heal':'ui');save();refresh();$('#itemDialog').hidden=true;renderCamp();$('#campNotice').textContent=`${p.name} ${it.type==='consumable'?'使用':'配備'}了${it.name}。`;}};$('#itemTargets').append(button);}$('#itemDialog').hidden=false;$('#closeItem').focus();}
+$('#closeItem').onclick=()=>{$('#itemDialog').hidden=true;itemSelection=null;};
+function openShop(){$('#shopDialog').hidden=false;renderShop();$('#closeShop').focus();audio.sfx('ui');}
+function renderShop(){const body=$('#shopBody');body.replaceChildren();$('#shopGold').textContent=`持有金錢：${state.gold.toLocaleString()} 金`;for(const id of SHOP_STOCK){const it=ITEMS[id],row=node('div',null,'shop-row'),copy=node('div');copy.append(node('strong',it.name),node('p',`${it.desc}　持有 ${state.inventory[id]||0}`));const button=node('button',`${it.price} 金`);button.disabled=state.gold<it.price;button.onclick=()=>{const error=buyItem(state,id);$('#shopNotice').textContent=error||`已購入${it.name}。${it.type==='consumable'?'可在軍勢選單使用。':'請在軍勢 → 物品中配給武將。'}`;if(!error){audio.sfx('ui');save();refresh();renderShop();}};row.append(copy,button);body.append(row);}}
+$('#closeShop').onclick=()=>{$('#shopDialog').hidden=true;};$('#saveJourney').onclick=()=>{if(save())say('目前旅程已保存。重新開啟遊戲可選擇「繼續旅程」。');audio.sfx('ui');};
+addEventListener('keydown',e=>{if(e.altKey||e.ctrlKey||e.metaKey||['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName))return;const dirs={ArrowUp:'u',w:'u',ArrowDown:'d',s:'d',ArrowLeft:'l',a:'l',ArrowRight:'r',d:'r'};if(free()&&dirs[e.key]){e.preventDefault();stopPath();move(dirs[e.key]);}else if(e.key==='Enter'&&!e.repeat&&free()){e.preventDefault();interact();}else if(e.key==='Escape'){e.preventDefault();if(!$('#itemDialog').hidden)$('#itemDialog').hidden=true;else if(!$('#shopDialog').hidden)$('#shopDialog').hidden=true;else if(!$('#campDialog').hidden)$('#campDialog').hidden=true;else if(battle)battle.cancel();else if(free())openCamp();}});
+document.addEventListener('visibilitychange',()=>{stopPath();audioUI();if(!document.hidden&&audio.hasEntered&&!audio.muted)audio.unlock(false,false).then(audioUI);});addEventListener('pageshow',audioUI);
+document.addEventListener('v12audioerror',()=>{say('音樂載入失敗，請點「聲音」重試。');});
+function frame(now){if(!document.hidden&&free()&&now-lastDraw>180){world?.draw(now);lastDraw=now;}worldRAF=requestAnimationFrame(frame);}
+function refreshTitle(){$('#loadJourney').disabled=!readSave(localStorage);try{$('#importLegacy').hidden=!localStorage.getItem(LEGACY_KEY)||!!readSave(localStorage);}catch{$('#importLegacy').hidden=true;}$('#titleStatus').textContent=readSave(localStorage)?'自動存檔已備妥，可繼續旅程。':'方向鈕探索 · 交談推進 · 隨時保存';}
+try{const [battleArt,mapArt]=await Promise.all([preload((n,total)=>$('#titleStatus').textContent=`整軍備戰 ${n} / ${total}`),loadWorldArt()]);images=new Map([...battleArt,...mapArt]);$('#startNew').disabled=false;refreshTitle();worldRAF=requestAnimationFrame(frame);
+ if(new URLSearchParams(location.search).has('qa'))window.__Campaign={get state(){return state;},get audio(){return audio;},get battle(){return battle;},get timeline(){return timeline;},get renderer(){return renderer;},move,interact,startBattle,save,route,enterMap};
+}catch(error){$('#titleStatus').textContent=`${error.message}，請重新載入。`;console.error(error);}

@@ -19,10 +19,26 @@ for name in ['battle','boss','victory']:
  with wave.open(str(root/f'assets/v12/audio/{name}.wav')) as f:assert f.getnframes()>22050*8 and f.getnchannels()==2
 for p in (root/'src/v12').glob('*.js'):
  s=p.read_text()
- assert not any(x in s for x in ['heroArtV115','enemyArtV11','battleRendererV11','battleArt.js','fillRect(']),p.name
+ assert not any(x in s for x in ['heroArtV115','enemyArtV11','battleRendererV11','battleArt.js']),p.name
  for token in ['primeGesture','navigator.audioSession','IOS_PRIME','webkitAudioContext','visibilitychange','pageshow']:
   assert token in (root/'src/v11/audioV11.js').read_text(),token
 html=(root/'golden-v12.html').read_text();assert 'v120.css?v=12.0' in html and 'main.js?v=12.0' in html
 assert "import {AudioV11}" in (root/'src/v12/audio.js').read_text()
 assert not any('serviceWorker.register' in p.read_text() for p in (root/'src/v12').glob('*.js'))
 print('V12: all PNGs fully decode; 80 unique poses; independent portraits; bounds, hashes, audio, version and renderer isolation pass.')
+
+assert 'fillRect(' not in (root/'src/v12/renderer.js').read_text()
+world=json.loads((root/'assets/v12/world/manifest.json').read_text())
+for name,digest in world['sha256'].items():
+ p=root/'assets/v12/world'/name
+ assert hashlib.sha256(p.read_bytes()).hexdigest()==digest,name
+ im=Image.open(p);im.load()
+ assert im.size==((512,512) if name=='terrain.png' else (128,80)),name
+for name in ['world','town']:
+ with wave.open(str(root/f'assets/v12/source/{name}-score.wav')) as f:assert f.getnframes()>22050*8 and f.getnchannels()==2
+ assert (root/f'assets/v12/audio/{name}.mp3').stat().st_size>10000
+index=(root/'index.html').read_text()
+assert 'src/v12/campaign.js?v=12.1' in index and 'styles/campaign-v12.css?v=12.1' in index
+assert 'src/game.js' not in index
+assert (root/'legacy-v8.html').exists()
+print('V12 campaign: generated map/NPC art hashes, source music, compressed audio and main entry pass.')

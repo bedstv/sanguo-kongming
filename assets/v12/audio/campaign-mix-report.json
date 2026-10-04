@@ -1,0 +1,24 @@
+{
+  "world": {
+    "title": "荊州行旅",
+    "seconds": 18.461,
+    "peak": 0.2466,
+    "loop": true,
+    "voices": [
+      "pulse melody",
+      "triangle bass",
+      "square arpeggio"
+    ]
+  },
+  "town": {
+    "title": "新野燈火",
+    "seconds": 20.87,
+    "peak": 0.2496,
+    "loop": true,
+    "voices": [
+      "pulse melody",
+      "triangle bass",
+      "square arpeggio"
+    ]
+  }
+}

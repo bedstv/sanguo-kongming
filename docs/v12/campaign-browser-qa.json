@@ -1,0 +1,26 @@
+{
+  "engine": "Playwright WebKit 26.5 on Linux",
+  "physicalIPhone": false,
+  "checks": [
+    "new title + empty save",
+    "new journey + opening dialogue + original town audio",
+    "south gate transitions to overworld",
+    "V12 patrol + command checkpoint reload",
+    "victory returns rewards once and reloads as exploration",
+    "Longzhong conversation + objective persistence",
+    "return to Xinye opens preparation phase",
+    "purchase + explicit hero equipment assignment",
+    "inventory use + formation + overlay blocks exploration",
+    "inn fully restores HP/SP",
+    "exploration layout 390x844",
+    "exploration layout 393x852",
+    "exploration layout 390x664",
+    "exploration layout 390x844 simulated safe areas",
+    "vanguard victory unlocks the final approach",
+    "exact Golden cast + chapter victory + ending + persistent completion",
+    "defeat safely retreats with recoverable party",
+    "return to title + new journey confirmation"
+  ],
+  "errors": [],
+  "failed": []
+}

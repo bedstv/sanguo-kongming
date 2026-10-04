@@ -1,6 +1,6 @@
 # V12 Golden Battle — implementation and QA
 
-Status: complete first integrated review candidate. Not yet accepted as V12 M1.
+Current status (2026-10-04): user accepted the battle visuals and requested the missing game flow. V12.1 first-chapter implementation and QA are documented in `CAMPAIGN_QA.md`. Numeric blind-recognition gates remain unmeasured. Earlier entries below preserve the acceptance state at the time of each verification.
 
 ## Delivered together
 
@@ -70,3 +70,7 @@ A follow-up review found that identity mode hid printed names but still displaye
 Reviewed the production contact sheet across all ten characters and eight poses: distinct costume/weapon silhouettes and anticipation/strike/recover/cast/hurt/KO frames are present; no obvious missing frames or cropped weapon tips were observed. This author review does not substitute for the required independent 4/5 ally and 2/3 enemy recognition test.
 
 Local validation: 11 combat-rule tests and 4 tests of the actual Timeline implementation pass. Timeline checks cover one strike after anticipation, cast-before-impact ordering, hidden-tab pause/resume without skipped actions, and hurt-to-KO effect expiry. Full PNG decoding, pose uniqueness/bounds and unchanged audio hooks also pass. The CI workflow runs these gates plus the strengthened mobile WebKit checks.
+
+## Battle acceptance and first chapter — 2026-10-04
+
+The user stated “對戰畫面可以了，但是目前也只有對戰畫面其它什麼都沒有” and instructed continuation. Record battle visual acceptance and authorization to integrate the first-chapter game flow. This supersedes the prior feature freeze for the requested campaign scope; it does not invent a measured blind-recognition score. Root `index.html` is now the complete first-chapter journey; the independent Golden Battle remains available. Shared battle rendering/audio regressions passed again, with Golden combat numbers preserved. New journey coverage and device limitations are in `CAMPAIGN_QA.md`.

@@ -1,0 +1,187 @@
+{
+  "animationClock": "instant test clock",
+  "modifiedCombatStats": false,
+  "strategy": "focus lowest enemy HP; heal below 50%; ration below 28%; Kongming fire when affordable",
+  "reports": [
+    {
+      "seed": 1,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 70,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 2,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 69,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 3,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 70,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 4,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 15,
+        "actions": 71,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 5,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 15,
+        "actions": 71,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 6,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 15,
+        "actions": 71,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 7,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 69,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 8,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 69,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 9,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 15,
+        "actions": 72,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 10,
+      "vanguard": {
+        "win": true,
+        "rounds": 3,
+        "actions": 15,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 70,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 11,
+      "vanguard": {
+        "win": true,
+        "rounds": 4,
+        "actions": 18,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 15,
+        "actions": 71,
+        "rations": 4
+      }
+    },
+    {
+      "seed": 12,
+      "vanguard": {
+        "win": true,
+        "rounds": 4,
+        "actions": 18,
+        "rations": 4
+      },
+      "boss": {
+        "win": true,
+        "rounds": 14,
+        "actions": 68,
+        "rations": 4
+      }
+    }
+  ]
+}

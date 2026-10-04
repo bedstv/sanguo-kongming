@@ -67,15 +67,15 @@ V12 不再採用「每次只修一點」的方式。Golden Battle 是唯一品�
 
 ## Definition of Done
 V12 M1 只有在以下全部成立才算完成：
-- [ ] 5 名我軍正式高細節 sprite + portrait。
-- [ ] 5 名敵軍正式高細節 sprite。
-- [ ] 主要角色至少 8-frame animation pipeline。
-- [ ] 戰場背景、UI、FX、BGM 全部使用 V12 production assets。
+- [x] 5 名我軍正式高細節 sprite + portrait。
+- [x] 5 名敵軍正式高細節 sprite。
+- [x] 主要角色至少 8-frame animation pipeline。
+- [x] 戰場背景、UI、FX、BGM 全部使用 V12 production assets。
 - [ ] iPhone 390×844 5v5 無裁切／無重疊。
 - [x] iPhone Safari 可正常解鎖 BGM / SFX，背景返回後可恢復。（2026-10-04 使用者確認）
 - [ ] 隱名測試 4/5 我軍可辨識。
 - [ ] 主要敵將 2/3 可辨識。
-- [ ] 使用者實機視覺驗收通過。
+- [x] 使用者實機視覺驗收通過。（2026-10-04：「對戰畫面可以了」）
 - [ ] Golden Battle 達到「可公開展示」而非 prototype 的完成度。
 
 ## Freeze
@@ -84,3 +84,7 @@ Golden Battle 未通過前：
 - 不新增章節
 - 不做商店 / 裝備系統擴充
 - 不以增加功能代替美術品質提升
+
+## 使用者後續指示 — 2026-10-04
+
+使用者確認「對戰畫面可以了，但是目前也只有對戰畫面其它什麼都沒有」，並指示繼續。因此接續整批完成第一章遊戲旅程：首頁、探索、劇情、整備、戰鬥返回、通關與存檔。這項明確新指示解除此範圍的功能 freeze；不將未測得的 4/5、2/3 辨識率或精確實機 viewport 當成已驗收。範圍與 QA 見 `docs/V12_CAMPAIGN_REBUILD.md`、`docs/v12/CAMPAIGN_QA.md`。

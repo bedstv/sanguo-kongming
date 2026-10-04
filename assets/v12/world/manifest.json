@@ -1,0 +1,34 @@
+{
+  "terrain": {
+    "cell": 128,
+    "columns": 4,
+    "rows": 4,
+    "sourceX": [
+      0,
+      314,
+      627,
+      942,
+      1254
+    ],
+    "sourceY": [
+      0,
+      314,
+      603,
+      899,
+      1254
+    ]
+  },
+  "npcs": {
+    "cell": [
+      64,
+      80
+    ],
+    "frames": 2
+  },
+  "sha256": {
+    "villager.png": "ab15608b945ce4dc17288551d96dcc6b69a5eb435dc44c4235714072a36da42c",
+    "terrain.png": "540d027a148aa923666853ec4e3a76d4a28817c381b805f0c75bfb7dc9e8bd57",
+    "innkeeper.png": "94f61f0157c0f85c924195914e4b2c90b2bf1cddc948be141cd6562cf4c2a5a5",
+    "merchant.png": "cda60cae4abe324e2740341eba3abb18f6ccb9c5522018acc2d0c0a308c90a75"
+  }
+}

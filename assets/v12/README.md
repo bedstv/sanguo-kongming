@@ -13,3 +13,9 @@ Runtime sprites: 128×144 cells × eight poses, one sheet per character. Ground 
 Rebuild art packing: `python -m pip install Pillow numpy scipy`, then `python scripts/pack-v12.py`.
 Rebuild music: `python scripts/compose-v12.py`.
 Validate: `python scripts/validate-v12.py`.
+
+## V12.1 exploration
+
+`world/terrain.png`: sixteen 128px production terrain/building cells; three NPC strips: two 64×80 poses each. Original generated terrain and transparent NPC source images are retained in `source/`, with prompts in `docs/v12/world-generation-manifest.json`. `scripts/pack-v12-world.py` packages them and records runtime hashes. The exploration renderer uses these images and V12 hero sheets, without a geometric character fallback.
+
+Original authored compositions `world` / `town` are synthesized by `scripts/compose-v12-world.py`, with score and measurements in `audio/campaign-score.json` and `campaign-mix-report.json`. PCM mother tracks are in `source/`; runtime MP3s are encoded with ffmpeg/libmp3lame for Safari-compatible decoding. The existing gesture/session/resume path is preserved. Rebuild requires numpy and ffmpeg, then `python scripts/compose-v12-world.py`.

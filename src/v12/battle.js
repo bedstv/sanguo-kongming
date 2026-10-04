@@ -1,6 +1,6 @@
-import {freshState,effective,damage,award,SKILLS,FORMATIONS,ITEMS} from './rules.js';
+import {freshState,effective,damage,award,SKILLS,FORMATIONS,ITEMS} from './rules.js?v=12.1';
 export class GoldenBattle{
- constructor({timeline,audio,onChange=()=>{},onMessage=()=>{},rng=Math.random}){Object.assign(this,{timeline,audio,onChange,onMessage,rng});this.state=freshState();this.message='風起博望 · 劉備，請下令。';}
+ constructor({timeline,audio,onChange=()=>{},onMessage=()=>{},rng=Math.random,initialState=null,onFinish=()=>{}}){Object.assign(this,{timeline,audio,onChange,onMessage,rng});this.onFinish=onFinish;this.state=initialState||freshState();this.message='風起博望 · 劉備，請下令。';}
  emit(){this.onChange(this.state);}
  say(text){this.message=text;this.onMessage(text);}
  actor(){return this.state.party[this.state.actor];}
@@ -22,5 +22,5 @@ export class GoldenBattle{
  async strike(p,t,ally,mult=1,magic=false){const fx=magic?'fire':['zhaoyun','zhangfei','zhanghe','pikeman','archer'].includes(p.id)?'thrust':'slash';this.audio.sfx('attack');await this.timeline[magic?'cast':'attack'](p.id,()=>{const d=damage(this.state,ally?effective(p):p,t,mult,magic,ally,this.rng);this.impact(t,d,fx);this.audio.sfx(magic?'cast':'hit');this.say(`${p.name}${magic?'施展火攻':'攻擊'} · ${t.name} 損失 ${d}。`);this.emit();});}
  async advance(rush=false){const s=this.state;this.emit();await this.timeline.wait(240);if(s.enemies.every(e=>e.hp<=0)){this.finish(true);return;}if(!rush){let n=s.actor+1;while(n<s.party.length&&s.party[n].hp<=0)n++;if(n<s.party.length){s.actor=n;s.phase='command';this.say(`${this.actor().name}，請下令。`);this.emit();return;}}await this.enemyTurn();}
  async enemyTurn(){const s=this.state;s.phase='enemy';this.say('魏軍反擊！');this.emit();await this.timeline.wait(260);for(const e of s.enemies.filter(e=>e.hp>0).sort((a,b)=>b.agi-a.agi)){const alive=s.party.filter(p=>p.hp>0);if(!alive.length)break;const t=alive[Math.floor(this.rng()*alive.length)],special=e.id==='xiahoudun'&&this.rng()<.34,magic=!special&&e.int>75&&e.sp>=5&&this.rng()<.35;if(magic)e.sp-=5;await this.strike(e,t,false,special?1.38:magic?1.12:.9,magic);await this.timeline.wait(120);}s.guard.clear();if(s.party.every(p=>p.hp<=0)){this.finish(false);return;}s.round++;s.actor=s.party.findIndex(p=>p.hp>0);s.phase='command';this.say(`第 ${s.round} 回合 · ${this.actor().name}，請下令。`);this.emit();}
- finish(win){const s=this.state;s.phase='ended';s.selection=null;s.result={win,...(win?award(s):{})};this.audio.start(win?'victory':'defeat');this.audio.sfx(win?'win':'lose');this.say(win?'博望大捷 · 魏軍已退！':'全軍潰敗 · 重整旗鼓，再戰博望。');this.emit();}
+ finish(win){const s=this.state;if(s.phase==='ended')return;s.phase='ended';s.selection=null;s.result={win,...(win?award(s):{})};this.audio.start(win?'victory':'defeat');this.audio.sfx(win?'win':'lose');this.say(win?'博望大捷 · 魏軍已退！':'全軍潰敗 · 重整旗鼓，再戰博望。');this.emit();this.onFinish(s.result,s);}
 }

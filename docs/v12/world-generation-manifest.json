@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-04",
+  "generator": "Built-in imagegen",
+  "purpose": "V12 first-chapter production exploration assets",
+  "images": [
+    {
+      "prompt": "Use case: stylized-concept. Asset type: production pixel RPG map terrain tileset for an original Three Kingdoms game. Produce one square 1024x1024 image containing EXACTLY 4 columns by 4 rows of equal 256x256 square tile cells, no gutters or spacing, no labels or text. Orthographic top-down with slight front-facing roof depth, detailed hand-placed SFC-era pixel art, restrained moss green, stone gray, warm clay, dark blue roofs and ochre paths. Every tile fits its cell, no spill into other cells. Row1 cells left-to-right: seamless lush grass ground; seamless compacted tan dirt path; seamless blue river water with small ripples; dense cluster of leafy trees filling square ground. Row2: gray stone city wall block; traditional Chinese single-story tiled-roof residence with doorway at bottom; Chinese weapon shop with red awning, smith anvil and sword sign WITHOUT LETTERS; blue-roof Chinese inn with paper lanterns and doorway bottom. Row3: red military canvas tent on earth; stone city gate with central open doorway; clustered rocky hill inaccessible; golden crop field. Row4: humble thatched cottage amid bamboo, doorway bottom; fortified Chinese city landmark; red military encampment landmark; small bamboo grove on grass. Tiles viewed from exactly same camera and lit consistently, crisp pixel boundaries, richly textured readable silhouettes, original art only, no UI, no modern objects, no numbers, no typography. Each square ground should be fully opaque.",
+      "source": "assets/v12/source/world-tiles.png",
+      "runtime": "assets/v12/world/terrain.png"
+    },
+    {
+      "prompt": "Use case: stylized-concept. Asset type: original Three Kingdoms RPG town NPC sprite atlas. EXACTLY 3 equal columns by 2 equal rows on genuinely transparent background, no text or labels. Six isolated full-body pixel art sprites. Columns: left an elderly male villager in moss green and tan homespun robes with walking staff; center a middle-aged male merchant in muted ochre robes carrying a small pack and holding folded cloth; right a female innkeeper in indigo robe with apron, carrying a small lantern. Upper row idle A, lower row idle B of SAME identities, attire, height and weapons/items, subtle breathing alternate. 3/4 perspective facing down-right, convincing human anatomy and face, detailed hand-placed SFC-era pixel art, original designs, common townsfolk unarmored. Each sprite fully inside own cell with generous empty gutters, identical feet baseline within each row, keep all staff tips and lantern in bounds. Six sprites same consistent scale and overhead soft light. No scenery, no ground patches or shadows, no grid lines, no decorative border. Pixel RPG production sprite sheet with transparency, not cartoon geometric dolls.",
+      "source": "assets/v12/source/town-npcs.png",
+      "runtime": [
+        "assets/v12/world/villager.png",
+        "assets/v12/world/merchant.png",
+        "assets/v12/world/innkeeper.png"
+      ]
+    }
+  ],
+  "packing": "scripts/pack-v12-world.py",
+  "originalArt": true,
+  "noImportedGameAssets": true
+}
