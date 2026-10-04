@@ -41,3 +41,9 @@ See `../V12_SECOND_CHAPTER.md`, `CHAPTER2_QA.md`, and `chapter2-generation-manif
 正式首頁 `/?v=12.3`。第二章通關後點續章，或軍議中的前往第三章，接續赤壁風起。規格 `../V12_THIRD_CHAPTER.md`，QA `CHAPTER3_QA.md`，production 提示 `chapter3-generation-manifest.json`。
 
 新增檢查：`node tests/v12/chapter-three.test.mjs`、`node tests/v12/chapter3-browser.cjs`；測試由三章真實戰鬥數值連戰產生 `chapter3-start-save.json`，供瀏覽器接續第二章完成進度，並非任意放大角色數值的 demo。
+
+## V12.4 四章旅程
+
+正式首頁 `/?v=12.4`。第三章通關後點「續章」或軍議中的「前往第四章」，接續荊南定策。與孔明商議、接應桂陽糧隊，再前往長沙與黃忠交涉；決戰後可在長沙軍府整備與探索。五將與資源保留，護糧只領一次兩份軍糧。
+
+規格 `../V12_FOURTH_CHAPTER.md`，QA `CHAPTER4_QA.md`，production 提示 `chapter4-generation-manifest.json`。新增 `node tests/v12/chapter-four.test.mjs` 與 `node tests/v12/chapter4-browser.cjs`。`chapter4-start-save.json` 由原值三章連戰產生供瀏覽器測試續章；四章連戰測試保留原值 HP/SP／傷害，僅使用遊戲內同等免費營地恢復與 instant animation clock。

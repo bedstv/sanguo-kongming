@@ -1,0 +1,37 @@
+{
+  "mode": "built-in image_gen",
+  "mockup": {
+    "prompt": "Use case: ui-mockup. Asset type: complete chapter-four visual concept for an original commercial high-detail pixel-art Three Kingdoms RPG, matching mature FC/SFC-inspired 3/4 sprites and dark navy/gold compact interface. Primary request: two tall iPhone 390x844 game screens side by side, equal scale, no physical phone frames. Left: exploration in a warm amber autumn Changsha walled town with stone paving, intricate red-roofed command hall, grain carts, ginkgo trees, small high-detail green-robed Liu Bei exploration sprite, readable map depth. Title 荊南定策 and footer directional controls and dialogue portrait panel. Right: full five-versus-five battle on dry stone-and-earth parade courtyard before fortified city gates at sunset; left heroes Liu Bei green gold twin swords, Guan Yu long beard green robe guandao, Zhang Fei red black armor, Zhao Yun silver blue spear, Kongming ivory green fan; right Huang Zhong golden ochre lamellar, white beard, huge curved bow and arrow quiver plus four blue Wei guards with spears/bows, five separate rows. Production portraits painted independently from sprites. Compact bottom command panel 攻擊 計策 總攻 防禦 軍糧 陣型. Characters grounded, original detailed silhouettes, distinct faces, layered armor, no paper dolls. Large readable battlefield, no clipping; navy parchment-gold UI; original asset designs, no copyrighted game characters, no watermarks. Clearly polished commercial game, not modern dashboard. This is a visual mockup, layout text will be implemented separately in code.",
+    "source": "docs/v12/chapter4-visual-mockup.png"
+  },
+  "assets": [
+    {
+      "name": "huangzhong-sheet",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: production game sprite sheet. Create exactly EIGHT separate full-body sprites of one original Three Kingdoms veteran archer Huang Zhong, in an evenly spaced FOUR columns by TWO rows grid on genuine transparent RGBA background. High-detail hand-authored pixel-art rendering, crisp small pixel clusters, 3/4 view facing right, mature FC/SFC-era commercial RPG aesthetic. Old Chinese male, flowing WHITE beard and white eyebrows, GOLDEN OCHRE lamellar armor, burgundy short mantle, bronze helmet with narrow red crest, tall elegant curved Chinese war bow and back quiver. Same proportions and identity all eight sprites. Row1 left-right: idle calm with bow held upright, second idle bow tilted and breathing, anticipation drawing arrow back with deep grounded stance, strike released arrow while bow extended diagonally. Row2 left-right: recover lowering bow, hurt recoiling with white beard tossed, cast raising one hand and bow for rally, KO collapsed sideways still fully visible. Each figure plus entire bow and arrow fully inside own cell, generous transparent gutters; each pose one connected large silhouette by touching bow/hand/body; no separate flying arrows. No ground shadows, text, labels, gridlines, scenery or checkerboard. Single sheet landscape 1536x1024. Do not copy protected commercial sprites. Preserve actual transparency.",
+      "source": "assets/v12/source/huangzhong-sheet.png",
+      "generatedSource": "/workspace/scratch/94701870d600/generated_images/exec-45f5e27d-0737-405f-a178-1f9cdf071f73.png"
+    },
+    {
+      "name": "huangzhong-portrait",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: independent production RPG dialogue portrait, square. Original high-detail pixel-art head-and-shoulders portrait of Huang Zhong, elderly Chinese veteran archer, noble weathered face, thick long flowing WHITE beard and white eyebrows, bronze helmet with narrow dark-red crest, GOLDEN OCHRE layered lamellar armor, burgundy short mantle, hints of arrow quiver behind shoulder. Three-quarter view looking slightly left, reserved resolute expression, intricate armor rivets and believable elderly facial anatomy, warm sunset edge light. Dark navy and muted amber atmospheric backdrop. Crisp controlled pixel clusters, commercial mature SFC RPG illustration, no blur, no text, no borders, no watermark, no copyrighted character imitation. This must be a standalone portrait illustration, never a cropped or magnified full-body sprite.",
+      "source": "assets/v12/source/huangzhong-portrait.png",
+      "generatedSource": "/workspace/scratch/94701870d600/generated_images/exec-593527d2-1958-4e2c-af9d-1b5017d9916f.png"
+    },
+    {
+      "name": "changsha-background",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: original production portrait battlefield background for mobile five-row five-versus-five pixel RPG. Tall 1024x1536 image. Ancient southern Chinese fortified Changsha city gate at warm autumn sunset, red-roofed grey stone watchtower and walls occupy ONLY top 20 percent, ochre hazy mountains, two small gold-leaved trees at extreme edges, torch baskets and distant grain wagons near gate. Entire lower 75 percent is a broad EMPTY flat stone-and-earth parade courtyard with subtle worn paving slabs and fine dust, three-quarter slightly elevated perspective, consistent daylight and grounded plane for ten figures arranged in five rows. Keep both combatant columns empty all the way from 25 to 95 percent height. No people, characters, animals, vehicles in foreground, no large obstructions, no text/banners/logos/watermarks. Fine crisp hand-authored pixel art texture, high-detail mature FC/SFC-era original commercial RPG background, no gradient vector or photo, restrained contrast so sprites remain clearly legible.",
+      "source": "assets/v12/source/changsha-background.png",
+      "generatedSource": "/workspace/scratch/94701870d600/generated_images/exec-40fb1bb7-b21a-4c8e-ba7d-aa23027c0ba2.png"
+    },
+    {
+      "name": "jingnan-tiles",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: original pixel RPG exploration terrain atlas, square 2x2 grid of exactly four equally sized square tiles filling canvas, no spacing or borders or labels. Each tile 3/4 elevated top-down viewpoint with same scale and crisp high-detail SFC-era pixel art. Top-left: compact fortified red-roofed southern Chinese command hall with grey stone base and two golden decorative doors, complete building on warm subdued cobblestone ground. Top-right: wooden grain cart with sacks and burlap bundles, fully visible on matching warm cobblestone ground. Bottom-left: fortified grey stone city gateway and small dark-red tiled roof, complete on warm cobblestone ground. Bottom-right: full golden ginkgo autumn tree with twisted dark brown trunk and ochre fallen leaves on grass. Clear identifiable silhouettes within each tile, no people, no text, no logos, no watermark, no gridlines, no modern objects. Original high-quality commercial game asset.",
+      "source": "assets/v12/source/jingnan-tiles.png",
+      "generatedSource": "/workspace/scratch/94701870d600/generated_images/exec-f55d62e3-bcf6-4096-8f51-aa05fb7cc77a.png"
+    }
+  ]
+}

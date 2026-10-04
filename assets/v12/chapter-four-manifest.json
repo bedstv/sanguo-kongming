@@ -1,0 +1,107 @@
+{
+  "sprite": {
+    "cell": [
+      128,
+      144
+    ],
+    "frames": 8,
+    "anchor": [
+      64,
+      140
+    ],
+    "bounds": [
+      [
+        27,
+        13,
+        74,
+        127
+      ],
+      [
+        16,
+        20,
+        95,
+        120
+      ],
+      [
+        6,
+        13,
+        116,
+        127
+      ],
+      [
+        11,
+        8,
+        105,
+        132
+      ],
+      [
+        25,
+        17,
+        77,
+        123
+      ],
+      [
+        15,
+        25,
+        97,
+        115
+      ],
+      [
+        12,
+        8,
+        103,
+        132
+      ],
+      [
+        6,
+        79,
+        116,
+        61
+      ]
+    ]
+  },
+  "terrain": {
+    "cell": [
+      128,
+      128
+    ],
+    "columns": 2,
+    "rows": 2,
+    "gateCrop": [
+      0,
+      575,
+      627,
+      1202
+    ]
+  },
+  "compactBattlefield": {
+    "source": "source/changsha-background.png",
+    "crop": [
+      0,
+      100,
+      1024,
+      1124
+    ]
+  },
+  "courtyard": {
+    "source": "source/changsha-background.png",
+    "crop": [
+      448,
+      1024,
+      576,
+      1152
+    ]
+  },
+  "sha256": {
+    "sprites/huangzhong.png": "b24deb013283a976b2d50d4e38f05cf29813251e28a7be8e783b25cc2af61aad",
+    "portraits/huangzhong.png": "038315cdebf7a740ef7ae1f9e2171ddb12bce277152f9f308f3a2079893a26a8",
+    "backgrounds/changsha.png": "41f88a34495e61b02c207c9ce83b6d5e7de4e835943ab440cc4a3656e9bf0fc0",
+    "backgrounds/changsha-wide.png": "e1f50c332c310197d4e9a097a35a8c7c7f5d271bc0da58bca82ccfdfed8b78c6",
+    "world/jingnan.png": "d8f7eed556e0eff82b060bdd30c67bcbcc36d258cf230ff0b99a00d82016a3cf",
+    "world/courtyard.png": "c7dbb9bfa0bcc918e8f8fa8922881d2b61236b8920de0514d03bfe72ee8b9db2",
+    "source/huangzhong-sheet.png": "c16600c0d5b2fc783458bd4ae69ca09c8db322d5c2271ba1af75f87afd0dd55d",
+    "source/huangzhong-portrait.png": "d621e68248905c28af26abec29885265c98d6c1cff23fe7934fd5f0cdd789b1d",
+    "source/changsha-background.png": "e79927a7c1999c6d57db052e58df4c31f2d5e80d102bc0ee3791a0abfa2cf0ab",
+    "source/jingnan-tiles.png": "6f984ce9cfaf489c6c11a869eb81503fd0a671685c9040546322f4584a840d1b"
+  }
+}

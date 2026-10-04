@@ -3,7 +3,7 @@
   "physicalIPhone": false,
   "preparationFlowStatsModified": true,
   "finalBossStatsModified": false,
-  "bossActions": 39,
+  "bossActions": 37,
   "checks": [
     "actual-stat V12.2 completion fixture continues with saved party, gold and equipment",
     "alliance gate + Zhou Yu independent portrait and NPC + chapter-three journal",

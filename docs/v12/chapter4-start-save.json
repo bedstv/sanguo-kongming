@@ -1,0 +1,133 @@
+{
+  "schema": 12,
+  "version": "12.3",
+  "map": "jiangling",
+  "x": 8,
+  "y": 9,
+  "gold": 4068,
+  "formation": "鶴翼",
+  "party": [
+    {
+      "id": "liubei",
+      "name": "劉備",
+      "role": "主將",
+      "level": 8,
+      "exp": 506,
+      "maxHp": 6020,
+      "hp": 6020,
+      "maxSp": 38,
+      "sp": 38,
+      "atk": 92,
+      "def": 83,
+      "int": 88,
+      "agi": 76,
+      "weapon": "bronzeSword",
+      "armor": "leatherArmor"
+    },
+    {
+      "id": "guanyu",
+      "name": "關羽",
+      "role": "猛將",
+      "level": 8,
+      "exp": 506,
+      "maxHp": 6820,
+      "hp": 6820,
+      "maxSp": 28,
+      "sp": 28,
+      "atk": 110,
+      "def": 93,
+      "int": 68,
+      "agi": 81,
+      "weapon": "crescentBlade",
+      "armor": "clothArmor"
+    },
+    {
+      "id": "zhangfei",
+      "name": "張飛",
+      "role": "猛將",
+      "level": 8,
+      "exp": 506,
+      "maxHp": 7020,
+      "hp": 7020,
+      "maxSp": 24,
+      "sp": 24,
+      "atk": 114,
+      "def": 89,
+      "int": 48,
+      "agi": 72,
+      "weapon": "ironSpear",
+      "armor": "clothArmor"
+    },
+    {
+      "id": "zhaoyun",
+      "name": "趙雲",
+      "role": "武將",
+      "level": 8,
+      "exp": 506,
+      "maxHp": 6520,
+      "hp": 6520,
+      "maxSp": 30,
+      "sp": 30,
+      "atk": 106,
+      "def": 91,
+      "int": 72,
+      "agi": 96,
+      "weapon": "ironSpear",
+      "armor": "clothArmor"
+    },
+    {
+      "id": "kongming",
+      "name": "孔明",
+      "role": "軍師",
+      "level": 8,
+      "exp": 506,
+      "maxHp": 5420,
+      "hp": 5420,
+      "maxSp": 56,
+      "sp": 56,
+      "atk": 70,
+      "def": 75,
+      "int": 112,
+      "agi": 80,
+      "weapon": "featherFan",
+      "armor": "scholarRobe"
+    }
+  ],
+  "inventory": {
+    "ration": 2,
+    "spiritTea": 2,
+    "leatherArmor": 0,
+    "clothArmor": 1
+  },
+  "story": {
+    "stage": 14,
+    "longzhong": false,
+    "returned": false,
+    "vanguard": true,
+    "boss": true,
+    "clear": true,
+    "chapter2Started": true,
+    "rescued": [
+      "west",
+      "east"
+    ],
+    "chapter2Complete": true,
+    "chapter3Started": true,
+    "plans": [
+      "wind",
+      "ships"
+    ],
+    "chapter3Complete": true,
+    "chapter4Started": false,
+    "supplySecured": false,
+    "chapter4Complete": false
+  },
+  "steps": 0,
+  "encounter": {
+    "safeSteps": 5,
+    "since": 0,
+    "total": 0
+  },
+  "pending": null,
+  "savedAt": null
+}

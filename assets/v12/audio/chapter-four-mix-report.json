@@ -1,0 +1,13 @@
+{
+  "jingnan": {
+    "title": "長沙弓影",
+    "seconds": 28.421,
+    "peak": 0.2773,
+    "loop": true,
+    "voices": [
+      "pulse melody",
+      "triangle bass",
+      "square arpeggio"
+    ]
+  }
+}

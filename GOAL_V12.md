@@ -96,3 +96,7 @@ Golden Battle 未通過前：
 ## V12.3 接續交付
 
 兩章部署後，使用者再次指示繼續。第三章「赤壁風起」整批完成孫劉盟約、東風／火船準備、連環艦決戰與江陵安定；維持視覺稿先行、production assets、完整流程與舊存檔接續後再整批提交。規格與驗證見 `docs/V12_THIRD_CHAPTER.md`、`docs/v12/CHAPTER3_QA.md`。
+
+## V12.4 接續交付
+
+三章版本部署後，使用者再次指示「請繼續」。第四章「荊南定策」完成江陵軍議、桂陽護糧、長沙交涉、黃忠決戰與長沙安民；先做完整視覺稿與 production art，再整合存檔／戰鬥／整備並整批 QA、提交。規格與驗證見 `docs/V12_FOURTH_CHAPTER.md`、`docs/v12/CHAPTER4_QA.md`。不宣稱全三國篇完成，未量測 iPhone 實機與盲測指標仍保留。

@@ -1,0 +1,27 @@
+{
+  "engine": "Playwright WebKit 26.5 on Linux",
+  "physicalIPhone": false,
+  "supplyFlowStatsModified": true,
+  "finalBossStatsModified": false,
+  "bossActions": 37,
+  "checks": [
+    "V12.3 actual-stat clear fixture continues into fourth chapter with gear/resources retained",
+    "grain destination locks before military order and Kongming advances once",
+    "Changsha battle and permanent town lock before supply victory",
+    "guard archetype instances render; damaged grain checkpoint restores; two supply rations granted once",
+    "independent Huang Zhong portrait, production archer, five-versus-five courtyard and decoded original music",
+    "fourth-chapter battle bounds 390x844",
+    "fourth-chapter battle bounds 393x852",
+    "fourth-chapter battle bounds 390x664",
+    "fourth-chapter battle bounds 390x844 safe areas",
+    "Huang Zhong damaged HP and full battle command checkpoint reload exactly",
+    "unmodified-stat full Huang Zhong victory, ending, permanent camp and once-only reward reload",
+    "fourth journal hub and permanent clinic/shop services work after completion",
+    "fourth exploration layout 390x844",
+    "fourth exploration layout 393x852",
+    "fourth exploration layout 390x664",
+    "fourth exploration layout 390x844 safe areas"
+  ],
+  "errors": [],
+  "failed": []
+}

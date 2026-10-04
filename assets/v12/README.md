@@ -32,3 +32,12 @@ Original score 《當陽斷後》: `scripts/compose-v122.py`, `audio/chapter-two
 - 母帶 `source/naval-score.wav`，runtime `audio/naval.mp3`，編曲／混音紀錄 `audio/chapter-three-score.json` 與 `chapter-three-mix-report.json`。
 - built-in imagegen 的完整提示與來源路徑：`docs/v12/chapter3-generation-manifest.json`；每張 source/runtime hash：`chapter-three-manifest.json`。`scripts/pack-v123.py` 使用 Pillow、NumPy、SciPy 包裝 alpha-connected authored 人物，不改寫原始美術。
 - 夜艦戰場取景 auto 110%／center bottom，維持比例與腳下甲板；iOS 音訊解鎖實作未修改。
+
+## V12.4 原創第四章資產
+
+- Runtime：`sprites/huangzhong.png`（八個 128×144 RGBA poses，anchor 64,140）、`portraits/huangzhong.png`（獨立 128×128）、`backgrounds/changsha.png`（520×780）、`world/jingnan.png`（四個 128px cells）、`world/courtyard.png`（原創背景石地區域 448,1024,576,1152）。探索黃忠使用同一正式 sheet 的 idle 幀；城軍槍兵／弓兵共用既有 production 素材，每名敵人有獨立 instance id。
+- 來源：`source/huangzhong-sheet.png`、`huangzhong-portrait.png`、`changsha-background.png`、`jingnan-tiles.png`。built-in imagegen 完整提示與保存路徑：`docs/v12/chapter4-generation-manifest.json`。`scripts/pack-v124.py` 包裝原始 alpha 並記錄 `chapter-four-manifest.json` 的 source/runtime SHA-256；不改寫原圖美術。
+- 原創《長沙弓影》：152 BPM、28.421 秒，`scripts/compose-v124.py`、`audio/chapter-four-score.json`、`chapter-four-mix-report.json`、`source/jingnan-score.wav`、`audio/jingnan.mp3`。既有曲目與 Safari unlock/resume 保留。
+- 城門戰場 auto 110%／center bottom，保留城門與角色落腳地面。第四章營地使用原創石地、軍議堂與秋樹，不重疊舊營帳。
+
+短視窗（≤740px）使用同一原畫的方形城門取景 `backgrounds/changsha-wide.png`，source crop (0,100,1024,1124)，以 cover 保持比例並填滿戰場。正式像素文字仍由程式呈現。
