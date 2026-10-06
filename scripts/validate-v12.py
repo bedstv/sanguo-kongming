@@ -38,7 +38,7 @@ for name in ['world','town']:
  with wave.open(str(root/f'assets/v12/source/{name}-score.wav')) as f:assert f.getnframes()>22050*8 and f.getnchannels()==2
  assert (root/f'assets/v12/audio/{name}.mp3').stat().st_size>10000
 index=(root/'index.html').read_text()
-assert 'src/v12/campaign.js?v=12.4.1' in index and 'styles/campaign-v12.css?v=12.4.1' in index
+assert 'src/v12/campaign.js?v=12.5' in index and 'styles/campaign-v12.css?v=12.5' in index
 assert 'src/game.js' not in index
 assert (root/'legacy-v8.html').exists()
 print('V12 campaign: generated map/NPC art hashes, source music, compressed audio and main entry pass.')
@@ -96,3 +96,14 @@ assert Image.open(root/'assets/v12/world/courtyard.png').size==(128,128)
 with wave.open(str(root/'assets/v12/source/jingnan-score.wav')) as f:assert f.getnchannels()==2 and f.getnframes()>22050*8
 assert (root/'assets/v12/audio/jingnan.mp3').stat().st_size>10000
 print('V12.4: Huang Zhong eight original poses/alpha/bounds, independent portrait, Changsha/jingnan art hashes, original music and versioned entry pass.')
+
+fifth=json.loads((root/'assets/v12/chapter-five-manifest.json').read_text())
+for name in fifth['files']:
+ p=root/'assets/v12'/name
+ assert p.is_file(),name
+ if p.suffix=='.png':
+  with Image.open(p) as im:im.load()
+with Image.open(root/'assets/v12/backgrounds/jiangling.png') as im:assert im.size==(1024,1536)
+with wave.open(str(root/'assets/v12/audio/fortress.wav')) as f:assert f.getframerate()==22050 and f.getnframes()>22050*20
+assert (root/'docs/v12/chapter5-visual-mockup.png').is_file()
+print('V12.5: Jiangling production background, reusable approved cast, original fortress score and versioned entry pass.')

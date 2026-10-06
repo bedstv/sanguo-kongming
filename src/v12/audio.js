@@ -7,7 +7,7 @@ export class AudioV12 extends AudioV11{
  async load(mode){if(this.buffers.has(mode))return this.buffers.get(mode);if(!this.loading.has(mode))this.loading.set(mode,fetch(asset(`audio/${mode}.${['world','town','bridge','naval','jingnan'].includes(mode)?'mp3':'wav'}`)).then(r=>{if(!r.ok)throw new Error(`音樂讀取失敗 ${r.status}`);return r.arrayBuffer();}).then(b=>this.ensure().decodeAudioData(b)).then(b=>{this.buffers.set(mode,b);return b;}).catch(e=>{this.loading.delete(mode);throw e;}));return this.loading.get(mode);}
  async start(mode='boss'){
   if(mode==='defeat'){this.stop();this.mode='defeat';return;}
-  if(!['battle','boss','victory','world','town','bridge','naval','jingnan'].includes(mode))mode='boss';
+  if(!['battle','boss','victory','world','town','bridge','naval','jingnan','fortress'].includes(mode))mode='boss';
   if(this.mode!==mode){this.stop();this.offset=0;this.mode=mode;}
   if(!this.hasEntered||this.muted||!this.isReady()||this.source||document.hidden)return;
   const request=++this.request;this.timer={loading:true};

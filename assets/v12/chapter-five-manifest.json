@@ -1,0 +1,37 @@
+{
+  "version": "12.5",
+  "chapter": "江陵守望",
+  "files": [
+    "backgrounds/jiangling.png",
+    "audio/fortress.wav"
+  ],
+  "reusedApprovedArt": [
+    "sprites/caoren.png",
+    "sprites/xuhuang.png",
+    "sprites/zhanghe.png",
+    "sprites/pikeman.png",
+    "sprites/archer.png",
+    "world/jingnan.png",
+    "world/naval.png",
+    "world/terrain.png"
+  ],
+  "background": {
+    "size": [
+      1024,
+      1536
+    ],
+    "source": "built-in imagegen",
+    "crop": "none",
+    "display": "cover center bottom"
+  },
+  "audio": {
+    "title": "江陵烽聲",
+    "bpm": 144,
+    "durationSeconds": 26.666666666666668,
+    "sampleRate": 22050,
+    "channels": 1,
+    "peak": 0.4676768835865652,
+    "rms": 0.13711394643778663,
+    "clippedSamples": 0
+  }
+}
