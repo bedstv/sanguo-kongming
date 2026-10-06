@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-06",
+  "generator": "built-in image_gen.imagegen",
+  "images": [
+    {
+      "role": "conceptual chapter visual mockup",
+      "path": "docs/v12/chapter5-visual-mockup.png",
+      "prompt": "Create an original art-direction visual mockup for a premium retro SFC-era Three Kingdoms mobile pixel RPG, chapter 5 江陵守望. Two distinct upright iPhone 390x844 game screens side by side on a dark navy neutral presentation board, no phone bezels. Left: sharp readable top-down pixel art Jiangling fortress camp, tiled subdued stone paths, large recognizable Liu Bei in green gold armor, Kongming with feather fan, grain carts and signal beacon, red roof gate, mountain forest distance. Clear high-contrast compact Chinese location labels 江陵軍營, 軍需所, 烽火臺, 糧道, bold readable silhouettes; bottom tightly organized brass border retro dialogue and directional controls 交談, 軍勢, 保存. Right: serious 3/4 side-view five vs five tactical battle at a fortified gate at blue twilight with amber signal fires. Left five independent heroes Liu Bei paired swords green robe, Guan Yu long beard green robe guandao, Zhang Fei black beard dark armor snake spear, Zhao Yun white silver armor spear, Kongming white teal scholar robes fan. Right Cao Ren heavy blue fortress armor, Xu Huang broad axe, Zhang He purple armor long spear, infantry spear and archer. Ten clearly separated full-body sprites in five rows, small readable HP bars, ample central FX space. Bottom fixed compact traditional command panel six buttons 攻擊 計策 總攻 防禦 軍糧 陣型 and independent Kongming head/shoulder portrait, top header 江陵守望. Detailed deliberate pixel clusters, crisp hard edges, no blurry painterly texture, no modern cards, subdued low contrast ground, strong figure outlines. Original compositions only, no copying any existing game art. This is a conceptual mockup, no claims of actual rendered software.",
+      "transparentBackground": false
+    },
+    {
+      "role": "production empty battlefield background",
+      "path": "assets/v12/backgrounds/jiangling.png",
+      "prompt": "Original production background asset for a premium retro SFC pixel-art Three Kingdoms mobile RPG, chapter 江陵守望. Portrait canvas, fortified ancient Chinese Jiangling gate at blue twilight. Upper quarter: detailed muted gray brick battlements, dark red tiled gatehouse, distant blue mountains, two small amber beacon flames at far edges. Gatehouse and mountain scenery confined to upper quarter; lower three quarters: spacious uninterrupted broad level flagstone courtyard arena, calm low-contrast dusty navy and muted brown stone, no stairs, no diagonal walls, no foreground obstacles, no tall flames on arena. Left and right columns must remain especially empty and visually quiet for five rows of opposing combatant sprites from 25% to 95% height. Tiny supply carts far behind the arena at top edges. Carefully controlled pixel clusters and hard-edged pixel craftsmanship, no blur, no painterly smudge, coherent high quality background; warm signal-fire accents against cool twilight. Environment ONLY: absolutely no people, no warriors, no sprites, no horses, no portraits, no text, no Chinese calligraphy, no banners with writing, no UI, no buttons, no borders. Flat ground provides stage for independent actors. Do not copy any existing game's artwork.",
+      "transparentBackground": false
+    }
+  ],
+  "notes": [
+    "Mockup created before chapter implementation. Conceptual image is not a screenshot.",
+    "Production image has no embedded UI or figures; text and combatants use existing renderers.",
+    "Existing approved character sheets and exploration atlases reused; no new hero art claimed."
+  ],
+  "audio": {
+    "composer": "scripts/compose-v125.mjs",
+    "score": "assets/v12/source/fortress-score.json",
+    "samples": "none, procedural oscillator composition",
+    "original": true
+  }
+}

@@ -1,0 +1,1003 @@
+{
+  "modifiedCombatStats": false,
+  "animationClock": "instant test clock",
+  "campRecovery": true,
+  "journeys": [
+    {
+      "seed": 1,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 70,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 3,
+          "actions": 11,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 74,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 69,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 8,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 9,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 7,
+          "actions": 35,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 73,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 70,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 8,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 38,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 73,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 15,
+          "actions": 71,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 8,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 37,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 73,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 15,
+          "actions": 71,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 3,
+          "actions": 14,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 74,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 15,
+          "actions": 71,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 9,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 74,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 69,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 16,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 13,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 73,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 69,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 74,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 15,
+          "actions": 72,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 9,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 73,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 10,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 70,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 8,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 14,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 40,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 16,
+          "actions": 76,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 4,
+          "actions": 18,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 15,
+          "actions": 71,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 16,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 38,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 73,
+          "survivors": 5
+        }
+      ]
+    },
+    {
+      "seed": 12,
+      "battles": [
+        {
+          "kind": "vanguard",
+          "rounds": 4,
+          "actions": 18,
+          "survivors": 5
+        },
+        {
+          "kind": "boss",
+          "rounds": 14,
+          "actions": 68,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueWest",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "rescueEast",
+          "rounds": 2,
+          "actions": 9,
+          "survivors": 5
+        },
+        {
+          "kind": "bridge",
+          "rounds": 4,
+          "actions": 20,
+          "survivors": 5
+        },
+        {
+          "kind": "fireships",
+          "rounds": 4,
+          "actions": 17,
+          "survivors": 5
+        },
+        {
+          "kind": "windward",
+          "rounds": 2,
+          "actions": 8,
+          "survivors": 5
+        },
+        {
+          "kind": "redcliff",
+          "rounds": 8,
+          "actions": 40,
+          "survivors": 5
+        },
+        {
+          "kind": "supplyEscort",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "changsha",
+          "rounds": 8,
+          "actions": 39,
+          "survivors": 5
+        },
+        {
+          "kind": "convoyDefense",
+          "rounds": 3,
+          "actions": 15,
+          "survivors": 5
+        },
+        {
+          "kind": "signalDefense",
+          "rounds": 2,
+          "actions": 10,
+          "survivors": 5
+        },
+        {
+          "kind": "jianglingSiege",
+          "rounds": 15,
+          "actions": 75,
+          "survivors": 5
+        }
+      ]
+    }
+  ]
+}

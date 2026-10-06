@@ -1,0 +1,16 @@
+{
+  "runtime": "V8 tool orchestration with import adapter and structuredClone compatibility function",
+  "nativeNode": false,
+  "tests": [
+    "V12.4.1 saves continue with five heroes, equipment, formation, resources and damage intact",
+    "fourth completion never downgrades stages 20–24; incomplete and pending journeys cannot continue",
+    "fifth map exits, points, services and objective routes all remain reachable",
+    "both preparation orders reach stage 22; convoy supplies and orders apply once",
+    "signal effect and command checkpoint retain damaged HP, exact debuff, actor and guards on reload",
+    "premature fifth maps and already completed battle checkpoints cannot bypass the quest",
+    "defeat preserves preparations and spending; final victory returns to permanent services",
+    "twelve seeded five-chapter journeys win with real combat stats and available camp recovery"
+  ],
+  "seededJourneys": 12,
+  "combatStatsModified": false
+}

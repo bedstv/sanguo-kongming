@@ -1,0 +1,53 @@
+{
+  "testedCodeCommit": "dea95397be4a95549fc174834d64a56a7e8d8841",
+  "run": "https://github.com/bedstv/sanguo-kongming/actions/runs/37408024321",
+  "conclusion": "success",
+  "nodeTests": 57,
+  "seededFiveChapterJourneys": 12,
+  "webKitChecks": 104,
+  "fifthChapterChecks": {
+    "chapter5Checks": 18,
+    "signalActions": 9,
+    "convoyActions": 15,
+    "bossActions": 75,
+    "errors": [],
+    "failed": []
+  },
+  "engine": "GitHub-hosted Linux Playwright WebKit",
+  "physicalIPhone": false,
+  "newChapterCombatStatsModified": false,
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 3
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "dpr": 3
+    },
+    {
+      "width": 390,
+      "height": 664,
+      "dpr": 3
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "safeTop": 47,
+      "safeBottom": 34
+    }
+  ],
+  "screenshots": [
+    "chapter5-ci-camp.jpg",
+    "chapter5-ci-battle.jpg"
+  ],
+  "manualVisualReview": "first-row actors on courtyard, five rows and troop bars complete",
+  "pending": [
+    "physical iPhone chapter-five validation",
+    "manual listening of new soundtrack",
+    "V12.4.1 exploration-clarity user feedback"
+  ]
+}
