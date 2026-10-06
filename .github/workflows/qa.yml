@@ -57,6 +57,9 @@ jobs:
           node tests/v12/chapter4-browser.cjs
           node tests/v12/exploration-clarity-browser.cjs
           node tests/v12/chapter5-browser.cjs
+      - name: Deployed V12.5 smoke test
+        if: github.event_name == 'push'
+        run: node tests/v12/chapter5-live-smoke.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -72,6 +75,7 @@ jobs:
             docs/v12/chapter4-browser-qa.json
             docs/v12/chapter4-combat-qa.json
             docs/v12/chapter5-browser-qa.json
+            docs/v12/chapter5-live-qa.json
             docs/v12/chapter5-combat-qa.json
             docs/v12/chapter5-start-save.json
             docs/v12/exploration-clarity-qa.json
