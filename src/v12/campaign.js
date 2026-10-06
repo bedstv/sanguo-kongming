@@ -3,7 +3,7 @@ import {MAPS,isWorld,isCamp,chapterNumber,musicForMap,nextObjective,THIRD_KINDS,
 import {preload,portrait,asset,sheet} from './assets.js';
 import {Timeline} from './timeline.js?v=12.4';
 import {GoldenBattle} from './battle.js?v=12.4';
-import {BattleRendererV12} from './renderer.js?v=12.4';
+import {BattleRendererV12} from './renderer.js?v=12.5';
 import {AudioV12} from './audio.js?v=12.5';
 import {WorldRendererV12,loadWorldArt} from './world-renderer.js?v=12.5';
 import {newCampaign,normalizeCampaign,readSave,writeSave,LEGACY_KEY,CHAPTERS,OBJECTIVES,tile,walkable,route,battleState,storeCheckpoint,resolveEncounter,buyItem,equipItem,useItem,beginChapterTwo,provisionConvoy,beginChapterThree,agreeAlliance,beginChapterFour,orderSupplyEscort,beginChapterFive,orderFortDefense} from './campaign-state.js?v=12.5';
