@@ -8,7 +8,7 @@
 
 先產生章節概念 mockup，再製作獨立江陵 production 背景，人物、文字與 UI 由既有 renderer 繪製。復用已接受的角色八姿勢 sprites、肖像及探索圖集，保留 V12.4.1 的高解析度文字、放大人物與低干擾地面。沒有聲稱新增武將或全部世界地圖完成。
 
-背景：assets/v12/backgrounds/jiangling.png，1024×1536，無嵌入人物與 UI。生成提示與来源：docs/v12/chapter5-generation-manifest.json。概念稿不是實際軟體截圖。
+背景：assets/v12/backgrounds/jiangling.png，1024×1536，無嵌入人物與 UI；cover 取景再放大 12%，維持比例並將首排落點移至廣場。生成提示與來源：docs/v12/chapter5-generation-manifest.json。概念稿不是實際軟體截圖。
 
 原創《江陵烽聲》：144 BPM、16 小節、26.667 秒、22050 Hz mono PCM；兩脈衝聲部、三角低音與程序打擊，未使用外部音樂採樣。完整旋律與可重製編曲程式為 scripts/compose-v125.mjs。沿用 AudioV11 已驗證 Safari primer/unlock/audioSession/resume；只在 AudioV12 加入 fortress 模式。
 

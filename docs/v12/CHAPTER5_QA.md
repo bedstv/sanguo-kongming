@@ -24,3 +24,8 @@
 ## 第二輪 CI（37407205484）
 57 項原生 Node 測試、12 組完整五章旅程、104 項 Linux WebKit（既有 86 + 第五章 18）全部通過。第五章完整數值戰鬥完成：烽火 9 次操作（先前另做一擊 checkpoint）、護糧 15 次、決戰 74 次（另做一擊 checkpoint）。零 page errors／失敗資產請求。
 實際 390×844 battle 截圖檢視發現首排人物落點仍貼城牆，因此針對第五章背景加入 cover 後 12% 取景放大，保持比例與 center bottom，讓城牆上移、人物落在廣場。短視窗依 stage 尺寸計算，不出現側邊空白。其他章節背景與 Golden 構圖不套用。此取景更改需後續 CI 及截圖確認。
+
+## 最終候選 CI（37408024321）
+已通過 57 項原生 Node、12 組原值完整五章旅程及 104 項 Linux WebKit。第五章 18 項含四種手機尺寸／安全區、DPR 3、門檻、受傷 checkpoint、全部完整數值準備戰與最終戰、一次性獎勵、結尾及軍府。此次烽火 9 次、護糧 15 次、決戰 75 次操作（烽火與決戰各另有一擊 checkpoint 測試）。零 page errors／失敗資產請求。
+檢視此輪實際 390×844 截圖，首排人物腳下已是廣場地面；五列角色與兵力條完整。圖：chapter5-ci-camp.jpg、chapter5-ci-battle.jpg。這是 Linux WebKit，不是實機 iPhone。
+程式驗證 SHA：dea95397be4a95549fc174834d64a56a7e8d8841；後續提交只保存此 QA、camera manifest 與截圖，不再更改遊戲程式。正式站 smoke 結果依合併後 main CI 與 Issue #4 紀錄。

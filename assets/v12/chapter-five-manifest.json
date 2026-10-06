@@ -22,7 +22,8 @@
     ],
     "source": "built-in imagegen",
     "crop": "none",
-    "display": "cover center bottom"
+    "display": "aspect-preserving cover plus 12% zoom, center bottom; recalculated per stage ResizeObserver",
+    "zoom": 1.12
   },
   "audio": {
     "title": "江陵烽聲",
